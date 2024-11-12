@@ -1,0 +1,107 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+# Usually these files are written by a Python script from a template
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# MySQL / MongoDB / other database files
+*.sql
+*.sqlite3
+*.db
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*~
+
+# Logs and temp files
+*.log
+*.out
+*.tmp
+*.temp
+
+# macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Env files
+.env
+.env.*
+
+# Data files
+*.json
+*.csv
+*.xls
+*.xlsx
+
+# Ignore database dumps, large datasets, or backup files
+*.bak
+*.backup
+dump.rdb
+*.sql
+
+# System specific
+Thumbs.db
+.DS_Store
+
+# GitHub files
+.github/
+.gitlab-ci.yml
+
+# Project specific
+logs/
+*.log
+config/
+secret-config/
+scraper-results/
