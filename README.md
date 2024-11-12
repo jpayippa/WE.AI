@@ -37,17 +37,17 @@ To set up the project locally, follow these steps:
    cd weai-assistant
    ```
 2. Set up the environment: Ensure Python 3.x is installed and set up a virtual environment.
-  ```python3 -m venv env
+   ```python3 -m venv env
     source env/bin/activate   
     # On Windows, use `env\Scripts\activate`
-  ```
+     ```
 3. Install dependencies:
-  ```pip install -r requirements.txt```
+     ```pip install -r requirements.txt```
 4. Set up environment variables: Create a .env file with required configuration for database connection and any API keys.
 5. Run the Web Scraper: To populate the database, run the web scraper to collect data from Western’s engineering subdomain.
-   ```python uwo_spider.py```
+      ```python uwo_spider.py```
 6. Launch the backend: After scraping, you can start building and testing the backend API.
-  ```python app.py   # Assuming Flask or a similar framework is used```
+     ```python app.py   # Assuming Flask or a similar framework is used```
 
 
 ## Usage
@@ -57,7 +57,7 @@ To set up the project locally, follow these steps:
    
 ## Project Structure
 
-weai-assistant/
+```weai-assistant/
 │
 ├── data/                   # Directory for raw and processed data
 │   └── refined_eng_data.json
@@ -72,7 +72,7 @@ weai-assistant/
 ├── .gitignore              # Git ignore file
 ├── README.md               # Project documentation
 └── requirements.txt        # Python dependencies
-
+```
 ## Contributing
 We welcome contributions from the community! Please open issues for suggestions or report bugs, and feel free to submit pull requests for improvements or features.
 
