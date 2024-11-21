@@ -16,9 +16,11 @@ class EngSpider(CrawlSpider):
         self.start_urls = config["start_urls"]
         self.allowed_domains = config["allowed_domains"]
         self.output_folder = os.path.join(config["output_folder"], "raw")  # Save to Data/raw
+        self.logs_dir = os.path.join(config["output_folder"], "../logs")  # Save logs to Results/logs
 
-        # Ensure the output folder exists
+        # Ensure the output and logs folders exist
         os.makedirs(self.output_folder, exist_ok=True)
+        os.makedirs(self.logs_dir, exist_ok=True)
 
         # User agents for rotation
         self.user_agents = [
@@ -73,6 +75,7 @@ class EngSpider(CrawlSpider):
 
         except Exception as e:
             self.logger.error(f"Error parsing {response.url}: {str(e)}")
+            self.log_failed_url(response.url, response.status)
 
     def save_to_json(self, data, url):
         """Save structured data to a JSON file."""
@@ -83,6 +86,21 @@ class EngSpider(CrawlSpider):
             json.dump(data, file, indent=4)
 
         self.logger.info(f"Saved data to {filepath}")
+
+    def log_failed_url(self, url, status_code):
+        """Log failed URLs into specific log files based on status code."""
+        if status_code == 404:
+            log_file = os.path.join(self.logs_dir, "404_errors.log")
+        elif status_code == 403:
+            log_file = os.path.join(self.logs_dir, "403_errors.log")
+        elif status_code == 500:
+            log_file = os.path.join(self.logs_dir, "500_errors.log")
+        else:
+            log_file = os.path.join(self.logs_dir, "other_errors.log")
+
+        with open(log_file, "a", encoding="utf-8") as log_file:
+            log_file.write(f"{url}\n")
+        self.logger.info(f"Logged {status_code} error for URL: {url}")
 
     def define_category(self, url):
         """Define category based on URL structure."""
@@ -106,3 +124,21 @@ class EngSpider(CrawlSpider):
             return "Academic Resources"
         else:
             return "General"
+
+    def closed(self, reason):
+        """Log summary of the scraping run."""
+        summary_file = os.path.join(self.logs_dir, "scraping_summary.log")
+
+        with open(summary_file, "w", encoding="utf-8") as f:
+            stats = self.crawler.stats.get_stats()
+            f.write("Scraping Summary\n")
+            f.write("=================\n")
+            f.write(f"Finish Reason: {reason}\n")
+            f.write(f"Total Requests: {stats.get('downloader/request_count', 0)}\n")
+            f.write(f"Successful Responses (200): {stats.get('downloader/response_status_count/200', 0)}\n")
+            f.write(f"404 Errors: {stats.get('downloader/response_status_count/404', 0)}\n")
+            f.write(f"403 Errors: {stats.get('downloader/response_status_count/403', 0)}\n")
+            f.write(f"500 Errors: {stats.get('downloader/response_status_count/500', 0)}\n")
+            f.write(f"Retries: {stats.get('retry/count', 0)}\n")
+            f.write(f"Total Items Scraped: {stats.get('item_scraped_count', 0)}\n")
+        self.logger.info("Scraping summary saved.")

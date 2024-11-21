@@ -1,6 +1,7 @@
 import json
 from scrapy.crawler import CrawlerProcess
 from eng_spider import EngSpider
+import os
 
 
 def load_config():
@@ -22,11 +23,22 @@ def main():
     # Load configuration
     config = load_config()
 
+    # Ensure the logs directory exists
+    logs_dir = "./Results/logs"
+    os.makedirs(logs_dir, exist_ok=True)
+
     # Initialize and configure Scrapy process
     process = CrawlerProcess(settings={
         "USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
         "LOG_LEVEL": "INFO",
-        "ROBOTSTXT_OBEY": True,  # Respect robots.txt
+        "LOG_FILE": os.path.join(logs_dir, "scrapy.log"),
+        "ROBOTSTXT_OBEY": True,
+        "RETRY_ENABLED": True,
+        "RETRY_TIMES": 5,
+        "RETRY_HTTP_CODES": [500, 503, 504, 400, 403, 408],
+        "DOWNLOAD_TIMEOUT": 15,
+        "DOWNLOAD_DELAY": 0.5,
+        "CONCURRENT_REQUESTS": 8,
     })
 
     # Run the spider with the loaded configuration
