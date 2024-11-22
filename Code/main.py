@@ -1,9 +1,8 @@
 import json
 from scrapy.crawler import CrawlerProcess
-from Code.eng_spider import EngSpider
+from eng_spider import EngSpider
 import os
 import random
-
 
 def load_config():
     """Load configuration from the JSON file."""
@@ -20,12 +19,8 @@ def load_config():
         print(f"Error: Failed to parse `config.json`. Please check the file's syntax.\n{e}")
         exit(1)
 
-
-def main():
+def scrape_data(config):
     """Run the Scrapy spider with the provided configuration."""
-    # Load configuration
-    config = load_config()
-
     # Ensure required directories exist
     raw_data_dir = config.get("output_folder", "./Data/raw")
     logs_dir = config.get("log_folder", "./Results/logs")
@@ -60,6 +55,12 @@ def main():
 
     print("Scraping process completed. Raw data saved in:", raw_data_dir)
 
+def main():
+    """Main function to manage scraping and RSS feed fetching."""
+    config = load_config()
+
+    # Run scraping
+    scrape_data(config)
 
 if __name__ == "__main__":
     print("Executing main script...")

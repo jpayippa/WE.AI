@@ -17,11 +17,16 @@ def load_cleaned_data(cleaned_data_folder):
         if filename.endswith(".json"):
             with open(filepath, "r", encoding="utf-8") as file:
                 try:
-                    data.append(json.load(file))
+                    content = json.load(file)
+                    if isinstance(content, list):
+                        data.extend(content)  # Flatten nested lists
+                    else:
+                        data.append(content)
                 except json.JSONDecodeError as e:
                     logging.error(f"Error decoding JSON in file {filename}: {e}")
     logging.info("Loaded %d cleaned files.", len(data))
     return data
+
 
 
 def validate_data(data):
@@ -31,14 +36,25 @@ def validate_data(data):
     invalid_data = []
 
     for item in data:
-        # Check required fields
-        if item.get("url") and item.get("paragraphs"):
-            valid_data.append(item)
+        # If item is a list, iterate through it
+        if isinstance(item, list):
+            for sub_item in item:
+                if isinstance(sub_item, dict) and sub_item.get("url") and sub_item.get("paragraphs"):
+                    valid_data.append(sub_item)
+                else:
+                    invalid_data.append(sub_item)
+        elif isinstance(item, dict):
+            # Check required fields
+            if item.get("url") and item.get("paragraphs"):
+                valid_data.append(item)
+            else:
+                invalid_data.append(item)
         else:
             invalid_data.append(item)
 
     logging.info("Validation complete: %d valid items, %d invalid items.", len(valid_data), len(invalid_data))
     return valid_data, invalid_data
+
 
 
 def save_valid_data(valid_data, output_folder):
