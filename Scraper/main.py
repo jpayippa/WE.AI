@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from config import BASE_URL, OUTPUT_FILE
+from config import BASE_URL, OUTPUT_JSON_FILE, OUTPUT_TXT_FILE
 
 
 def fetch_page(url):
@@ -54,7 +54,18 @@ def save_to_json(data, file_name):
     """Save data to a JSON file."""
     with open(file_name, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=4)
-    print(f"Data saved to {file_name}")
+    print(f"Data saved to JSON file: {file_name}")
+
+
+def save_to_txt(data, file_name):
+    """Save data to a TXT file."""
+    with open(file_name, 'w', encoding='utf-8') as txt_file:
+        for program, details in data.items():
+            txt_file.write(f"Program: {program}\n")
+            txt_file.write(f"Title: {details.get('Title', 'No Title')}\n")
+            txt_file.write(f"Content:\n{details.get('Content', 'No Content')}\n")
+            txt_file.write("\n" + "-"*50 + "\n")
+    print(f"Data saved to TXT file: {file_name}")
 
 
 def main():
@@ -75,8 +86,11 @@ def main():
         print(f"Fetching data for {program}...")
         learn_more_data[program] = extract_learn_more_data(link)
 
-    print("Saving cleaned data...")
-    save_to_json(learn_more_data, OUTPUT_FILE)
+    # Save to JSON
+    save_to_json(learn_more_data, OUTPUT_JSON_FILE)
+
+    # Save to TXT
+    save_to_txt(learn_more_data, OUTPUT_TXT_FILE)
 
 
 if __name__ == "__main__":
