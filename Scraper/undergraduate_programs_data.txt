@@ -19,8 +19,8 @@ Mechanical engineers use AI techniques to create complex designs and create simu
 Mechanical Engineering and AISE Courses
 Mechatronics and AI systems engineering combines essential components of mechanical, electronics, and AI-focused software skills required for the development of modern robotic applications including smart manufacturing, collaborative robots, and autonomous vehicles. Student will not only learn how to create intelligent electromechanical systems but also how to put these systems into real practices of future using AI techniques.
 Mechatronic Systems Engineering and AISE Courses
-Year 1 Average: > 75%
-Required Courses: All first-year curriculum requirements in the Faculty of Engineering.
+Average Required in First Year: > 75%
+Courses That Are Prioritized: All first-year curriculum requirements in the Faculty of Engineering.
 
 --------------------------------------------------
 Program: Chemical Engineering
@@ -31,8 +31,8 @@ This option explores traditional chemical engineering processes and applications
 This option includes courses in the fundamentals of chemical engineering, and biochemical and environmental engineering resulting in a synergistic interaction between all three. Students learn about renewable energy, bioenergy and biofuels, plus biotechnology and environmental pollution control. They also develop the necessary skills to design a process using a holistic approach by combining and applying all the required principles of chemical, biochemical and environmental engineering.View courses for the Biochemical and Environmental Engineering Option.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Chemical and Biochemical Engineering website for more information
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Chem 1302A/B, ES 1050
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Chem 1302A/B, ES 1050
 
 --------------------------------------------------
 Program: Civil Engineering
@@ -44,8 +44,8 @@ Environmental engineers minimize society’s impact on the environment, playing 
 These options introduce students to the complex societal, environmental, political and economic issues associated with building safer communities in Canada and in the developing world. A centerpiece of the International Development option is the Summer Community Development Placement and Design Project where students have an opportunity to work for four months in developing countries, or in-need communities in Canada.View courses for the International Development with Structural Engineering Option.View courses for the International Development with Environmental Engineering Option.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Civil and Environmental Engineering website for more information
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
 
 --------------------------------------------------
 Program: Electrical Engineering
@@ -59,8 +59,8 @@ As society continues to age there is a higher demand for intensive upgrades and 
 View the Biomedical Concurrent Degree
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Electrical and Computer Engineering website for more information
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1402B, ES 1036A/B
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1402B, ES 1036A/B
 
 --------------------------------------------------
 Program: Integrated Engineering
@@ -69,8 +69,8 @@ Content:
 After completing Western Engineering’s Common First Year, you can enroll in the Integrated Engineering program. Unique in Canada, our Integrated Engineering curriculum incorporates case-method engineering innovation courses plus core courses from civil, chemical, electrical and mechanical engineering. By participating in case-based courses, you will develop skills in leadership and innovation.
 View courses for the Integrated Engineering program.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Bus 1299E, Phys 1401A, Phys 1402B, ES 1022Y
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Bus 1299E, Phys 1401A, Phys 1402B, ES 1022Y
 
 --------------------------------------------------
 Program: Mechanical Engineering
@@ -80,8 +80,8 @@ After completing Western Engineering’s Common First Year, you can enroll in th
 View courses for the Mechanical Engineering program.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Mechanical and Materials Engineering website for more information
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
 
 --------------------------------------------------
 Program: Mechatronics Engineering
@@ -91,8 +91,8 @@ After completing Western Engineering’s Common First Year, you can enroll in th
 View courses for the Mechatronic Systems Engineering program.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Electrical Engineering website for more information
-Year 1 Average: > 70%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, Phys 1402B, ES 1022Y, ES 1036A/B, ES 1050
+Average Required in First Year: > 70%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, Phys 1402B, ES 1022Y, ES 1036A/B, ES 1050
 
 --------------------------------------------------
 Program: Software Engineering
@@ -101,8 +101,8 @@ Content:
 After completing Western Engineering’s Common First Year, you can enroll in the Software Engineering program.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Electrical and Computer Engineering website for more information
-Year 1 Average: > 60%
-Required Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Physics 1402A/B (60%), ES 1036A/B (70%)
+Average Required in First Year: > 60%
+Courses That Are Prioritized: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Physics 1402A/B (60%), ES 1036A/B (70%)
 
 --------------------------------------------------
 Program: Biomedical Engineering
@@ -111,7 +111,7 @@ Content:
 After completing Western Engineering’s Common First Year, you can enroll in the Software Engineering program.
 You can also complete a dual degree with Business (Ivey HBA), Law, and more than 50 major modules in faculties such as: Science, Music, Social Science or Arts & Humanities.
 Visit the Department of Electrical and Computer Engineering website for more information
-Year 1 Average: > 70%
-Required Courses: All first-year curriculum requirements in the Faculty of Engineering.
+Average Required in First Year: > 70%
+Courses That Are Prioritized: All first-year curriculum requirements in the Faculty of Engineering.
 
 --------------------------------------------------

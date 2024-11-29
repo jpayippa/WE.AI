@@ -43,11 +43,11 @@ def extract_learn_more_data(url):
 
 
 def add_admission_requirements(program_data):
-    """Add admission requirements to the program data."""
+    """Add explicit admission requirements to the program data."""
     for program, requirements in ADMISSION_REQUIREMENTS.items():
         if program in program_data:
-            program_data[program]["Year 1 Average"] = requirements["Year 1 Average"]
-            program_data[program]["Required Courses"] = requirements["Required Courses"]
+            program_data[program]["Average Required in First Year"] = requirements["Year 1 Average"]
+            program_data[program]["Courses That Are Prioritized"] = requirements["Required Courses"]
     return program_data
 
 
@@ -65,8 +65,8 @@ def save_to_txt(data, file_name):
             txt_file.write(f"Program: {program}\n")
             txt_file.write(f"Title: {details.get('Title', 'No Title')}\n")
             txt_file.write(f"Content:\n{details.get('Content', 'No Content')}\n")
-            txt_file.write(f"Year 1 Average: {details.get('Year 1 Average', 'N/A')}\n")
-            txt_file.write(f"Required Courses: {details.get('Required Courses', 'N/A')}\n")
+            txt_file.write(f"Average Required in First Year: {details.get('Average Required in First Year', 'N/A')}\n")
+            txt_file.write(f"Courses That Are Prioritized: {details.get('Courses That Are Prioritized', 'N/A')}\n")
             txt_file.write("\n" + "-"*50 + "\n")
     print(f"Data saved to TXT file: {file_name}")
 
@@ -90,7 +90,7 @@ def main():
         print(f"Fetching data for {program}...")
         learn_more_data[program] = extract_learn_more_data(link)
 
-    # Add admission requirements
+    # Add explicit admission requirements
     learn_more_data = add_admission_requirements(learn_more_data)
 
     # Save to JSON
