@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from config import BASE_URL, OUTPUT_JSON_FILE, OUTPUT_TXT_FILE
+from config import BASE_URL, OUTPUT_JSON_FILE, OUTPUT_TXT_FILE, ADMISSION_REQUIREMENTS
 
 
 def fetch_page(url):
@@ -16,7 +16,6 @@ def fetch_page(url):
 
 def extract_program_information(raw_content):
     """Extract only the relevant program information from raw content."""
-    # Split the content into lines and remove irrelevant ones
     lines = raw_content.split("\n")
     irrelevant_keywords = [
         "©", "Western University", "Tel:", "Fax:", "contactWE", "Privacy",
@@ -24,14 +23,7 @@ def extract_program_information(raw_content):
         "OWL", "Student Services", "Western Events", "Libraries", "Maps",
         "Office Hours:"
     ]
-    relevant_lines = []
-    for line in lines:
-        line = line.strip()
-        if not line or any(keyword in line for keyword in irrelevant_keywords):
-            continue
-        relevant_lines.append(line)
-
-    # Combine cleaned lines into a single string
+    relevant_lines = [line.strip() for line in lines if line.strip() and not any(keyword in line for keyword in irrelevant_keywords)]
     return "\n".join(relevant_lines)
 
 
@@ -50,6 +42,15 @@ def extract_learn_more_data(url):
     return learn_more_data
 
 
+def add_admission_requirements(program_data):
+    """Add admission requirements to the program data."""
+    for program, requirements in ADMISSION_REQUIREMENTS.items():
+        if program in program_data:
+            program_data[program]["Year 1 Average"] = requirements["Year 1 Average"]
+            program_data[program]["Required Courses"] = requirements["Required Courses"]
+    return program_data
+
+
 def save_to_json(data, file_name):
     """Save data to a JSON file."""
     with open(file_name, 'w', encoding='utf-8') as json_file:
@@ -64,6 +65,8 @@ def save_to_txt(data, file_name):
             txt_file.write(f"Program: {program}\n")
             txt_file.write(f"Title: {details.get('Title', 'No Title')}\n")
             txt_file.write(f"Content:\n{details.get('Content', 'No Content')}\n")
+            txt_file.write(f"Year 1 Average: {details.get('Year 1 Average', 'N/A')}\n")
+            txt_file.write(f"Required Courses: {details.get('Required Courses', 'N/A')}\n")
             txt_file.write("\n" + "-"*50 + "\n")
     print(f"Data saved to TXT file: {file_name}")
 
@@ -77,14 +80,18 @@ def main():
         "Electrical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/electrical.html",
         "Integrated Engineering": "https://www.eng.uwo.ca/undergraduate/programs/Integrated.html",
         "Mechanical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechanical.html",
-        "Mechatronic Systems Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechatronic.html",
-        "Software Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html"
+        "Mechatronics Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechatronic.html",
+        "Software Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html",
+        "Biomedical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html"
     }
 
     learn_more_data = {}
     for program, link in learn_more_links.items():
         print(f"Fetching data for {program}...")
         learn_more_data[program] = extract_learn_more_data(link)
+
+    # Add admission requirements
+    learn_more_data = add_admission_requirements(learn_more_data)
 
     # Save to JSON
     save_to_json(learn_more_data, OUTPUT_JSON_FILE)
