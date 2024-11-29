@@ -14,28 +14,39 @@ def fetch_page(url):
         return None
 
 
-def extract_main_page_data(soup):
-    """Extract information from the main page."""
-    data = {}
-    headings = soup.find_all("h2")  # Assuming sections are under <h2> tags
-    for heading in headings:
-        section_title = heading.text.strip()
-        content = heading.find_next("p").text.strip() if heading.find_next("p") else "No content available"
-        data[section_title] = content
-    return data
+def extract_program_information(raw_content):
+    """Extract only the relevant program information from raw content."""
+    # Split the content into lines and remove irrelevant ones
+    lines = raw_content.split("\n")
+    irrelevant_keywords = [
+        "©", "Western University", "Tel:", "Fax:", "contactWE", "Privacy",
+        "Terms of Use", "Accessibility", "Web Standards", "Western Mail",
+        "OWL", "Student Services", "Western Events", "Libraries", "Maps",
+        "Office Hours:"
+    ]
+    relevant_lines = []
+    for line in lines:
+        line = line.strip()
+        if not line or any(keyword in line for keyword in irrelevant_keywords):
+            continue
+        relevant_lines.append(line)
+
+    # Combine cleaned lines into a single string
+    return "\n".join(relevant_lines)
 
 
 def extract_learn_more_data(url):
-    """Extract detailed information from the 'Learn More' page."""
+    """Extract and clean detailed information from the 'Learn More' page."""
     soup = fetch_page(url)
     if not soup:
         return None
     learn_more_data = {}
     title = soup.find("h1").text.strip() if soup.find("h1") else "No Title Found"
     paragraphs = soup.find_all("p")
-    content = "\n".join(p.text.strip() for p in paragraphs)
+    raw_content = "\n".join(p.text.strip() for p in paragraphs)
+    clean_content = extract_program_information(raw_content)
     learn_more_data['Title'] = title
-    learn_more_data['Content'] = content
+    learn_more_data['Content'] = clean_content
     return learn_more_data
 
 
@@ -47,15 +58,6 @@ def save_to_json(data, file_name):
 
 
 def main():
-    print("Fetching main page...")
-    main_page_soup = fetch_page(BASE_URL)
-    if not main_page_soup:
-        print("Failed to fetch main page. Exiting.")
-        return
-
-    print("Extracting main page data...")
-    main_page_data = extract_main_page_data(main_page_soup)
-
     print("Extracting 'Learn More' page data from predefined links...")
     learn_more_links = {
         "Artificial Intelligence Systems Engineering": "https://www.eng.uwo.ca/electrical/undergraduate/Programs/artificial-intelligence-systems-engineering.html",
@@ -73,14 +75,8 @@ def main():
         print(f"Fetching data for {program}...")
         learn_more_data[program] = extract_learn_more_data(link)
 
-    print("Combining data...")
-    all_data = {
-        "main_page": main_page_data,
-        "learn_more_pages": learn_more_data
-    }
-
-    print(f"Saving data to {OUTPUT_FILE}...")
-    save_to_json(all_data, OUTPUT_FILE)
+    print("Saving cleaned data...")
+    save_to_json(learn_more_data, OUTPUT_FILE)
 
 
 if __name__ == "__main__":
