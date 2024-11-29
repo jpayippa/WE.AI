@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
 import json
 from config import BASE_URL, OUTPUT_FILE
 
@@ -15,17 +14,6 @@ def fetch_page(url):
         return None
 
 
-def get_sub_links(soup):
-    """Extract sub-links from the main page."""
-    links = []
-    for a_tag in soup.select("a[href]"):
-        href = a_tag.get("href")
-        if href and "undergraduate/programs" in href:
-            full_link = href if href.startswith("http") else f"https://www.eng.uwo.ca{href}"
-            links.append(full_link)
-    return list(set(links))  # Remove duplicates
-
-
 def extract_main_page_data(soup):
     """Extract information from the main page."""
     data = {}
@@ -37,19 +25,18 @@ def extract_main_page_data(soup):
     return data
 
 
-def extract_sub_page_data(url):
-    """Extract information from a sub-page."""
+def extract_learn_more_data(url):
+    """Extract detailed information from the 'Learn More' page."""
     soup = fetch_page(url)
     if not soup:
         return None
-    sub_page_data = {}
-    sub_page_data['URL'] = url
+    learn_more_data = {}
     title = soup.find("h1").text.strip() if soup.find("h1") else "No Title Found"
-    sub_page_data['Title'] = title
     paragraphs = soup.find_all("p")
     content = "\n".join(p.text.strip() for p in paragraphs)
-    sub_page_data['Content'] = content
-    return sub_page_data
+    learn_more_data['Title'] = title
+    learn_more_data['Content'] = content
+    return learn_more_data
 
 
 def save_to_json(data, file_name):
@@ -66,20 +53,30 @@ def main():
         print("Failed to fetch main page. Exiting.")
         return
 
-    print("Extracting sub-links...")
-    sub_links = get_sub_links(main_page_soup)
-    print(f"Found {len(sub_links)} sub-links.")
-
     print("Extracting main page data...")
     main_page_data = extract_main_page_data(main_page_soup)
 
-    print("Extracting sub-page data...")
-    sub_page_data_list = [extract_sub_page_data(link) for link in sub_links if link]
+    print("Extracting 'Learn More' page data from predefined links...")
+    learn_more_links = {
+        "Artificial Intelligence Systems Engineering": "https://www.eng.uwo.ca/electrical/undergraduate/Programs/artificial-intelligence-systems-engineering.html",
+        "Chemical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/chemical.html",
+        "Civil Engineering": "https://www.eng.uwo.ca/undergraduate/programs/civil.html",
+        "Electrical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/electrical.html",
+        "Integrated Engineering": "https://www.eng.uwo.ca/undergraduate/programs/Integrated.html",
+        "Mechanical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechanical.html",
+        "Mechatronic Systems Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechatronic.html",
+        "Software Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html"
+    }
+
+    learn_more_data = {}
+    for program, link in learn_more_links.items():
+        print(f"Fetching data for {program}...")
+        learn_more_data[program] = extract_learn_more_data(link)
 
     print("Combining data...")
     all_data = {
         "main_page": main_page_data,
-        "sub_pages": sub_page_data_list
+        "learn_more_pages": learn_more_data
     }
 
     print(f"Saving data to {OUTPUT_FILE}...")
