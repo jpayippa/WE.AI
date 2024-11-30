@@ -1,7 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-from config import BASE_URL, OUTPUT_JSON_FILE, OUTPUT_TXT_FILE, ADMISSION_REQUIREMENTS
+
+# Configurations
+FAQ_URL = "https://www.eng.uwo.ca/undergraduate/first-year/faq.html"
+OUTPUT_FAQ_JSON = "first_year_faq.json"
+OUTPUT_FAQ_TXT = "first_year_faq.txt"
 
 
 def fetch_page(url):
@@ -14,41 +18,32 @@ def fetch_page(url):
         return None
 
 
-def extract_program_information(raw_content):
-    """Extract only the relevant program information from raw content."""
-    lines = raw_content.split("\n")
-    irrelevant_keywords = [
-        "©", "Western University", "Tel:", "Fax:", "contactWE", "Privacy",
-        "Terms of Use", "Accessibility", "Web Standards", "Western Mail",
-        "OWL", "Student Services", "Western Events", "Libraries", "Maps",
-        "Office Hours:"
-    ]
-    relevant_lines = [line.strip() for line in lines if line.strip() and not any(keyword in line for keyword in irrelevant_keywords)]
-    return "\n".join(relevant_lines)
+def extract_faq_data(soup):
+    """Extract FAQ data from the page."""
+    faq_data = {}
 
+    # Locate the FAQ sections
+    # Modify the selector below based on the page's HTML structure
+    sections = soup.find_all("div", class_="accordion")  # Adjust class name if necessary
 
-def extract_learn_more_data(url):
-    """Extract and clean detailed information from the 'Learn More' page."""
-    soup = fetch_page(url)
-    if not soup:
-        return None
-    learn_more_data = {}
-    title = soup.find("h1").text.strip() if soup.find("h1") else "No Title Found"
-    paragraphs = soup.find_all("p")
-    raw_content = "\n".join(p.text.strip() for p in paragraphs)
-    clean_content = extract_program_information(raw_content)
-    learn_more_data['Title'] = title
-    learn_more_data['Content'] = clean_content
-    return learn_more_data
+    for section in sections:
+        # Extract the heading (e.g., "Student Centre")
+        heading = section.find("h3")  # Change tag name if required
+        if heading:
+            heading_text = heading.text.strip()
+        else:
+            heading_text = "Unknown Section"
 
+        # Extract the content inside the collapsible section
+        content_div = section.find("div", class_="panel")  # Adjust class name if required
+        if content_div:
+            content = content_div.get_text(separator="\n").strip()
+        else:
+            content = "No content available."
 
-def add_admission_requirements(program_data):
-    """Add explicit admission requirements to the program data."""
-    for program, requirements in ADMISSION_REQUIREMENTS.items():
-        if program in program_data:
-            program_data[program]["Average Required in First Year"] = requirements["Year 1 Average"]
-            program_data[program]["Courses That Are Prioritized"] = requirements["Required Courses"]
-    return program_data
+        faq_data[heading_text] = content
+
+    return faq_data
 
 
 def save_to_json(data, file_name):
@@ -61,43 +56,26 @@ def save_to_json(data, file_name):
 def save_to_txt(data, file_name):
     """Save data to a TXT file."""
     with open(file_name, 'w', encoding='utf-8') as txt_file:
-        for program, details in data.items():
-            txt_file.write(f"Program: {program}\n")
-            txt_file.write(f"Title: {details.get('Title', 'No Title')}\n")
-            txt_file.write(f"Content:\n{details.get('Content', 'No Content')}\n")
-            txt_file.write(f"Average Required in First Year: {details.get('Average Required in First Year', 'N/A')}\n")
-            txt_file.write(f"Courses That Are Prioritized: {details.get('Courses That Are Prioritized', 'N/A')}\n")
+        for heading, content in data.items():
+            txt_file.write(f"Section: {heading}\n")
+            txt_file.write(f"Content:\n{content}\n")
             txt_file.write("\n" + "-"*50 + "\n")
     print(f"Data saved to TXT file: {file_name}")
 
 
 def main():
-    print("Extracting 'Learn More' page data from predefined links...")
-    learn_more_links = {
-        "Artificial Intelligence Systems Engineering": "https://www.eng.uwo.ca/electrical/undergraduate/Programs/artificial-intelligence-systems-engineering.html",
-        "Chemical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/chemical.html",
-        "Civil Engineering": "https://www.eng.uwo.ca/undergraduate/programs/civil.html",
-        "Electrical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/electrical.html",
-        "Integrated Engineering": "https://www.eng.uwo.ca/undergraduate/programs/Integrated.html",
-        "Mechanical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechanical.html",
-        "Mechatronics Engineering": "https://www.eng.uwo.ca/undergraduate/programs/mechatronic.html",
-        "Software Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html",
-        "Biomedical Engineering": "https://www.eng.uwo.ca/undergraduate/programs/software.html"
-    }
+    print("Fetching FAQ page...")
+    soup = fetch_page(FAQ_URL)
+    if not soup:
+        print("Failed to fetch FAQ page. Exiting.")
+        return
 
-    learn_more_data = {}
-    for program, link in learn_more_links.items():
-        print(f"Fetching data for {program}...")
-        learn_more_data[program] = extract_learn_more_data(link)
+    print("Extracting FAQ data...")
+    faq_data = extract_faq_data(soup)
 
-    # Add explicit admission requirements
-    learn_more_data = add_admission_requirements(learn_more_data)
-
-    # Save to JSON
-    save_to_json(learn_more_data, OUTPUT_JSON_FILE)
-
-    # Save to TXT
-    save_to_txt(learn_more_data, OUTPUT_TXT_FILE)
+    print("Saving FAQ data...")
+    save_to_json(faq_data, OUTPUT_FAQ_JSON)
+    save_to_txt(faq_data, OUTPUT_FAQ_TXT)
 
 
 if __name__ == "__main__":
