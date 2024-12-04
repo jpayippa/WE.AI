@@ -64,11 +64,25 @@ pytestdebug.log
 *.swp
 *~
 
+# Node.js specific
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+.DS_Store
+
 # Logs and temp files
+logs/
 *.log
 *.out
+debug.log
+error.log
 *.tmp
 *.temp
+
 
 # macOS specific files
 .DS_Store
