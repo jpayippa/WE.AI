@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Home() {
@@ -31,7 +32,9 @@ export default function Home() {
     
     <div className="flex flex-col h-screen bg-[#2e1065]">
       <div className="sticky top-0 w-full p-4 bg-white overflow-hidden shadow-xl">
-        <h1 className="text-xl text-left font-extrabold font-leading-none tracking-tight text-gray-900 md:text-xl lg:text-2xl dark:text-[#2e1065]">WE.AI</h1>
+        <h1 className="text-xl text-left font-extrabold font-leading-none tracking-tight text-gray-900 md:text-xl lg:text-2xl dark:text-[#2e1065]">
+          <Link href="/">WE.AI</Link>
+        </h1>
       </div>
       <div className="flex flex-col w-full bg-[#2e1065] items-center rounded-lg overflow-hidden p-4"> 
         <h1 className="mb-4 mt-4 text-xl text-center font-extrabold font- leading-none  tracking-tight text-gray-900 md:text-xl lg:text-2xl dark:text-white">Welcome to WE.AI</h1>
@@ -78,8 +81,12 @@ export default function Home() {
           </div>
       </div>  
       <div className="flex justify-left top-0 w-full p-4 bg-[#180738] overflow-hidden">
-        <p className="text-md text-left mr-4 font-regular font-leading-none tracking-tight text-gray-900 md:text-md lg:lg dark:text-[#ffffff]">Feedback</p>
-        <p className="text-md text-left font-regular font-leading-none tracking-tight text-gray-900 md:text-md lg:lg dark:text-[#ffffff]">Privacy Policy</p>
+      <p className="text-md text-left mr-4 font-regular font-leading-none tracking-tight text-gray-900 md:text-md lg:lg dark:text-[#ffffff]">
+              <Link href="/feedback">Feedback</Link>
+            </p>
+            <p className="text-md text-left font-regular font-leading-none tracking-tight text-gray-900 md:text-md lg:lg dark:text-[#ffffff]">
+              <Link href="/termsofservice">Terms of Service</Link>
+            </p>
       </div>
     </div>
   );
