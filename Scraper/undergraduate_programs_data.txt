@@ -1,3 +1,7 @@
+Programs Offered in Western Engineering: Electrical Engineering, Chemical Engineering, Mechanical Engineering, Mechatronics Systems Engineering, Civil Engineering, Software Engineering and Artificial Intelligence Systems Engineering (AISE).
+
+
+
 Program: Artificial Intelligence Systems Engineering
 Title: Artificial Intelligence Systems Engineering
 Content:
@@ -115,40 +119,40 @@ Average Required in First Year: > 70%
 Courses That Are Prioritized: All first-year curriculum requirements in the Faculty of Engineering.
 
 --------------------------------------------------
-Course Averages Summary:
+## Course Averages Summary:
 
-Artificial Intelligence Systems Engineering
-Year 1 Average (YWA): > 75%
-Prioritized Courses: All first-year curriculum requirements in the Faculty of Engineering.
+### Artificial Intelligence Systems Engineering
+- **Year 1 Average (YWA):** > 75%
+- **Prioritized Courses:** All first-year curriculum requirements in the Faculty of Engineering.
 
-Chemical Engineering
-Year 1 Average (YWA): > 60%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Chem 1302A/B, ES 1050
+### Chemical Engineering
+- **Year 1 Average (YWA):** > 60%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Chem 1302A/B, ES 1050
 
-Civil Engineering
-Year 1 Average (YWA): > 60%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
+### Civil Engineering
+- **Year 1 Average (YWA):** > 60%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
 
-Electrical Engineering
-Year 1 Average (YWA): > 60%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1402B, ES 1036A/B
+### Electrical Engineering
+- **Year 1 Average (YWA):** > 60%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1402B, ES 1036A/B
 
-Integrated Engineering
-Year 1 Average (YWA): > 60%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Bus 1299E, Phys 1401A, Phys 1402B, ES 1022Y
+### Integrated Engineering
+- **Year 1 Average (YWA):** > 60%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Bus 1299E, Phys 1401A, Phys 1402B, ES 1022Y
 
-Mechanical Engineering
-Year 1 Average (YWA): > 60%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
+### Mechanical Engineering
+- **Year 1 Average (YWA):** > 60%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, ES 1022Y, ES 1021A/B
 
-Mechatronics Engineering
-Year 1 Average (YWA): > 70%
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, Phys 1402B, ES 1022Y, ES 1036A/B, ES 1050
+### Mechatronics Engineering
+- **Year 1 Average (YWA):** > 70%
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Phys 1401A, Phys 1402B, ES 1022Y, ES 1036A/B, ES 1050
 
-Software Engineering
-Year 1 Average (YWA): > 60% (ES 1036A/B requires 70%)
-Prioritized Courses: NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Physics 1402A/B
+### Software Engineering
+- **Year 1 Average (YWA):** > 60% (ES 1036A/B requires 70%)
+- **Prioritized Courses:** NMM 1411A/B, NMM 1412A/B, NMM 1414A/B, Physics 1402A/B
 
-Biomedical Engineering
-Year 1 Average (YWA): > 70%
-Prioritized Courses: All first-year curriculum requirements in the Faculty of Engineering.
+### Biomedical Engineering
+- **Year 1 Average (YWA):** > 70%
+- **Prioritized Courses:** All first-year curriculum requirements in the Faculty of Engineering.
