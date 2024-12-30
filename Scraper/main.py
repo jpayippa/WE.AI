@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import json
 
 # Configuration for file generation
-BASE_URL = "https://learning.uwo.ca/peer_assisted_learning/schedules/sciences_eng.html"
-OUTPUT_JSON_FILE = "peer_assisted_learning_schedule.json"
-OUTPUT_TXT_FILE = "peer_assisted_learning_schedule.txt"
+BASE_URL = "https://www.eng.uwo.ca/undergraduate/first-year/academic_counselling_year1.html"
+OUTPUT_JSON_FILE = "academic_counselling_info.json"
+OUTPUT_TXT_FILE = "academic_counselling_info.txt"
 
 def fetch_page(url):
     """Fetch a webpage and parse it with BeautifulSoup."""
@@ -16,24 +16,38 @@ def fetch_page(url):
         print(f"Failed to fetch {url} with status code {response.status_code}")
         return None
 
-def extract_schedule_data(url):
-    """Extract schedule data from the Peer-Assisted Learning page."""
+def extract_counselling_data(url):
+    """Extract academic counselling information from the provided page."""
     soup = fetch_page(url)
     if not soup:
         return None
 
-    schedule_data = []
-    # Look for tables or relevant tags
-    tables = soup.find_all("table")
-    for table in tables:
-        headers = [header.text.strip() for header in table.find_all("th")]
-        rows = table.find_all("tr")
-        for row in rows[1:]:  # Skip header row
-            values = [cell.text.strip() for cell in row.find_all("td")]
-            if values:
-                schedule_data.append(dict(zip(headers, values)))
+    counselling_data = []
+    # Find content blocks (adjust tags and classes as necessary)
+    content_sections = soup.find_all(["h2", "h3", "p", "ul", "ol"])
+    current_section = {}
 
-    return schedule_data
+    for element in content_sections:
+        if element.name in ["h2", "h3"]:
+            # Save the previous section if it's not empty
+            if current_section:
+                counselling_data.append(current_section)
+                current_section = {}
+            # Start a new section
+            current_section["Title"] = element.text.strip()
+        elif element.name in ["p", "ul", "ol"]:
+            # Add content to the current section
+            current_section.setdefault("Content", []).append(element.text.strip())
+
+    # Append the last section
+    if current_section:
+        counselling_data.append(current_section)
+
+    # Format the content for consistency
+    for section in counselling_data:
+        section["Content"] = "\n".join(section.get("Content", []))
+
+    return counselling_data
 
 def save_to_json(data, file_name):
     """Save data to a JSON file."""
@@ -45,19 +59,19 @@ def save_to_txt(data, file_name):
     """Save data to a TXT file."""
     with open(file_name, 'w', encoding='utf-8') as txt_file:
         for entry in data:
-            for key, value in entry.items():
-                txt_file.write(f"{key}: {value}\n")
+            txt_file.write(f"Title: {entry.get('Title', 'No Title')}\n")
+            txt_file.write(f"Content:\n{entry.get('Content', 'No Content')}\n")
             txt_file.write("\n" + "-" * 50 + "\n")
     print(f"Data saved to TXT file: {file_name}")
 
 def main():
-    print("Fetching Peer-Assisted Learning schedule data...")
-    schedule_data = extract_schedule_data(BASE_URL)
-    if schedule_data:
+    print("Fetching Academic Counselling information...")
+    counselling_data = extract_counselling_data(BASE_URL)
+    if counselling_data:
         # Save to JSON
-        save_to_json(schedule_data, OUTPUT_JSON_FILE)
+        save_to_json(counselling_data, OUTPUT_JSON_FILE)
         # Save to TXT
-        save_to_txt(schedule_data, OUTPUT_TXT_FILE)
+        save_to_txt(counselling_data, OUTPUT_TXT_FILE)
     else:
         print("No data found or failed to fetch the page.")
 
