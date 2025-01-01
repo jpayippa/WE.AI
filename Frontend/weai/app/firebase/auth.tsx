@@ -1,7 +1,7 @@
 // Frontend/weai/app/firebase/Auth.tsx
 "use client";
 import { useState } from "react";
-import { auth } from "../firebaseConfig";
+import { auth } from "./firebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 
