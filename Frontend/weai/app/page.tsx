@@ -18,7 +18,6 @@ export default function Home() {
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { user: true, text: input },
         { user: false, text: `You said: "${input}"` },
       ]);
     }, 1000);
