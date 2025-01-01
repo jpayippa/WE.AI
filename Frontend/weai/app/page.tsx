@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { useState } from "react";
+import AuthPage from "./firebase/firebasePage"
 
 export default function Home() {
 
