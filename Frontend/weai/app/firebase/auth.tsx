@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,13 +17,18 @@ const Auth = () => {
   const handleAuth = async () => {
     setLoading(true);
     setErrorMessage("");
-    if (!email || !password) {
+    if (!email || !password || (isRegister && !confirmPassword)) {
       setErrorMessage("All fields are required.");
       setLoading(false);
       return;
     }
     if (password.length < 6) {
       setErrorMessage("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
+    if (isRegister && password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
       setLoading(false);
       return;
     }
@@ -44,7 +50,7 @@ const Auth = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-[#2e1065]">
       <div className="w-full max-w-xs">
         <h1 className="text-2xl font-bold text-center text-white mb-6">
-          {isRegister ? "Register" : "Log In"}
+          {isRegister ? "Register" : "Login"}
         </h1>
         {errorMessage && (
           <p className="text-red-500 text-center">{errorMessage}</p>
@@ -63,6 +69,15 @@ const Auth = () => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-3 mb-4 border rounded-md text-black"
         />
+        {isRegister && (
+          <input
+            type="password"
+            placeholder="Re-enter Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full p-3 mb-4 border rounded-md text-black"
+          />
+        )}
         <button
           onClick={handleAuth}
           disabled={loading}
@@ -74,7 +89,7 @@ const Auth = () => {
           onClick={() => setIsRegister(!isRegister)}
           className="w-full mt-4 text-white"
         >
-          {isRegister ? "Already have an account? Log in" : "Don't have an account? Register"}
+          {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
         </button>
       </div>
     </div>
@@ -82,4 +97,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
