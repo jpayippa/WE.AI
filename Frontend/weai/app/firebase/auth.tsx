@@ -3,22 +3,40 @@
 import { useState } from "react";
 import { auth } from "./firebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleAuth = async () => {
+    setLoading(true);
+    setErrorMessage("");
+    if (!email || !password) {
+      setErrorMessage("All fields are required.");
+      setLoading(false);
+      return;
+    }
+    if (password.length < 6) {
+      setErrorMessage("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
     try {
       if (isRegister) {
         await createUserWithEmailAndPassword(auth, email, password);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-    } catch (error) {
-      console.error("Authentication error:", error);
+      router.push("/");
+    } catch (error: any) {
+      setErrorMessage(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -28,6 +46,9 @@ const Auth = () => {
         <h1 className="text-2xl font-bold text-center text-white mb-6">
           {isRegister ? "Register" : "Login"}
         </h1>
+        {errorMessage && (
+          <p className="text-red-500 text-center">{errorMessage}</p>
+        )}
         <input
           type="email"
           placeholder="Email"
@@ -44,9 +65,10 @@ const Auth = () => {
         />
         <button
           onClick={handleAuth}
-          className="w-full bg-[#2e1065] text-white py-2 rounded-md hover:bg-[#672ad8] transition"
+          disabled={loading}
+          className={`w-full ${loading ? "bg-gray-500" : "bg-[#2e1065]"} text-white py-2 rounded-md hover:bg-[#672ad8] transition`}
         >
-          {isRegister ? "Register" : "Login"}
+          {loading ? "Processing..." : isRegister ? "Register" : "Login"}
         </button>
         <button
           onClick={() => setIsRegister(!isRegister)}

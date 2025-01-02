@@ -1,9 +1,10 @@
+// Frontend/weai/app/page.tsx
 "use client"
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { useState } from "react";
-import AuthPage from "./firebase/firebasePage"
+import AuthPage from "./firebase/auth"
 
 export default function Home() {
 
