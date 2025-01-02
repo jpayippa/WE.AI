@@ -44,7 +44,7 @@ const Auth = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-[#2e1065]">
       <div className="w-full max-w-xs">
         <h1 className="text-2xl font-bold text-center text-white mb-6">
-          {isRegister ? "Register" : "Login"}
+          {isRegister ? "Register" : "Log In"}
         </h1>
         {errorMessage && (
           <p className="text-red-500 text-center">{errorMessage}</p>
@@ -54,19 +54,19 @@ const Auth = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 border rounded-md"
+          className="w-full p-3 mb-4 border rounded-md text-black"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 border rounded-md"
+          className="w-full p-3 mb-4 border rounded-md text-black"
         />
         <button
           onClick={handleAuth}
           disabled={loading}
-          className={`w-full ${loading ? "bg-gray-500" : "bg-[#2e1065]"} text-white py-2 rounded-md hover:bg-[#672ad8] transition`}
+          className={`w-full ${loading ? "bg-gray-500" : "bg-white text-black border border-black"} py-2 rounded-md hover:bg-gray-200 transition`}
         >
           {loading ? "Processing..." : isRegister ? "Register" : "Login"}
         </button>
@@ -74,7 +74,7 @@ const Auth = () => {
           onClick={() => setIsRegister(!isRegister)}
           className="w-full mt-4 text-white"
         >
-          {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
+          {isRegister ? "Already have an account? Log in" : "Don't have an account? Register"}
         </button>
       </div>
     </div>
@@ -82,3 +82,4 @@ const Auth = () => {
 };
 
 export default Auth;
+
