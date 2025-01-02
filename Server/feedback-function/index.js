@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 
-// Cloud Function to handle feedback submissions
 exports.sendFeedback = async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).send({ message: 'Method Not Allowed' });
@@ -12,7 +11,9 @@ exports.sendFeedback = async (req, res) => {
         return res.status(400).json({ message: 'Feedback is required.' });
     }
 
-    // Nodemailer transporter using environment variables
+    // Generate a unique subject with a timestamp
+    const uniqueSubject = `New Feedback Submission - ${new Date().toISOString()}`;
+
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -24,7 +25,7 @@ exports.sendFeedback = async (req, res) => {
     const mailOptions = {
         from: email || 'no-reply@example.com',
         to: 'westernaicontact@gmail.com',
-        subject: 'New Feedback Submission',
+        subject: uniqueSubject, // Use the unique subject here
         text: `Feedback: ${feedback}\n\nContact Email: ${email || 'Not Provided'}`,
     };
 
