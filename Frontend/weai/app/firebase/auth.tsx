@@ -49,8 +49,11 @@ const Auth = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#2e1065]">
       <div className="w-full max-w-xs">
+        <h1 className="text-3xl font-bold text-center text-white mb-4">
+          Welcome to WE.AI
+        </h1>
         <h1 className="text-2xl font-bold text-center text-white mb-6">
-          {isRegister ? "Register" : "Login"}
+          {isRegister ? "Register" : "Log In"}
         </h1>
         {errorMessage && (
           <p className="text-red-500 text-center">{errorMessage}</p>
@@ -87,9 +90,9 @@ const Auth = () => {
         </button>
         <button
           onClick={() => setIsRegister(!isRegister)}
-          className="w-full mt-4 text-white"
+          className="w-full mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >
-          {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
+          {isRegister ? "Already have an account? Log in" : "Don't have an account? Register"}
         </button>
       </div>
     </div>
