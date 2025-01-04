@@ -6,12 +6,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import AuthPage from "./firebase/auth"
 import { auth } from "./firebase/firebaseConfig";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 
 export default function Home() {
   const [messages, setMessages] = useState<{ user: boolean; text: string }[]>([]);
   const [input, setInput] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
