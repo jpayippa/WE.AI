@@ -94,10 +94,13 @@ error.log
 .env.*
 
 # Data files
-*.json
+Data/**/*.json
 *.csv
 *.xls
 *.xlsx
+
+# Ignore package-lock.json
+package-lock.json
 
 # Ignore database dumps, large datasets, or backup files
 *.bak
