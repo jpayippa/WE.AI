@@ -1,13 +1,10 @@
-
 "use client"
 import Link from "next/link";
 import { useState } from "react";
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
-    subject: "",
     message: "",
   });
 
@@ -19,17 +16,34 @@ const FeedbackForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Feedback Submitted:", formData);
 
-    // Reset form
+  try {
+    const send = await fetch("https://us-central1-we-ai-442218.cloudfunctions.net/sendFeedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "email": `${formData.email}`,
+        "feedback": `${formData.message}`,
+      })
+    })
+
     setFormData({
-      name: "",
       email: "",
-      subject: "",
       message: "",
     });
+
+    const res = await send.json();
+    window.alert(res.message)
+  } catch (error) {
+    window.alert("error")
+  }
+
+
+
   };
 
   return (
@@ -48,33 +62,11 @@ const FeedbackForm = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Name"
-                    className="w-full p-3 border text-[#2e1065] border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#672ad8]"
-                    required
-                    />
-                </div>
-                <div>
-                    <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
-                    className="w-full p-3 border text-[#2e1065] border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#672ad8]"
-                    required
-                    />
-                </div>
-                <div>
-                    <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="Subject"
                     className="w-full p-3 border text-[#2e1065] border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#672ad8]"
                     required
                     />
