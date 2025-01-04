@@ -1,5 +1,8 @@
 // Frontend/weai/app/page.tsx
 "use client"
+
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -8,9 +11,14 @@ import AuthPage from "./firebase/auth"
 import { auth } from "./firebase/firebaseConfig";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 
+
 export default function Home() {
   const [messages, setMessages] = useState<{ user: boolean; text: string }[]>([]);
   const [input, setInput] = useState("");
+
+  const [token, setToken] = useState([])
+  const chatContainerRef = useRef<HTMLDivElement | null>(null); 
+
   const [user, setUser] = useState<User | null>(null);
   //on load
   useEffect(() => {
@@ -21,18 +29,83 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
-  const handleSend = () => {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://us-central1-we-ai-442218.cloudfunctions.net/generateToken');
+        const result = await response.json();
+        const tk = result.token
+        setToken(tk)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData();
+  })  
+
+
+  const handleSend = async () => {
     if (!input.trim()) return;
+  
+    // Add user's message
 
     setMessages((prev) => [...prev, { user: true, text: input }]);
+  
+    const userMessage = input;
+    setInput("");  // Clear input immediately for better UX
+  
+    try {
+
+
 
     setTimeout(() => {
+
       setMessages((prev) => [
         ...prev,
-        { user: true, text: input },
-        { user: false, text: `You said: "${input}"` },
+        { user: false, text: "Thinking..." },
       ]);
-    }, 1000);
+  
+      // API call to get chatbot response
+      const response = await fetch("https://us-central1-dialogflow.googleapis.com/v3/projects/we-ai-442218/locations/us-central1/agents/6e63cb11-8f42-4c9a-9f2c-fe3e0b41ccdd/sessions/2a7f4c12-987b-4b25-a7d6-e53b2a94c92d:detectIntent", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          queryInput: {
+            text: {
+              text: `${userMessage}`
+            },
+            languageCode: "en"
+          }
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      console.log(data.queryResult.responseMessages[0].text.text[0]);
+
+      setMessages((prev) => [
+        ...prev.slice(0, -1),  
+        { user: false, text: `${data.queryResult.responseMessages[0].text.text[0]}`},
+      ]);
+    } catch (error) {
+      console.error("Error fetching chatbot response:", error);
+      setMessages((prev) => [
+        ...prev.slice(0, -1),  
+        { user: false, text: "Sorry, something went wrong. Please try again." },
+      ]);
+    }
+
+
+  };
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
     setInput("");
   };
@@ -44,6 +117,7 @@ export default function Home() {
   if (!user) {
     return <AuthPage />;
   }
+
 
   return (
     <div className="flex flex-col h-screen bg-[#2e1065]">
@@ -63,12 +137,34 @@ export default function Home() {
           Ask anything about Western Engineering. We're here to help you navigate resources, answer questions, and more!
         </p>
       </div>
+
+        <div className="flex flex-col w-full h-full overflow-y-auto scroll-auto p-4">
+          <div className="flex flex-col w-full h-full bg-white shadow-lg rounded-lg overflow-y-auto">
+            <div className="flex-grow p-4 overflow-y-scroll scroll-auto space-y-4" ref={chatContainerRef}>
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex ${
+                  message.user ? "justify-end" : "justify-start"
+                }`}
+                >
+                  <div
+                    className={`rounded-lg p-3 ${
+                      message.user
+                        ? "bg-[#2e1065] text-white"
+                        : "bg-gray-200 text-gray-900"
+                    }`}
+                  >
+                  {message.text}
+                </div>
+
       <div className="flex flex-col w-full h-full bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="flex-grow p-4 overflow-y-auto space-y-4">
           {messages.map((message, index) => (
             <div key={index} className={`flex ${message.user ? "justify-end" : "justify-start"}`}>
               <div className={`rounded-lg p-3 ${message.user ? "bg-[#2e1065] text-white" : "bg-gray-200 text-gray-900"}`}>
                 {message.text}
+
               </div>
             </div>
           ))}
