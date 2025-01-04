@@ -12,7 +12,7 @@ export default function Home() {
   const [messages, setMessages] = useState<{ user: boolean; text: string }[]>([]);
   const [input, setInput] = useState("");
   const [user, setUser] = useState<User | null>(null);
-
+  //on load
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
