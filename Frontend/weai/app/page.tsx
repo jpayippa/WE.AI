@@ -109,6 +109,8 @@ export default function Home() {
     return <AuthPage />;
   }
 
+  
+
 
   return (
     <div className="flex flex-col h-screen bg-[#2e1065]">
