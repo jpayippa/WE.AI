@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import AuthPage from "./firebase/auth"
 import { auth } from "./firebase/firebaseConfig";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
@@ -42,7 +40,7 @@ export default function Home() {
       }
     }
     fetchData();
-  })  
+  },[]);  
 
 
   const handleSend = async () => {
@@ -56,10 +54,6 @@ export default function Home() {
     setInput("");  // Clear input immediately for better UX
   
     try {
-
-
-
-    setTimeout(() => {
 
       setMessages((prev) => [
         ...prev,
@@ -98,9 +92,6 @@ export default function Home() {
       ]);
     }
 
-
-  };
-
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -137,34 +128,12 @@ export default function Home() {
           Ask anything about Western Engineering. We're here to help you navigate resources, answer questions, and more!
         </p>
       </div>
-
-        <div className="flex flex-col w-full h-full overflow-y-auto scroll-auto p-4">
-          <div className="flex flex-col w-full h-full bg-white shadow-lg rounded-lg overflow-y-auto">
-            <div className="flex-grow p-4 overflow-y-scroll scroll-auto space-y-4" ref={chatContainerRef}>
-              {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex ${
-                  message.user ? "justify-end" : "justify-start"
-                }`}
-                >
-                  <div
-                    className={`rounded-lg p-3 ${
-                      message.user
-                        ? "bg-[#2e1065] text-white"
-                        : "bg-gray-200 text-gray-900"
-                    }`}
-                  >
-                  {message.text}
-                </div>
-
       <div className="flex flex-col w-full h-full bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="flex-grow p-4 overflow-y-auto space-y-4">
           {messages.map((message, index) => (
             <div key={index} className={`flex ${message.user ? "justify-end" : "justify-start"}`}>
               <div className={`rounded-lg p-3 ${message.user ? "bg-[#2e1065] text-white" : "bg-gray-200 text-gray-900"}`}>
                 {message.text}
-
               </div>
             </div>
           ))}
