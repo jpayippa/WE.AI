@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 
@@ -7,50 +6,22 @@ export default function Home() {
 
   const [messages, setMessages] = useState<{ user: boolean; text: string }[]>([]);
   const [input, setInput] = useState("");
-  const [token, setToken] = useState("")
-  const chatContainerRef = useRef<HTMLDivElement | null>(null);  // Type assertion here
+  const [token, setToken] = useState([])
+  const chatContainerRef = useRef<HTMLDivElement | null>(null); 
 
-  // useEffect(() => {
-  //   // Fetch API on component mount
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('https://us-central1-we-ai-442218.cloudfunctions.net/generateToken');
-  //       if (!response.ok) throw new Error('Failed to fetch data');
-  //       const result = await response.json();
-  //       setToken(result.token)
-  //       console.log(token)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   fetchData();
-  // }, [])  // Empty dependency array = runs once on mount
-
-  // const getToken = async () => {
-  //   const auth = new GoogleAuth({
-  //     keyFilename: '/Users/saif/Library/Mobile Documents/com~apple~CloudDocs/Synced Documents/University/Year 4/CAPSTONE PROJECT/WE.AI/Frontend/weai/app/utils/we-ai-442218-9d855ae58977.json', 
-  //     scopes: ['https://www.googleapis.com/auth/cloud-platform'], // Adjust scopes as needed
-  //   });
-  //   const client = await auth.getClient();
-  //   const tk = await client.getAccessToken();
-  //   console.log(tk)
-  // }
-
-
-  // const handleGetToken = async () => {
-  //   try {
-  //     const response = await fetch('/api/tokenGen');
-  //     const data = await response.json();
-  //     setToken(data.token);
-  //   } catch (error) {
-  //     console.error('Error fetching token:', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleGetToken()
-  // }, [])
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://us-central1-we-ai-442218.cloudfunctions.net/generateToken');
+        const result = await response.json();
+        const tk = result.token
+        setToken(tk)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData();
+  })  
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -62,7 +33,7 @@ export default function Home() {
     setInput("");  // Clear input immediately for better UX
   
     try {
-      // Simulate loading message
+
       setMessages((prev) => [
         ...prev,
         { user: false, text: "Thinking..." },
@@ -73,7 +44,7 @@ export default function Home() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer ya29.c.c0ASRK0GZ3_vf9PykZ_7QxeMV4QqRrqEBq9ooI5kNcJvIlC7Cl7zi4tpcS6i_fdOArJuLB8I0Q_wz9-5lX20Fm-nS9VDe1EcsOJojAQwGSgJ9RS0drpqq5AjV8739yK1LPFQSImYlJVFQTG09_1NI0NWSxY0rcmC30oif5oBkX6EL2eD2VhWQiLU45ICBuvffvGl9FWF9hXLAWuNzqmtTZX5SCrLtWJPTbz01e1cjsdzPWEuBoZZpzXDNtAYTayBXseCbTLp19XBj0hX6us0EGyodxqiBcs6ytvrDeB-QpwMAkBksGJupQpjDGYV5k3qhYsxo0Svx210EpGaNQFrp3PM4v9ryO-tRIBYeLZPsWSW9O1-_EKKjjrxEL384De_YzI1QlfkpoW4X7eIbJS_dxtp1j5qJvxwrjFUYII51Ufd_i_ZqYMik-va43mz1R7geRdXbi7f8ZUZyyMQOx2nXzSUbsMZUOjdz7s4fQO1YO2JcmQV3tmvMdMYhVszow64JBlOm7p5kOw2YxlloOVjO_0qajmQFrfvph8qdOVb5onVwQxW-96ItWUuQhh83eU2o3tme23yUtuZbRMdo5qVojg8y99nRo3nFl3lFOnWpaSvQX-t63u4XRit9jgjktM878l2xgZ9m9Bus8YnZmdbmOoVuq128SlF6sSirtsvx539qRWtdmzrl8jkipBY72r1SB1k-I7J019_6kQy9W41wuVcFurlzhRjUV4_dgvB5IU-tvVfsdr8plUXjetZvhth8goQveO-64YyBt5nnZIt2fbm7R51pdn8jcO18tR1vm9eMjIcdYM2Q65j50BiZ537ReQhF59JY1goxUpnhuF9um_Q3zrjeZrchJvX94j1_rfZevoRsRsOQ8r5QiaiitUtsdVO8k5xvRpb_rzWFR16jaQBcjZY9pFon2xqj40wvszzaoSp09rBavQ6tz_F3Xo3Is-byOv7tXl3vtyam5BpZm5JdlQRVFFdv7ccbMf9Ou3fkeW2QnvOOmykR",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           queryInput: {
@@ -84,7 +55,6 @@ export default function Home() {
           }
         }),
       });
-  
       const data = await response.json();
       console.log(data);
       console.log(data.queryResult.responseMessages[0].text.text[0]);
@@ -108,8 +78,6 @@ export default function Home() {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
-
-
 
   return (
     
