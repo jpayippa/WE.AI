@@ -1,4 +1,4 @@
-import { NextConfig } from 'next';
+import { NextConfig, Metadata } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
