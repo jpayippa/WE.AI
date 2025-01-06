@@ -28,6 +28,7 @@ const corsOptions = {
     allowedHeaders: ['Content-Type'],
 };
 
+
 // ✅ Use the configured CORS middleware
 exports.sendFeedback = (req, res) => {
     cors(corsOptions)(req, res, async () => {
