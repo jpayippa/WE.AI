@@ -94,7 +94,7 @@ error.log
 .env.*
 
 # Data files
-Data/**/*.json
+Scrapping/Data/**/*.json
 *.csv
 *.xls
 *.xlsx
