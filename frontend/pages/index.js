@@ -36,7 +36,7 @@ export default function Home() {
     setIsThinking(true); // Show thinking indicator
 
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      const res = await fetch("http://localhost:5001/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
