@@ -24,6 +24,7 @@ def main(stage=None):
         "rss": {"name": "RSS Fetching", "script": "./Code/rss_fetcher.py"},
         "cleaning": {"name": "Cleaning", "script": "./Code/data_cleaning.py"},
         "validation": {"name": "Validation", "script": "./Code/data_validation.py"},
+        "export": {"name": "Export", "script": "./Code/data_validation.py"}
     }
 
     if stage:
@@ -51,7 +52,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the pipeline or specific stages.")
     parser.add_argument(
         "--stage",
-        choices=["scraping", "rss", "cleaning", "validation"],
+        choices=["scraping", "rss", "cleaning", "validation", "export"],
         help="Specify the stage of the pipeline to execute. If not provided, the full pipeline will be executed.",
     )
     args = parser.parse_args()
