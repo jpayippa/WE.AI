@@ -123,6 +123,7 @@ config/
 secret-config/
 scraper-results/
 Scrapping/Data/**/*.json
+Scrapping/Data/**/*.jsonl
 *.csv
 *.xls
 *.xlsx
