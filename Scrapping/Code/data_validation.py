@@ -2,6 +2,7 @@ import os
 import json
 import logging
 from datetime import datetime
+import csv
 
 
 # Initialize logging
@@ -74,6 +75,23 @@ def save_invalid_data(invalid_data, output_folder):
         json.dump(invalid_data, file, indent=4)
     logging.info("Invalid data saved to %s", output_file)
 
+def save_data_as_jsonl(data, output_path):
+    """Save data in JSONL format."""
+    with open(output_path, 'w', encoding='utf-8') as f:
+        for record in data:
+            f.write(json.dumps(record) + '\n')
+    logging.info(f"Data exported to JSONL at: {output_path}")
+
+
+def save_data_as_csv(data, output_path):
+    """Save data in CSV format."""
+    with open(output_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=data[0].keys())
+        writer.writeheader()
+        writer.writerows(data)
+    logging.info(f"Data exported to CSV at: {output_path}")
+
+
 
 def main():
     """Main function to validate cleaned data."""
@@ -91,6 +109,14 @@ def main():
     # Save validated and invalid data
     save_valid_data(valid_data, validated_data_folder)
     save_invalid_data(invalid_data, invalid_data_folder)
+
+    if valid_data:
+        # Export validated data to JSONL
+        save_data_as_jsonl(valid_data, os.path.join(validated_data_folder, 'validated_data.jsonl'))
+
+        # Export validated data to CSV
+        save_data_as_csv(valid_data, os.path.join(validated_data_folder, 'validated_data.csv'))
+
 
 
 if __name__ == "__main__":

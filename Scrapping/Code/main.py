@@ -8,7 +8,7 @@ def load_config():
     """Load configuration from the JSON file."""
     try:
         print("Loading configuration...")
-        with open("./Config/config.json", "r") as file:
+        with open("../Config/config.json", "r") as file:
             config = json.load(file)
         print("Configuration loaded successfully.")
         return config
