@@ -1,61 +1,56 @@
 import os
+import json
 import logging
+from google.cloud import aiplatform
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-def load_data(input_folder):
-    """Load processed data for model training."""
-    logging.info("Loading processed data...")
-    processed_files = [f for f in os.listdir(input_folder) if f.endswith(".csv")]
-    if not processed_files:
-        logging.error("No processed data found in the specified folder.")
-        return None
+def upload_data_to_gcs(local_path, bucket_name, destination_blob_name):
+    """Uploads a file to Google Cloud Storage."""
+    from google.cloud import storage
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_filename(local_path)
+    logging.info("Uploaded %s to gs://%s/%s", local_path, bucket_name, destination_blob_name)
+
+def submit_vertex_ai_training_job(project, location, model_name, gcs_train_data, output_dir):
+    """Submits a training job to Vertex AI."""
+    aiplatform.init(project=project, location=location)
+    job = aiplatform.CustomTrainingJob(
+        display_name="mistral-7b-finetune",
+        script_path="train_script.py",
+        container_uri="us-docker.pkg.dev/vertex-ai/training/pytorch-gpu.1-12:latest",
+        model_serving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/pytorch-gpu.1-12:latest",
+    )
     
-    latest_file = max(processed_files, key=lambda f: os.path.getmtime(os.path.join(input_folder, f)))
-    data_path = os.path.join(input_folder, latest_file)
-    logging.info(f"Loaded data from: {data_path}")
-    return data_path
-
-def train_dummy_model(data_path):
-    """
-    Placeholder function to simulate model training.
-    Replace this function with actual training logic later.
-    """
-    logging.info(f"Training dummy model on data: {data_path}...")
-    # Simulate training with a delay or placeholder actions
-    import time
-    time.sleep(2)  # Simulate training time
-    logging.info("Dummy model training complete. (Replace with real training)")
-
-def save_model(model, output_folder):
-    """Save the trained model."""
-    os.makedirs(output_folder, exist_ok=True)
-    dummy_model_path = os.path.join(output_folder, "dummy_model.pkl")
-    with open(dummy_model_path, "w") as f:
-        f.write("This is a placeholder for the trained model.")
-    logging.info(f"Model saved at: {dummy_model_path}")
+    model = job.run(
+        dataset=gcs_train_data,
+        base_output_dir=output_dir,
+        replica_count=1,
+        machine_type="n1-standard-8",
+        accelerator_type="NVIDIA_TESLA_T4",
+        accelerator_count=1,
+    )
+    
+    logging.info("Training job submitted successfully.")
+    return model
 
 def main():
-    """Main function for model training."""
-    input_folder = "./Data/validated"  # Folder where validated data is stored
-    output_folder = "./Models"  # Folder to save trained models
+    project = "your-gcp-project-id"
+    location = "us-central1"
+    model_name = "mistralai/Mistral-7B"
+    bucket_name = "your-gcs-bucket"
+    gcs_train_data = f"gs://{bucket_name}/validated_data.jsonl"
+    output_dir = f"gs://{bucket_name}/model_output"
     
-    # Step 1: Load Data
-    data_path = load_data(input_folder)
-    if not data_path:
-        logging.error("No data available for training. Exiting.")
-        return
-
-    # Step 2: Train Model
-    train_dummy_model(data_path)
-
-    # Step 3: Save Model
-    save_model("dummy_model", output_folder)
-
-    logging.info("Model training pipeline completed.")
+    local_dataset_path = "./Data/validated/validated_data.jsonl"
+    
+    upload_data_to_gcs(local_dataset_path, bucket_name, "validated_data.jsonl")
+    submit_vertex_ai_training_job(project, location, model_name, gcs_train_data, output_dir)
 
 if __name__ == "__main__":
-    logging.info("Starting model training pipeline...")
+    logging.info("Starting Vertex AI model training pipeline...")
     main()
-    logging.info("Model training pipeline completed.")
+    logging.info("Vertex AI model training pipeline completed.")
