@@ -5,8 +5,8 @@
     "https://westernadvance.ca/calendar/engineering.xml"
   ],
   "allowed_domains": ["eng.uwo.ca"],
-  "output_folder": "./Scrapping/Data/raw",
-  "log_folder": "./Scrapping/Results/logs",
+  "output_folder": "./Data/raw",
+  "log_folder": "./Results/logs",
   "retry_times": 5,
   "download_timeout": 15,
   "download_delay": 0.5,

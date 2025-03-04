@@ -1,135 +1,165 @@
+import scrapy
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+from datetime import datetime, timedelta
 import os
 import json
-import scrapy
-from scrapy.crawler import CrawlerProcess
-import trafilatura
-import phonenumbers
-import spacy
-import pandas as pd
 import random
+import spacy
 import time
 import hashlib
-import logging
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-class EngSpider(scrapy.Spider):
+class EngSpider(CrawlSpider):
     name = "eng_spider"
 
     def __init__(self, config, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.start_urls = config["start_urls"]
         self.allowed_domains = config["allowed_domains"]
-        self.output_folder = os.path.join(config["output_folder"], "raw")
-        self.logs_dir = os.path.join(config["log_folder"], "logs")
-
+        self.output_folder = os.path.join(config["output_folder"], "raw")  # Save to Data/raw
+        self.logs_dir = os.path.join(config["output_folder"], "../logs")  # Save logs to Results/logs
+        
+        # Ensure directories exist
         os.makedirs(self.output_folder, exist_ok=True)
         os.makedirs(self.logs_dir, exist_ok=True)
-
+        
+        # NLP model
         self.nlp = spacy.load("en_core_web_sm")
-        self.user_agents = config["user_agents"]
+
+        # User agents
+        self.user_agents = config.get("user_agents", [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        ])
+
+        # Log files
+        self.visited_pages_log = os.path.join(self.logs_dir, "visited_pages.log")
+        self.skipped_pages_log = os.path.join(self.logs_dir, "skipped_pages.log")
+        self.extracted_links_log = os.path.join(self.logs_dir, "extracted_links.log")
+
+        # Crawler stats
         self.start_time = time.time()
         self.pages_visited = 0
         self.total_scraped = 0
         self.error_counts = {"404": 0, "403": 0, "500": 0, "other": 0}
-        self.progress_log = os.path.join(self.logs_dir, "progress.log")
-        self.summary_log = os.path.join(self.logs_dir, "scraping_summary.log")
-        
-        logger.info("Spider initialized. Starting URLs: %s", self.start_urls)
 
-    def start_requests(self):
-        for url in self.start_urls:
-            headers = {'User-Agent': random.choice(self.user_agents)}
-            logger.info(f"Starting crawl on: {url}")
-            yield scrapy.Request(url, headers=headers)
+        # Store visited URLs to avoid duplicate visits
+        self.visited_urls = set()
 
-    def parse(self, response):
+    # ✅ **FIXED: Properly configure Scrapy to follow all internal links**
+    rules = (
+        Rule(LinkExtractor(allow_domains=["eng.uwo.ca"]), callback="parse_item", follow=True),
+    )
+
+    def parse_item(self, response):
+        """Parse and extract structured data."""
+        if response.url in self.visited_urls:
+            return  # Skip already visited pages
+        self.visited_urls.add(response.url)
+
         self.pages_visited += 1
-        extracted_text = trafilatura.extract(response.text)
-        tables = self.extract_tables(response)
-        contact_info = self.extract_contact_info(response.text)
-        named_entities = self.extract_named_entities(extracted_text)
 
-        data = {
-            "url": response.url,
-            "scraped_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "text": extracted_text[:500],
-            "tables": tables,
-            "contact_info": contact_info,
-            "named_entities": named_entities
-        }
+        # Extract data
+        headings = response.css("h1, h2::text").getall()
+        paragraphs = response.css("p::text, div.main-content p::text").getall()
+        contact_info = response.css("div.contact-info, p:contains('Contact')::text").getall()
 
-        self.save_to_json(data)
-        self.total_scraped += 1
-        self.log_progress(response)
-        
-        logger.info(f"Successfully scraped: {response.url}")
-        yield data
+        # Clean text
+        paragraphs = [p.strip() for p in paragraphs if p.strip()]
+        headings = [h.strip() for h in headings if h.strip()]
 
-        for link in response.css("a::attr(href)").getall():
-            yield response.follow(link, self.parse)
+        # Extract and log links
+        links = [
+            {"text": link.css("::text").get(), "url": response.urljoin(link.attrib["href"])}
+            for link in response.css("a[href]")
+            if link.css("::text").get() and not link.attrib["href"].startswith("#")
+        ]
 
-    def extract_contact_info(self, text):
-        phones = [phonenumbers.format_number(match.number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-                  for match in phonenumbers.PhoneNumberMatcher(text, "CA")]
-        email = next((word for word in text.split() if "@" in word and "uwo.ca" in word), "")
-        return {"phone": phones, "email": email}
+        with open(self.extracted_links_log, "a", encoding="utf-8") as f:
+            f.write(f"{response.url} -> {len(links)} links extracted\n")
 
-    def extract_named_entities(self, text):
-        doc = self.nlp(text)
-        return {
-            "organizations": [ent.text for ent in doc.ents if ent.label_ == "ORG"],
+        # Named entity extraction
+        doc = self.nlp(" ".join(paragraphs))
+        named_entities = {
             "people": [ent.text for ent in doc.ents if ent.label_ == "PERSON"],
-            "locations": [ent.text for ent in doc.ents if ent.label_ in ["GPE", "LOC"]]
+            "organizations": [ent.text for ent in doc.ents if ent.label_ == "ORG"],
+            "locations": [ent.text for ent in doc.ents if ent.label_ == "GPE"],
         }
 
-    def extract_tables(self, response):
-        tables = pd.read_html(response.text)
-        return [table.to_dict(orient="records") for table in tables] if tables else []
+        # Structured data
+        structured_data = {
+            "url": response.url,
+            "scraped_at": datetime.utcnow().isoformat(),
+            "headings": " | ".join(headings),
+            "paragraphs": paragraphs,
+            "contact_info": " | ".join(contact_info),
+            "links": links,
+            "named_entities": named_entities,
+        }
+
+        self.save_to_json(structured_data)
+        self.total_scraped += 1
+        self.log_progress()
+
+        yield structured_data
 
     def save_to_json(self, data):
+        """Save structured data to JSON."""
         content_hash = hashlib.md5(json.dumps(data, sort_keys=True).encode("utf-8")).hexdigest()
         filepath = os.path.join(self.output_folder, f"{content_hash}.json")
+
         if os.path.exists(filepath):
-            logger.info(f"Skipping duplicate content for: {data['url']}")
-            return
+            return  # Avoid duplicates
+
         with open(filepath, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4)
-        logger.info(f"Saved data to: {filepath}")
 
-    def log_progress(self, response):
+    def log_progress(self):
+        """Print and log progress."""
         elapsed_time = time.time() - self.start_time
         progress_message = (
-            f"[Progress] Visited: {self.pages_visited} | "
-            f"Scraped: {self.total_scraped} | "
-            f"Elapsed: {elapsed_time:.2f}s"
+            f"[Progress] Visited: {self.pages_visited} | Scraped: {self.total_scraped} "
+            f"| 404s: {self.error_counts['404']} | 403s: {self.error_counts['403']} "
+            f"| Elapsed: {timedelta(seconds=int(elapsed_time))}"
         )
         print(progress_message)
-        logger.info(progress_message)
-        with open(self.progress_log, "a") as f:
+
+        with open(self.visited_pages_log, "a") as f:
             f.write(progress_message + "\n")
 
+    def log_failed_url(self, url, status_code=None):
+        """Log failed URLs."""
+        error_type = {404: "404_errors.log", 403: "403_errors.log", 500: "500_errors.log"}.get(status_code, "other_errors.log")
+        log_file = os.path.join(self.logs_dir, error_type)
+
+        with open(log_file, "a", encoding="utf-8") as f:
+            f.write(f"{url}\n")
+
     def closed(self, reason):
+        """Log summary at the end of the scraping process."""
         elapsed_time = time.time() - self.start_time
         summary_message = (
-            f"\n[Summary] Scraping completed in {elapsed_time:.2f}s\n"
+            f"\n[Summary] Scraping completed in {timedelta(seconds=int(elapsed_time))}!\n"
             f"Total Pages Visited: {self.pages_visited}\n"
             f"Total Pages Scraped: {self.total_scraped}\n"
             f"404 Errors: {self.error_counts['404']}\n"
             f"403 Errors: {self.error_counts['403']}\n"
-            f"500 Errors: {self.error_counts['500']}\n"
-            f"Other Errors: {self.error_counts['other']}\n"
         )
         print(summary_message)
-        logger.info(summary_message)
-        with open(self.summary_log, "w") as f:
+        with open(os.path.join(self.logs_dir, "scraping_summary.log"), "w") as f:
             f.write(summary_message)
 
+
 if __name__ == "__main__":
+    from scrapy.crawler import CrawlerProcess
     with open("config.json", "r") as f:
         config = json.load(f)
-    process = CrawlerProcess()
+
+    process = CrawlerProcess({
+        "USER_AGENT": random.choice(config["user_agents"]),
+        "LOG_LEVEL": "INFO",
+        "ROBOTSTXT_OBEY": False,  # ❗ Important: Ensures we can crawl the whole site
+        "CONCURRENT_REQUESTS": config.get("concurrent_requests", 8),
+        "DOWNLOAD_DELAY": config.get("download_delay", 0.5),
+    })
     process.crawl(EngSpider, config=config)
     process.start()
