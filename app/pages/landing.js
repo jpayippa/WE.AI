@@ -6,6 +6,11 @@ export default function LandingPage() {
     <div className="flex flex-col items-center justify-start min-h-screen pt-20 text-center animated-gradient text-white p-6">
       {/* Hero Section */}
       <header className="text-center max-w-3xl">
+   
+  
+        
+        
+        
         <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
           Welcome to WE.AI...
           ‎ 
@@ -20,6 +25,7 @@ export default function LandingPage() {
           Start Chatting
         </Link>
       </header>
+      
 
 
 
