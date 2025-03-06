@@ -11,11 +11,11 @@ export default function LandingPage() {
         
         
         
-        <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-          Welcome to WE.AI.
+        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+          Welcome to WE.AI
           ‎ 
         </h1>
-        <p className="mt-4 font-semibold text-lg text-white">
+        <p className="mt-4 font-semibold text-1xl text-white">
           Your AI-powered assistant built by Western Engineering students to help streamline your learning experience.
         </p>
         <Link 
