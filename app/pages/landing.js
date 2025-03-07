@@ -22,7 +22,7 @@ export default function LandingPage() {
           href="/" 
           className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] hover:bg-[#150050] text-lg font-bold rounded-lg shadow-lg transition-all"
         >
-          Start Chatting
+          Get Started ➝
         </Link>
       </header>
       
@@ -38,20 +38,36 @@ export default function LandingPage() {
       
 
       <section className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl text-center">
-        <div className="p-6 bg-[#3e007138] rounded-xl shadow-lg">
+        <div className="p-6 bg-[#3e007138] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <h3 className="text-2xl font-bold">AI-Powered Chat</h3>
           <p className="mt-2 text-white">Ask engineering-related questions and get instant AI-generated responses.</p>
         </div>
-        <div className="p-6 bg-[#3e007148] rounded-xl shadow-lg">
+        <div className="p-6 bg-[#3e007148] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <h3 className="text-2xl font-bold">Personalized Experience</h3>
           <p className="mt-2 text-white">Your own session and history, tailored to your learning needs.</p>
         </div>
-        <div className="p-6 bg-[#3e00714d] rounded-xl shadow-lg">
+        <div className="p-6 bg-[#3e00714d] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <h3 className="text-2xl font-bold">Made by Engineers</h3>
           <p className="mt-2 text-white">Developed by Western University students with a passion for AI.</p>
         </div>
       </section>
 
+
+{/* Features Section with Permanent Purple Glow Effect */}
+{/* <section className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl text-center">
+  <div className="p-6 bg-[#3e007138] rounded-xl shadow-[0_0_20px_#a855f7]">
+    <h3 className="text-2xl font-bold">AI-Powered Chat</h3>
+    <p className="mt-2 text-white">Ask engineering-related questions and get instant AI-generated responses.</p>
+  </div>
+  <div className="p-6 bg-[#3e007148] rounded-xl shadow-[0_0_20px_#a855f7]">
+    <h3 className="text-2xl font-bold">Personalized Experience</h3>
+    <p className="mt-2 text-white">Your own session and history, tailored to your learning needs.</p>
+  </div>
+  <div className="p-6 bg-[#3e00714d] rounded-xl shadow-[0_0_20px_#a855f7]">
+    <h3 className="text-2xl font-bold">Made by Engineers</h3>
+    <p className="mt-2 text-white">Developed by Western University students with a passion for AI.</p>
+  </div>
+</section> */}
 
   {/* Centered Image with Glow */}
   <div className="mt-10 flex justify-center">
