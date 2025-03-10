@@ -11,7 +11,7 @@ export default function LandingPage() {
         
         
         
-        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+        <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 cursor-pointer hover:opacity-80 transition duration-300">
           Welcome to WE.AI
           ‎ 
         </h1>
