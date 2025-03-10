@@ -19,7 +19,7 @@ export default function LandingPage() {
           Your AI-powered assistant built by Western Engineering students to help streamline your learning experience.
         </p>
         <Link 
-          href="/" 
+          href="/chat" 
           className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] hover:bg-[#150050] text-lg font-bold rounded-lg shadow-lg transition-all"
         >
           Get Started ➝
