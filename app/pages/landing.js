@@ -20,8 +20,8 @@ export default function LandingPage() {
         </p>
         <Link 
           href="/chat" 
-          className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] hover:bg-[#150050] text-lg font-bold rounded-lg shadow-lg transition-all"
-        >
+          className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]"
+        >       
           Get Started ➝
         </Link>
       </header>
