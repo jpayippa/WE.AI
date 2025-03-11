@@ -7,11 +7,21 @@ import { FaUser, FaCogs } from 'react-icons/fa';
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
-      {/* WE.AI Logo (positioned in the top-left corner) */}
+      {/* Logo on the top-left */}
       <div className="absolute top-4 left-6">
         <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
           WE.AI: ALPHA
         </h1>
+      </div>
+
+      {/* Login & Sign Up on the top-right */}
+      <div className="absolute top-8 right-10 flex items-center space-x-6">
+        <Link href="/login" className="button">
+          <span>Login</span>
+        </Link>
+        <Link href="/signup" className="button">
+          <span>Sign Up</span>
+        </Link>
       </div>
 
       {/* Hero Section */}
@@ -24,55 +34,55 @@ export default function LandingPage() {
         </p>
         <Link
           href="/chat"
-          className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_30px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
+          className="mt-10 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
         >
           Get Started ➝
         </Link>
       </header>
 
-      {/* Info Boxes with Hover-Triggered Animated Icons */}
-      <section className="w-full max-w-4xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-6">
+      {/* Info Boxes */}
+      <section className="w-full max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center px-6">
         {/* AI-Powered Chat */}
-        <div className="p-6 bg-[#3e007138] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+        <div className="p-4 bg-[#3e007138] rounded-lg shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <motion.div
-            className="flex justify-center mb-4"
+            className="flex justify-center mb-3"
             whileHover={{ scale: 1.2 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            <AiOutlineMessage className="w-12 h-12 text-purple-400" />
+            <AiOutlineMessage className="w-10 h-10 text-purple-400" />
           </motion.div>
-          <h3 className="text-2xl font-bold">AI-Powered Chat</h3>
-          <p className="mt-2">
+          <h3 className="text-xl font-bold">AI-Powered Chat</h3>
+          <p className="mt-2 text-sm">
             Ask engineering-related questions and get instant AI-generated responses.
           </p>
         </div>
 
         {/* Personalized Experience */}
-        <div className="p-6 bg-[#3e007148] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+        <div className="p-4 bg-[#3e007148] rounded-lg shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <motion.div
-            className="flex justify-center mb-4"
+            className="flex justify-center mb-3"
             whileHover={{ scale: 1.2 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
             <FaUser className="w-8 h-8 text-purple-400" />
           </motion.div>
-          <h3 className="text-2xl font-bold">Personalized Experience</h3>
-          <p className="mt-2">
+          <h3 className="text-xl font-bold">Personalized Experience</h3>
+          <p className="mt-2 text-sm">
             Your own session and history, tailored to your learning needs.
           </p>
         </div>
 
         {/* Made by Engineers */}
-        <div className="p-6 bg-[#3e00714d] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+        <div className="p-4 bg-[#3e00714d] rounded-lg shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
           <motion.div
-            className="flex justify-center mb-4"
+            className="flex justify-center mb-3"
             whileHover={{ scale: 1.2 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            <FaCogs className="w-12 h-12 text-purple-400" />
+            <FaCogs className="w-10 h-10 text-purple-400" />
           </motion.div>
-          <h3 className="text-2xl font-bold">Made by Engineers</h3>
-          <p className="mt-2">
+          <h3 className="text-xl font-bold">Made by Engineers</h3>
+          <p className="mt-2 text-sm">
             Developed by Western University students with a passion for AI.
           </p>
         </div>
@@ -89,7 +99,7 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* Footer (sticks to bottom via flex + mt-auto) */}
+      {/* Footer */}
       <footer className="mt-2 text-center text-gray-400 w-full p-4">
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
