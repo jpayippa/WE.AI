@@ -25,7 +25,7 @@ export default function LandingPage() {
 
       {/* WE.AI Logo */}
       <div className="absolute top-4 left-6">
-        <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 cursor-pointer hover:opacity-80 transition duration-300">
+        <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
           WE.AI: ALPHA
         </h1>
       </div>
