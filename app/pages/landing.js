@@ -24,21 +24,35 @@ export default function LandingPage() {
         </Link>
       </div>
 
-      {/* Hero Section */}
-      <header className="max-w-3xl w-full mx-auto pt-20 text-center px-6">
-        <h1 className="text-4xl font-bold leading-normal bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
-          Discover Your Program, Ask Anything.
-        </h1>
-        <p className="mt-4 font-semibold text-1xl">
-          Your AI-powered assistant built by Western Engineering students to help streamline your learning experience.
-        </p>
-        <Link
-          href="/chat"
-          className="mt-10 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
-        >
-          Get Started ➝
-        </Link>
-      </header>
+     {/* Hero Section */}
+<header className="max-w-3xl w-full mx-auto pt-20 text-center px-6">
+  <h1 className="text-4xl font-bold leading-normal bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
+    Discover Your Program, Ask Anything.
+  </h1>
+  <p className="mt-4 font-semibold text-1xl">
+    Your AI-powered engineering assistant built by Western Engineering students to help streamline your learning experience.
+  </p>
+
+  {/* Buttons container */}
+  <div className="mt-10 flex justify-center space-x-4">
+    {/* Get Started Button */}
+    <Link
+      href="/chat"
+      className="inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
+    >
+      Get Started
+    </Link>
+
+    {/* About the Creators Button */}
+    <Link
+      href="/about"
+      className="inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
+    >
+      About Us
+    </Link>
+  </div>
+</header>
+
 
       {/* Info Boxes */}
       <section className="w-full max-w-4xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center px-6">
