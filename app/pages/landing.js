@@ -1,21 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { AiOutlineMessage } from 'react-icons/ai';
+import { FaUser, FaCogs } from 'react-icons/fa';
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col items-center justify-start min-h-screen pt-20 text-center animated-gradient text-white p-6">
       {/* Hero Section */}
       <header className="text-center max-w-3xl">
-        <h1 className="text-4xl font-bold leading-normal bg-clip-text text-transparent bg-gradient-to-r from-purple-700 to-violet-400 cursor-pointer hover:opacity-80 transition duration-300">
+        <h1 className="text-4xl font-bold leading-normal bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
           Discover Your Program, Ask Anything.
         </h1>
-        <p className="mt-10 font-semibold text-1xl text-white">
+        <p className="mt-4 font-semibold text-1xl text-white">
           Your AI-powered assistant built by Western Engineering students to help streamline your learning experience.
         </p>
         <Link 
           href="/chat" 
-          // className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_20px_#a855f7] transition duration-300"
-          // // Optionally, add a hover enhancement below if desired:
           className="mt-8 inline-block px-6 py-3 bg-[#3e00713a] text-lg font-bold rounded-lg shadow-[0_0_20px_#a855f7] hover:shadow-[0_0_30px_#a855f7] transition duration-300"
         >       
           Get Started ➝
@@ -29,20 +30,47 @@ export default function LandingPage() {
         </h1>
       </div>
 
-      <section className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl text-center">
+      {/* Info Boxes with Hover-Triggered Animated Icons */}
+      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl text-center">
+        {/* AI-Powered Chat */}
         <div className="p-6 bg-[#3e007138] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+          <motion.div
+            className="flex justify-center mb-4"
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5, ease: "linear" }}
+          >
+            <AiOutlineMessage className="w-12 h-12 text-purple-400" />
+          </motion.div>
           <h3 className="text-2xl font-bold">AI-Powered Chat</h3>
           <p className="mt-2 text-white">
             Ask engineering-related questions and get instant AI-generated responses.
           </p>
         </div>
+
+        {/* Personalized Experience */}
         <div className="p-6 bg-[#3e007148] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+          <motion.div
+            className="flex justify-center mb-4"
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <FaUser className="w-8 h-8 text-purple-400" />
+          </motion.div>
           <h3 className="text-2xl font-bold">Personalized Experience</h3>
           <p className="mt-2 text-white">
             Your own session and history, tailored to your learning needs.
           </p>
         </div>
+
+        {/* Made by Engineers */}
         <div className="p-6 bg-[#3e00714d] rounded-xl shadow-lg transition duration-300 hover:shadow-[0_0_20px_#a855f7]">
+          <motion.div
+            className="flex justify-center mb-4"
+            whileHover={{ y: -10 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <FaCogs className="w-12 h-12 text-purple-400" />
+          </motion.div>
           <h3 className="text-2xl font-bold">Made by Engineers</h3>
           <p className="mt-2 text-white">
             Developed by Western University students with a passion for AI.
