@@ -1,7 +1,8 @@
+// filepath: c:\Users\yoosu\OneDrive\Documents\Capstone\WE.AI2\WE.AI\app\pages\index.js
 import { useState, useEffect } from "react";
 import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -11,8 +12,13 @@ export default function Home() {
   const [token, setToken] = useState(""); // Store token here
   const [editIndex, setEditIndex] = useState(null); // Track the message being edited
   const [editText, setEditText] = useState(""); // Store the edited text
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
+  useEffect(() => {
+    if (status === "loading") return; // Do nothing while loading
+    if (!session) router.push("/landing"); // Redirect if not authenticated
+  }, [session, status, router]);
 
   // Fetch token on page load
   useEffect(() => {
@@ -27,7 +33,6 @@ export default function Home() {
         console.error("Error fetching token:", err);
       }
     };
-
     fetchToken();
   }, []);
 
@@ -96,6 +101,10 @@ export default function Home() {
     handleQuery(promptToRefresh, true); // Regenerate the prompt response without appending it as a user query
   };
 
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
       {/* WE.AI Logo */}
@@ -106,38 +115,35 @@ export default function Home() {
       </div>
 
       {/* Header */}
-<header className="text-grey text-center py-6 relative">
-  <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
-    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
-      Your Western Engineering AI Assistant.
-    </span>
-  </p>
-  <p className="text-xs mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
-    made by Western Software Engineering Students
-  </p>
+      <header className="text-grey text-center py-6 relative">
+        <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
+            Your Western Engineering AI Assistant.
+          </span>
+        </p>
+        <p className="text-xs mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
+          made by Western Software Engineering Students
+        </p>
 
-  {/* Top Right User Profile & Logout */}
-  <div className="absolute top-4 right-6 flex items-center space-x-4">
-    {session ? (
-      <>
-        <img
-          src={session.user.image}
-          alt="User Profile"
-          className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
-        />
-        <button
-          onClick={() => signOut()}
-          className="bg-[#3f0071] text-white font-semibold px-4 py-2 rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
-        >
-          Sign Out
-        </button>
-      </>
-    ) : null}
-  </div>
-</header>
-
-
-
+        {/* Top Right User Profile & Logout */}
+        <div className="absolute top-4 right-6 flex items-center space-x-4">
+          {session ? (
+            <>
+              <img
+                src={session.user.image}
+                alt="User Profile"
+                className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
+              />
+              <button
+                onClick={() => signOut()}
+                className="bg-[#3f0071] text-white font-semibold px-4 py-2 rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : null}
+        </div>
+      </header>
 
       {/* Chat Area */}
       <div className="flex-1 overflow-y-auto p-6">
@@ -212,32 +218,31 @@ export default function Home() {
         </div>
       </div>
 
-{/* Input Area */}
-<footer className="p-4">
-  <div className="max-w-3xl mx-auto flex items-center">
-    <input
-      type="text"
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      placeholder="Ask me anything about Engineering..."
-      className="flex-1 px-4 py-2 bg-[#150050] text-white placeholder-gray-400 border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]"
-    />
-    <button
-      onClick={() => handleQuery(query)}
-      className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
-    >
-      <FaArrowUp className="w-4 h-4" />
-    </button>
-  </div>
-  <p className="text-xs text-center mt-4 font-inter text-gray-500">
-    WE.AI can make mistakes. Check{" "}
-    <a href="https://eng.uwo.ca" className="underline">
-      eng.uwo.ca
-    </a>{" "}
-    to fact check.
-  </p>
-</footer>
-
+      {/* Input Area */}
+      <footer className="p-4">
+        <div className="max-w-3xl mx-auto flex items-center">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Ask me anything about Engineering..."
+            className="flex-1 px-4 py-2 bg-[#150050] text-white placeholder-gray-400 border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]"
+          />
+          <button
+            onClick={() => handleQuery(query)}
+            className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
+          >
+            <FaArrowUp className="w-4 h-4" />
+          </button>
+        </div>
+        <p className="text-xs text-center mt-4 font-inter text-gray-500">
+          WE.AI can make mistakes. Check{" "}
+          <a href="https://eng.uwo.ca" className="underline">
+            eng.uwo.ca
+          </a>{" "}
+          to fact check.
+        </p>
+      </footer>
 
       {/* Error Message */}
       {error && (
