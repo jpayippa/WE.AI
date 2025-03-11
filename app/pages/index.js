@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
+import { useSession, signOut } from "next-auth/react";
+
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -9,6 +11,8 @@ export default function Home() {
   const [token, setToken] = useState(""); // Store token here
   const [editIndex, setEditIndex] = useState(null); // Track the message being edited
   const [editText, setEditText] = useState(""); // Store the edited text
+  const { data: session } = useSession();
+
 
   // Fetch token on page load
   useEffect(() => {
@@ -102,7 +106,7 @@ export default function Home() {
       </div>
 
       {/* Header */}
-<header className="text-grey text-center py-6">
+<header className="text-grey text-center py-6 relative">
   <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
       Your Western Engineering AI Assistant.
@@ -111,7 +115,28 @@ export default function Home() {
   <p className="text-xs mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
     made by Western Software Engineering Students
   </p>
+
+  {/* Top Right User Profile & Logout */}
+  <div className="absolute top-4 right-6 flex items-center space-x-4">
+    {session ? (
+      <>
+        <img
+          src={session.user.image}
+          alt="User Profile"
+          className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
+        />
+        <button
+          onClick={() => signOut()}
+          className="bg-[#3f0071] text-white font-semibold px-4 py-2 rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
+        >
+          Sign Out
+        </button>
+      </>
+    ) : null}
+  </div>
 </header>
+
+
 
 
       {/* Chat Area */}

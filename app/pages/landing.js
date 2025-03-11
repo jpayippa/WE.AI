@@ -1,6 +1,12 @@
-import Link from 'next/link';
+// filepath: c:\Users\yoosu\OneDrive\Documents\Capstone\WE.AI2\WE.AI\app\pages\landing.js
+"use client";
+
+import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 
 export default function LandingPage() {
+  const { data: session } = useSession();  // Track user session
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-bl from-black via-purple-900 to-indigo-900 text-white p-6">
       {/* Hero Section */}
@@ -11,10 +17,25 @@ export default function LandingPage() {
         <p className="mt-4 text-lg text-gray-300">
           Your AI-powered assistant built by Western Engineering students to help streamline your learning experience.
         </p>
-        <Link href="/" className="mt-6 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-lg font-bold rounded-lg shadow-lg transition-all">
-    Start Chatting
-</Link>
 
+        {session ? (
+          <>
+            <p className="mt-4 text-lg text-gray-300">Signed in as {session.user.name}</p>
+            <button
+              onClick={() => signOut()}
+              className="mt-6 px-6 py-3 bg-red-600 hover:bg-red-700 text-lg font-bold rounded-lg shadow-lg transition-all"
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => signIn("google", { callbackUrl: "/" })}  // Redirect to home after sign-in
+            className="mt-6 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-lg font-bold rounded-lg shadow-lg transition-all"
+          >
+            Sign in with Google
+          </button>
+        )}
       </header>
 
       {/* Features Section */}
