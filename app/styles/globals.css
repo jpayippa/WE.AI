@@ -18,21 +18,7 @@
     border-radius: 10px;
   }
   
-  @keyframes flowingGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
   
-  .animated-gradient {
-    background: radial-gradient(circle,   /* Deep Black */
-      #150050,
-      #3f0071
-        /* Deep Violet */
-    );
-    background-size: 250% 250%;
-    animation: flowingGradient 90s ease-in-out infinite;
-  }
 
   .image-container {
     width: 80%;
