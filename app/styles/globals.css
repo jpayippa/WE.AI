@@ -4,7 +4,7 @@
 .glow-effect {
     position: relative;
   }
-  
+
   .glow-effect::before {
     content: '';
     position: absolute;
@@ -17,8 +17,8 @@
     filter: blur(10px);
     border-radius: 10px;
   }
-  
-  
+
+
 
   .image-container {
     width: 80%;
@@ -31,14 +31,14 @@
     box-shadow: 0 0 20px rgba(114, 4, 85, 0.6);
     transition: box-shadow 0.3s ease-in-out;
   }
-  
+
   .image-container:hover {
     box-shadow: 0 0 30px rgba(114, 4, 85, 1);
   }
 
-  
-  
-  
+
+
+
 .button {
   line-height: 1;
   background-color: transparent;
@@ -51,8 +51,8 @@
   color: #fff;
   border: 1px solid transparent;
   font-weight: 700;
-  /* Reduce the border radius from 2em to something smaller: */
-  border-radius: 0.55em; /* or 8px, 10px, etc. */
+  /* Reduce the border radius from 2em to something smaller: /
+  border-radius: 0.55em; / or 8px, 10px, etc. */
   font-size: 1rem;
   box-shadow: 0 0.7em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -63,18 +63,17 @@
   );
 }
 
-  
+
   .button__icon {
     width: 1.5em;
     height: 1.5em;
   }
-  
+
   .button:hover {
     border-color: #8474fe;
   }
-  
+
   .button:active {
     transform: scale(0.98);
     box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
   }
-  
