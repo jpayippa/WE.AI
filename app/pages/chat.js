@@ -1,23 +1,69 @@
-// filepath: WE.AI\app\pages\index.js
+// filepath: WE.AI/app/pages/index.js
 import { useState, useEffect } from "react";
 import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
+// Updated formatMessage function
+function formatMessage(text) {
+  // 1. Replace markdown links [text](url) with anchor tags
+  let replacedMarkdown = text.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 underline">$1</a>'
+  );
+
+  // 2. Split into lines
+  const lines = replacedMarkdown.split('\n');
+  let output = '';
+  let inList = false;
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+    if (!trimmed) return; // Skip empty lines
+
+    // Updated regex to detect "- **Heading**: description" format
+    const match = trimmed.match(/^-\s*\*\*(.*?)\*\*:\s*(.*)$/);
+    if (match) {
+      if (!inList) {
+        output += '<ul class="list-disc pl-5 space-y-2 my-2">'; // Added Tailwind classes for styling
+        inList = true;
+      }
+      const heading = match[1];
+      const content = match[2];
+      output += `<li><strong class="text-purple-300">${heading}</strong>: ${content}</li>`;
+    } else {
+      if (inList) {
+        output += '</ul>';
+        inList = false;
+      }
+      // Add paragraph styling for non-list items
+      output += `<p class="my-2">${trimmed}</p>`;
+    }
+  });
+
+  if (inList) {
+    output += '</ul>';
+  }
+
+  return output;
+}
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
   const [error, setError] = useState(null);
   const [isThinking, setIsThinking] = useState(false);
-  const [token, setToken] = useState(""); // Store token here
-  const [editIndex, setEditIndex] = useState(null); // Track the message being edited
-  const [editText, setEditText] = useState(""); // Store the edited text
+  const [token, setToken] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
+  const [editText, setEditText] = useState("");
+
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  // If not logged in, redirect to /landing
   useEffect(() => {
-    if (status === "loading") return; // Do nothing while loading
-    if (!session) router.push("/landing"); // Redirect if not authenticated
+    if (status === "loading") return;
+    if (!session) router.push("/landing");
   }, [session, status, router]);
 
   // Fetch token on page load
@@ -36,14 +82,16 @@ export default function Home() {
     fetchToken();
   }, []);
 
+  // Handle user queries, including conversation history for context
   const handleQuery = async (inputQuery = query, isRefresh = false) => {
     if (!inputQuery.trim() || !token) return;
-
     setError(null);
 
-    // Append user query only if it's not a refresh
+    // Create an updated history to include the new user query if not a refresh
+    let updatedHistory = [...messages];
     if (!isRefresh) {
-      setMessages((prev) => [...prev, { sender: "user", text: inputQuery }]);
+      updatedHistory = [...messages, { sender: "user", text: inputQuery }];
+      setMessages(updatedHistory);
     }
 
     setQuery(""); // Clear input field
@@ -55,7 +103,14 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ query: inputQuery, token }), // Include token in the body
+        body: JSON.stringify({
+          query: inputQuery,
+          token,
+          conversationHistory: updatedHistory.map((msg) => ({
+            role: msg.sender,
+            content: msg.text,
+          })),
+        }),
       });
 
       if (!res.ok) {
@@ -64,30 +119,25 @@ export default function Home() {
       }
 
       const data = await res.json();
-
-      // Append bot response
       setMessages((prev) => [...prev, { sender: "bot", text: data.response }]);
     } catch (err) {
       setError(err.message);
     } finally {
-      setIsThinking(false); // Hide thinking indicator
+      setIsThinking(false);
     }
   };
 
+  // Handle editing of user messages
   const handleEdit = (index) => {
     setEditIndex(index);
     setEditText(messages[index].text);
   };
 
   const saveEdit = async () => {
-    const updatedMessages = messages.slice(0, editIndex); // Keep messages above the edited one
-    setMessages(updatedMessages); // Update the state to erase messages below
-
-    // Immediately exit edit mode
+    const updatedMessages = messages.slice(0, editIndex);
+    setMessages(updatedMessages);
     setEditIndex(null);
     setEditText("");
-
-    // Re-send the edited prompt
     handleQuery(editText);
   };
 
@@ -96,9 +146,10 @@ export default function Home() {
     setEditText("");
   };
 
+  // Regenerate the response for a given user message
   const handleRefresh = async (index) => {
     const promptToRefresh = messages[index].text;
-    handleQuery(promptToRefresh, true); // Regenerate the prompt response without appending it as a user query
+    handleQuery(promptToRefresh, true);
   };
 
   if (status === "loading") {
@@ -124,7 +175,6 @@ export default function Home() {
         <p className="text-xs mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
           made by Western Software Engineering Students
         </p>
-
         {/* Top Right User Profile & Logout */}
         <div className="absolute top-4 right-6 flex items-center space-x-4">
           {session ? (
@@ -179,7 +229,13 @@ export default function Home() {
                         : "bg-indigo-900 text-white"
                     }`}
                   >
-                    {msg.text}
+                    {msg.sender === "bot" ? (
+                      <div
+                        dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }}
+                      />
+                    ) : (
+                      msg.text
+                    )}
                   </div>
                   {msg.sender === "user" && (
                     <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -201,15 +257,12 @@ export default function Home() {
               )}
             </div>
           ))}
-          {/* Thinking Indicator */}
           {isThinking && (
             <div className="flex items-center space-x-2 justify-start">
-              {/* Radar Ping Animation */}
               <span className="relative flex h-5 w-5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-5 w-5 bg-purple-700"></span>
               </span>
-              {/* Thinking Text */}
               <div className="max-w-lg px-4 py-2 rounded-xl shadow bg-indigo-900 text-white">
                 Thinking...
               </div>
