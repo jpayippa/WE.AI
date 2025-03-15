@@ -4,6 +4,9 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { formatMessage } from "../utils/format";
 import { speakText, stopSpeaking } from "../utils/tts";
+import { useAnimatedPlaceholder, placeholders } from '../utils/placeholder';
+
+
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -16,6 +19,8 @@ export default function Home() {
   const [currentUtterance, setCurrentUtterance] = useState(null);
   const [isSpeechPlaying, setIsSpeechPlaying] = useState(false);
   const [ttsSupported, setTtsSupported] = useState(true);
+  const currentPlaceholder = useAnimatedPlaceholder();
+  const placeholderText = useAnimatedPlaceholder();
 
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -154,6 +159,7 @@ export default function Home() {
     return <div>Loading...</div>;
   }
 
+  
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
       {/* WE.AI Logo */}
@@ -291,13 +297,15 @@ export default function Home() {
       {/* Input Area */}
       <footer className="p-4">
         <div className="max-w-3xl mx-auto flex items-center">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask me anything about Engineering..."
-            className="flex-1 px-4 py-2 bg-[#150050] text-white placeholder-gray-400 border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]"
-          />
+        
+      
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={placeholderText}
+        className="flex-1 px-4 py-2 bg-[#150050] text-white placeholder-gray-400 border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition-all duration-300 shadow focus:shadow-[0_0_15px_#800080] hover:shadow-[0_0_15px_#800080] placeholder-animation"
+      />
           <button
             onClick={() => handleQuery(query)}
             className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"

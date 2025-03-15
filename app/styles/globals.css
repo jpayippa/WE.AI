@@ -77,3 +77,30 @@
     transform: scale(0.98);
     box-shadow: 0 0.5em 1.5em -0.5em hsla(249, 62%, 51%, 0.745);
   }
+
+  /* Original glow effect */
+.placeholder-animation::placeholder {
+  animation: 
+    typing 3s steps(40) infinite,
+    gradientShift 8s infinite linear;
+  background: linear-gradient(45deg, #8a2be2, #ff69b4, #9370db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #8a2be2;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
