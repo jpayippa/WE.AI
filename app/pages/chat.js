@@ -291,13 +291,19 @@ export default function Home() {
       {/* Input Area */}
       <footer className="p-4">
         <div className="max-w-3xl mx-auto flex items-center">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ask me anything about Engineering..."
-            className="flex-1 px-4 py-2 bg-[#150050] text-white placeholder-gray-400 border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]"
-          />
+        <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Ask me anything about Engineering..."
+        className="flex-1 px-4 py-2 bg-[#150050] text-white border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]
+          placeholder:text-transparent 
+          placeholder:bg-gradient-to-r 
+          placeholder:from-pink-400 
+          placeholder:via-purple-400 
+          placeholder:to-purple-500 
+          placeholder:bg-clip-text"
+      />
           <button
             onClick={() => handleQuery(query)}
             className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
