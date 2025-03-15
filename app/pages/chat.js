@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { formatMessage } from "../utils/format"; // Updated import
+import { formatMessage } from "../utils/format";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -36,16 +36,21 @@ export default function Home() {
     fetchToken();
   }, []);
 
-  // Update the handleQuery function signature
-  const handleQuery = async (inputQuery = query, isRefresh = false, refreshIndex = -1) => {
+  const handleQuery = async (
+    inputQuery = query,
+    isRefresh = false,
+    refreshIndex = -1,
+    customHistory = null
+  ) => {
     if (!inputQuery.trim() || !token) return;
     setError(null);
 
     let updatedHistory;
     if (isRefresh) {
-      // Truncate conversation history up to the refreshed message
-      updatedHistory = messages.slice(0, refreshIndex + 1);
-      setMessages(updatedHistory); // Clear subsequent messages
+      updatedHistory = customHistory || messages.slice(0, refreshIndex + 1);
+      if (!customHistory) {
+        setMessages(updatedHistory);
+      }
     } else {
       updatedHistory = [...messages, { sender: "user", text: inputQuery }];
       setMessages(updatedHistory);
@@ -82,18 +87,24 @@ export default function Home() {
     }
   };
 
-  // Handle editing of user messages
   const handleEdit = (index) => {
     setEditIndex(index);
     setEditText(messages[index].text);
   };
 
   const saveEdit = async () => {
-    const updatedMessages = messages.slice(0, editIndex);
-    setMessages(updatedMessages);
+    const updatedMessages = [
+      ...messages.slice(0, editIndex),
+      { ...messages[editIndex], text: editText },
+      ...messages.slice(editIndex + 1),
+    ];
+    const truncatedMessages = updatedMessages.slice(0, editIndex + 1);
+    
+    setMessages(truncatedMessages);
     setEditIndex(null);
     setEditText("");
-    handleQuery(editText);
+    
+    handleQuery(editText, true, editIndex, truncatedMessages);
   };
 
   const cancelEdit = () => {
@@ -101,16 +112,14 @@ export default function Home() {
     setEditText("");
   };
 
-  // Update the handleRefresh function
   const handleRefresh = async (index) => {
     const promptToRefresh = messages[index].text;
-    handleQuery(promptToRefresh, true, index); // Pass the message index
+    handleQuery(promptToRefresh, true, index);
   };
 
-    if (status === "loading") {
-      return <div>Loading...</div>;
-    }
-
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
       {/* WE.AI Logo */}
