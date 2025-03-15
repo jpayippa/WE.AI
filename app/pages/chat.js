@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
+import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync, FaVolumeUp } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { formatMessage } from "../utils/format";
+import { speakText, stopSpeaking } from "../utils/tts";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -12,9 +13,19 @@ export default function Home() {
   const [token, setToken] = useState("");
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
+  const [currentUtterance, setCurrentUtterance] = useState(null);
+  const [isSpeechPlaying, setIsSpeechPlaying] = useState(false);
+  const [ttsSupported, setTtsSupported] = useState(true);
 
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.speechSynthesis) {
+      setTtsSupported(false);
+      setError('Text-to-speech not supported in this browser');
+    }
+  }, []);
 
   useEffect(() => {
     if (status === "loading") return;
@@ -35,6 +46,28 @@ export default function Home() {
     };
     fetchToken();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      stopSpeaking();
+    };
+  }, []);
+
+  const handleTts = (text) => {
+    if (isSpeechPlaying && currentUtterance?.text === text) {
+      stopSpeaking();
+      setIsSpeechPlaying(false);
+    } else {
+      stopSpeaking();
+      const utterance = speakText(
+        text,
+        () => setIsSpeechPlaying(true),
+        () => setIsSpeechPlaying(false)
+      );
+      utterance.text = text;
+      setCurrentUtterance(utterance);
+    }
+  };
 
   const handleQuery = async (
     inputQuery = query,
@@ -120,6 +153,7 @@ export default function Home() {
   if (status === "loading") {
     return <div>Loading...</div>;
   }
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
       {/* WE.AI Logo */}
@@ -201,22 +235,41 @@ export default function Home() {
                       msg.text
                     )}
                   </div>
-                  {msg.sender === "user" && (
-                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <button
-                        onClick={() => handleEdit(index)}
-                        className="text-gray-400 hover:text-white"
-                      >
-                        <FaEdit />
-                      </button>
-                      <button
-                        onClick={() => handleRefresh(index)}
-                        className="text-blue-400 hover:text-white"
-                      >
-                        <FaSync />
-                      </button>
-                    </div>
-                  )}
+                  <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {msg.sender === "user" ? (
+                      <>
+                        <button
+                          onClick={() => handleEdit(index)}
+                          className="text-gray-400 hover:text-white"
+                        >
+                          <FaEdit />
+                        </button>
+                        <button
+                          onClick={() => handleRefresh(index)}
+                          className="text-blue-400 hover:text-white"
+                        >
+                          <FaSync />
+                        </button>
+                      </>
+                    ) : (
+                      ttsSupported && (
+                        <button
+                          onClick={() => handleTts(msg.text)}
+                          className={`${
+                            isSpeechPlaying && currentUtterance?.text === msg.text
+                              ? "text-purple-300"
+                              : "text-purple-400"
+                          } hover:text-purple-300`}
+                          title={isSpeechPlaying && currentUtterance?.text === msg.text 
+                            ? "Stop speech" 
+                            : "Play speech"
+                          }
+                        >
+                          <FaVolumeUp />
+                        </button>
+                      )
+                    )}
+                  </div>
                 </div>
               )}
             </div>
