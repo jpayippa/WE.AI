@@ -1,52 +1,8 @@
-// filepath: WE.AI/app/pages/index.js
 import { useState, useEffect } from "react";
 import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
-// Updated formatMessage function
-function formatMessage(text) {
-  // 1. Replace markdown links [text](url) with anchor tags
-  let replacedMarkdown = text.replace(
-    /\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 underline">$1</a>'
-  );
-
-  // 2. Split into lines
-  const lines = replacedMarkdown.split('\n');
-  let output = '';
-  let inList = false;
-
-  lines.forEach((line) => {
-    const trimmed = line.trim();
-    if (!trimmed) return; // Skip empty lines
-
-    // Updated regex to detect "- **Heading**: description" format
-    const match = trimmed.match(/^-\s*\*\*(.*?)\*\*:\s*(.*)$/);
-    if (match) {
-      if (!inList) {
-        output += '<ul class="list-disc pl-5 space-y-2 my-2">'; // Added Tailwind classes for styling
-        inList = true;
-      }
-      const heading = match[1];
-      const content = match[2];
-      output += `<li><strong class="text-purple-300">${heading}</strong>: ${content}</li>`;
-    } else {
-      if (inList) {
-        output += '</ul>';
-        inList = false;
-      }
-      // Add paragraph styling for non-list items
-      output += `<p class="my-2">${trimmed}</p>`;
-    }
-  });
-
-  if (inList) {
-    output += '</ul>';
-  }
-
-  return output;
-}
+import { formatMessage } from "../utils/format"; // Updated import
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -60,13 +16,11 @@ export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  // If not logged in, redirect to /landing
   useEffect(() => {
     if (status === "loading") return;
     if (!session) router.push("/landing");
   }, [session, status, router]);
 
-  // Fetch token on page load
   useEffect(() => {
     const fetchToken = async () => {
       try {
@@ -82,27 +36,23 @@ export default function Home() {
     fetchToken();
   }, []);
 
-  // Handle user queries, including conversation history for context
   const handleQuery = async (inputQuery = query, isRefresh = false) => {
     if (!inputQuery.trim() || !token) return;
     setError(null);
 
-    // Create an updated history to include the new user query if not a refresh
     let updatedHistory = [...messages];
     if (!isRefresh) {
       updatedHistory = [...messages, { sender: "user", text: inputQuery }];
       setMessages(updatedHistory);
     }
 
-    setQuery(""); // Clear input field
-    setIsThinking(true); // Show thinking indicator
+    setQuery("");
+    setIsThinking(true);
 
     try {
       const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: inputQuery,
           token,
