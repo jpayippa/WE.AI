@@ -36,12 +36,17 @@ export default function Home() {
     fetchToken();
   }, []);
 
-  const handleQuery = async (inputQuery = query, isRefresh = false) => {
+  // Update the handleQuery function signature
+  const handleQuery = async (inputQuery = query, isRefresh = false, refreshIndex = -1) => {
     if (!inputQuery.trim() || !token) return;
     setError(null);
 
-    let updatedHistory = [...messages];
-    if (!isRefresh) {
+    let updatedHistory;
+    if (isRefresh) {
+      // Truncate conversation history up to the refreshed message
+      updatedHistory = messages.slice(0, refreshIndex + 1);
+      setMessages(updatedHistory); // Clear subsequent messages
+    } else {
       updatedHistory = [...messages, { sender: "user", text: inputQuery }];
       setMessages(updatedHistory);
     }
@@ -96,15 +101,15 @@ export default function Home() {
     setEditText("");
   };
 
-  // Regenerate the response for a given user message
+  // Update the handleRefresh function
   const handleRefresh = async (index) => {
     const promptToRefresh = messages[index].text;
-    handleQuery(promptToRefresh, true);
+    handleQuery(promptToRefresh, true, index); // Pass the message index
   };
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+    if (status === "loading") {
+      return <div>Loading...</div>;
+    }
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
