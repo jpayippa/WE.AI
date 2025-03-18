@@ -9,6 +9,7 @@ import {
   FaHistory,
   FaTrash,
   FaCopy,
+  FaHome
 } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { useSession, signOut } from "next-auth/react";
@@ -291,7 +292,7 @@ export default function Home() {
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
       {/* WE.AI Logo */}
       <div className="absolute top-4 left-6">
-        <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 cursor-pointer hover:opacity-80 transition duration-300">
+        <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
           WE.AI: ALPHA
         </h1>
       </div>
@@ -299,7 +300,7 @@ export default function Home() {
       {/* Header */}
       <header className="text-grey text-center py-6 relative">
         <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r  from-purple-500 to-indigo-600 glow-hover-effect">
             Your Western Engineering AI Assistant.
           </span>
         </p>
@@ -311,6 +312,11 @@ export default function Home() {
         <div className="absolute top-4 right-6 flex items-center space-x-4">
           {session ? (
             <>
+                  <FaHome
+                  onClick={() => router.push("/landing")}
+                  className="w-7 h-7 hover:fill-purple-400 cursor-pointer"
+                  title="Home"
+                />
               <FaHistory
                 onClick={() => toggleDashboard()}
                 className="w-7 h-7 hover:fill-purple-400"
