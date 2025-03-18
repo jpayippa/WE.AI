@@ -307,7 +307,7 @@ export default function Home() {
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
         {/* WE.AI Logo */}
         <div className="absolute top-4 left-6">
-            <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 cursor-pointer hover:opacity-80 transition duration-300">
+            <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
                 WE.AI: ALPHA
             </h1>
         </div>
@@ -315,7 +315,7 @@ export default function Home() {
         {/* Header */}
         <header className="text-grey text-center py-6 relative">
             <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 glow-hover-effect">
                     Your Western Engineering AI Assistant.
                 </span>
             </p>
@@ -502,67 +502,73 @@ export default function Home() {
             </div>
         )}
 
-        {/* Side Dashboard */}
-        <div
-            className={`fixed top-0 right-0 h-full w-80 bg-gray-800 text-white transform transition-transform duration-300 overflow-y-scroll
-                ${showDashboard ? 'translate-x-0' : 'translate-x-full'}`}
-        >
-            <div className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-xl font-bold">My Chats</h2>
-                    <button
-                        onClick={toggleDashboard}
-                        className="px-3 py-1 bg-purple-600 text-white rounded-lg shadow transition duration-300 hover:bg-purple-700"
-                    >
-                        Close
-                    </button>
-                </div>
-                <div className="space-y-2">
-                    {chats.length === 0 ? (
-                        <p className="text-gray-400">No chats found</p>
-                    ) : (
-                        chats.map((chat) => (
-                            <div key={chat.id} className="flex items-center justify-between group">
-                                <div className="flex-1 flex items-center">
-                                    {editingChatId === chat.id ? (
-                                        <input
-                                            type="text"
-                                            value={newChatTitle}
-                                            onChange={(e) => setNewChatTitle(e.target.value)}
-                                            className="flex-1 px-2 py-1 bg-gray-700 text-white rounded"
-                                            autoFocus
-                                        />
-                                    ) : (
-                                        <button
-                                            className="w-full text-left p-2 overflow-y-hidden bg-gray-800 rounded-lg hover:bg-gray-700"
-                                            onClick={() => handleChatSelection(chat.id)}
-                                        >
-                                            {chat.title || "Untitled Chat"}
-                                        </button>
-                                    )}
-                                </div>
-                                <div className="flex items-center ml-2">
-                                    <button
-                                        onClick={() => handleEditChatTitle(chat.id, chat.title)}
-                                        className="p-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:text-blue-300"
-                                        title="Edit chat name"
-                                    >
-                                        {editingChatId === chat.id ? <FaSave /> : <FaEdit />}
-                                    </button>
-                                    <button
-                                        onClick={() => handleDeleteChat(chat.id)}
-                                        className="p-2 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:text-red-400"
-                                        title="Delete chat"
-                                    >
-                                        <FaTrash className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            </div>
-                        ))
-                    )}
-                </div>
-            </div>
+{/* Side Dashboard */}
+<div
+    className={`fixed top-0 right-0 h-full w-80 bg-[#0c043c] text-white transform transition-transform duration-300 overflow-y-auto
+        ${showDashboard ? 'translate-x-0' : 'translate-x-full'}`}
+>
+    <div className="p-4">
+        <div className="flex items-center justify-between mb-6 border-b border-purple-900 pb-4">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-purple-500 to-indigo-600  bg-clip-text text-transparent">
+                Chat History
+            </h2>
+            <button
+                onClick={toggleDashboard}
+                className="px-3 py-1 bg-[#3f0071] text-white  font-semibold rounded-lg shadow-lg transition duration-300 hover:bg-purple-700"
+            >
+                Close
+            </button>
         </div>
+        <div className="space-y-2">
+            {chats.length === 0 ? (
+                <p className="text-gray-400 text-center py-4">No chats found</p>
+            ) : (
+                chats.map((chat) => (
+                    <div 
+                        key={chat.id} 
+                        className="group relative p-2 hover:bg-[#3f0071] rounded-lg transition-all duration-200">
+                        <div className="flex items-center justify-between">
+                            <div className="flex-1 flex items-center min-w-0">
+                                {editingChatId === chat.id ? (
+                                    <input
+                                        type="text"
+                                        value={newChatTitle}
+                                        onChange={(e) => setNewChatTitle(e.target.value)}
+                                        className="flex-1 px-3 py-1 bg-[#150050] text-white rounded-lg border border-purple-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                        autoFocus
+                                    />
+                                ) : (
+                                    <button
+                                        className="w-full text-left p-2 truncate text-purple-200 hover:text-white transition-colors"
+                                        onClick={() => handleChatSelection(chat.id)}
+                                    >
+                                        {chat.title || "New Chat"}
+                                    </button>
+                                )}
+                            </div>
+                            <div className="flex items-center space-x-2 ml-2">
+                                <button
+                                    onClick={() => handleEditChatTitle(chat.id, chat.title)}
+                                    className="p-1.5 text-purple-400 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-purple-300 hover:bg-purple-900 rounded-lg"
+                                    title="Edit chat name"
+                                >
+                                    {editingChatId === chat.id ? <FaSave className="w-4 h-4" /> : <FaEdit className="w-4 h-4" />}
+                                </button>
+                                <button
+                                    onClick={() => handleDeleteChat(chat.id)}
+                                    className="p-1.5 text-pink-500 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-pink-400 hover:bg-purple-900 rounded-lg"
+                                    title="Delete chat"
+                                >
+                                    <FaTrash className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            )}
+        </div>
+    </div>
+</div>
     </div>
 );
 }
