@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs,getDoc,setDoc, doc, serverTimestamp, addDoc, query, orderBy, limit } from "firebase/firestore";
-
+import { deleteDoc } from "firebase/firestore"; // Add this import
+import { updateDoc } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -14,6 +15,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+
+export async function deleteChat(userId, chatId) {
+    if (!userId || !chatId) {
+        console.warn("❌ Missing userId or chatId");
+        return false;
+    }
+
+    try {
+        const chatRef = doc(db, `users/${userId}/chats/${chatId}`);
+        await deleteDoc(chatRef);
+        return true;
+    } catch (error) {
+        console.error("❌ Error deleting chat:", error);
+        return false;
+    }
+}
 
 export async function createUserIfNotExists(user) {
     const userRef = doc(db, "users", user); // Reference to user's document
@@ -33,12 +51,10 @@ export async function createUserIfNotExists(user) {
 export async function createNewChat(userId) {
     const chatRef = collection(db, `users/${userId}/chats`);
     const newChat = await addDoc(chatRef, {
-        title: Date(),
+        title: "New Chat", // Default title
         createdAt: serverTimestamp()
     });
-
-    //console.log("Chat created with ID:", newChat.id);
-    return newChat.id; // Return chat ID to store messages
+    return newChat.id;
 }
 
 export async function saveMessage(userId, chatId, sender, content) {
@@ -51,6 +67,24 @@ export async function saveMessage(userId, chatId, sender, content) {
     });
 
     //console.log("Message added to Firestore");
+}
+
+export async function updateChatTitle(userId, chatId, newTitle) {
+    if (!userId || !chatId) {
+        console.warn("❌ Missing userId or chatId");
+        return false;
+    }
+
+    try {
+        const chatRef = doc(db, `users/${userId}/chats/${chatId}`);
+        await updateDoc(chatRef, {
+            title: newTitle
+        });
+        return true;
+    } catch (error) {
+        console.error("❌ Error updating chat title:", error);
+        return false;
+    }
 }
 
 export async function fetchChatMessages(userId, chatId) {
@@ -141,4 +175,10 @@ export async function getAllChatDocs(userId) {
         console.error("❌ Error fetching chats:", error);
         return []; // Gracefully return an empty array on error
     }
+
+
+    
+
+
+    
 }
