@@ -9,7 +9,7 @@ import {
   FaHistory,
   FaTrash,
   FaCopy,
-  FaHome
+  FaHome,
 } from "react-icons/fa";
 import { FaPenToSquare } from "react-icons/fa6";
 import { useSession, signOut } from "next-auth/react";
@@ -299,7 +299,7 @@ export default function Home() {
 
       {/* Header */}
       <header className="text-grey text-center py-6 relative">
-        <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
+        <p className="text-4xl mt-20 font-bold font-inter text-white cursor-pointer relative transition duration-300">
           <span className="text-transparent bg-clip-text bg-gradient-to-r  from-purple-500 to-indigo-600 glow-hover-effect">
             Your Western Engineering AI Assistant.
           </span>
@@ -311,32 +311,55 @@ export default function Home() {
         {/* Top Right User Profile & Logout */}
         <div className="absolute top-4 right-6 flex items-center space-x-4">
           {session ? (
-            <>
-                  <FaHome
+            <div className="flex items-center gap-4">
+              {/* App Controls */}
+              <div className="flex items-center gap-3 bg-[#1a0a2e] px-3 py-1 rounded-full shadow-lg border border-purple-900">
+                <button
                   onClick={() => router.push("/landing")}
-                  className="w-7 h-7 hover:fill-purple-400 cursor-pointer"
+                  className="p-2 hover:bg-purple-900 rounded-full transition-all duration-200 group relative"
                   title="Home"
+                >
+                  <FaHome className="w-5 h-5 text-purple-400 hover:text-purple-300" />
+                  <span className="tooltip"></span>
+                </button>
+
+                <div className="h-6 w-px bg-purple-700"></div>
+
+                <button
+                  onClick={() => toggleDashboard()}
+                  className="p-2 hover:bg-purple-900 rounded-full transition-all duration-200 group relative"
+                  title="History"
+                >
+                  <FaHistory className="w-5 h-5 text-purple-400 hover:text-purple-300" />
+                  <span className="tooltip"></span>
+                </button>
+
+                <button
+                  onClick={() => handleNewChat()}
+                  className="p-2 hover:bg-purple-900 rounded-full transition-all duration-200 group relative"
+                  title="New Chat"
+                >
+                  <FaPenToSquare className="w-5 h-5 text-purple-400 hover:text-purple-300" />
+                  <span className="tooltip"></span>
+                </button>
+              </div>
+
+              {/* User Section */}
+              <div className="flex items-center gap-3 bg-[#1a0a2e] pl-3 pr-1 py-1.5 rounded-full shadow-lg border border-purple-900">
+                <img
+                  src={session.user.image}
+                  alt="User Profile"
+                  className="w-8 h-8 rounded-full border-2 border-purple-600 shadow-md"
                 />
-              <FaHistory
-                onClick={() => toggleDashboard()}
-                className="w-7 h-7 hover:fill-purple-400"
-              />
-              <FaPenToSquare
-                onClick={() => handleNewChat()}
-                className="w-7 h-7 hover:fill-purple-400"
-              />
-              <img
-                src={session.user.image}
-                alt="User Profile"
-                className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
-              />
-              <button
-                onClick={() => signOut()}
-                className="bg-[#3f0071] text-white font-semibold px-4 py-2 rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
-              >
-                Sign Out
-              </button>
-            </>
+                <button
+                  onClick={() => signOut()}
+                  className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-full transition-all duration-200 flex items-center gap-1"
+                >
+                  <span className="hidden sm:inline">Sign Out</span>
+                  <FaArrowUp className="w-3 h-3 rotate-45" />
+                </button>
+              </div>
+            </div>
           ) : null}
         </div>
       </header>
