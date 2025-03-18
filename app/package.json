@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "firebase": "^11.4.0",
     "framer-motion": "^12.4.11",
     "motion": "^12.4.11",
     "next": "15.1.3",

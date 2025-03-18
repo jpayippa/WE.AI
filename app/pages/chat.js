@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync, FaVolumeUp } from "react-icons/fa";
+import { FaArrowUp, FaEdit, FaSave, FaTimes, FaSync, FaVolumeUp, FaHistory } from "react-icons/fa";
+import { FaPenToSquare } from "react-icons/fa6";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { formatMessage } from "../utils/format";
 import { speakText, stopSpeaking } from "../utils/tts";
+import { createUserIfNotExists, createNewChat, saveMessage, fetchChatMessages, getLatestChatId, getAllChatDocs } from "@/utils/historyHelper";
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -16,10 +18,65 @@ export default function Home() {
   const [currentUtterance, setCurrentUtterance] = useState(null);
   const [isSpeechPlaying, setIsSpeechPlaying] = useState(false);
   const [ttsSupported, setTtsSupported] = useState(true);
-
+  const [currentChat, setCurrentChat] = useState("test");
   const { data: session, status } = useSession();
+  const [chatVisible, setChatVisible] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [chats, setChats] = useState([])
+
   const router = useRouter();
 
+  const handleStartChat = async () => {
+    setChatVisible(true);
+    const startChat = await createNewChat(session.user.email)
+    setCurrentChat(startChat) 
+  };
+
+  const toggleDashboard = (userId) => {
+    
+    setShowDashboard((prev) => !prev);
+    const fetchChats = async () => {
+      const chatList = await getAllChatDocs(session.user.email)
+      setChats(chatList)
+    }
+    fetchChats();
+
+  };
+
+  const handleChatSelection = (chatId) => {
+    //console.log("Selected Chat ID:", chatId); // Debugging
+    setCurrentChat(chatId); // Update the state to switch the chat
+    setShowDashboard(false)
+    setChatVisible(true)
+
+    const loadChat = async () => {
+      const fetchedMessages = await fetchChatMessages(session.user.email, chatId)
+      const messagesArray = Object.keys(fetchedMessages).map(key => ({
+        id: key,
+        sender: fetchedMessages[key].sender,
+        text: fetchedMessages[key].content,
+        timestamp: fetchedMessages[key].timestamp, // Optional for sorting
+      }));
+  
+      // Sort messages by timestamp (if timestamps exist)
+      messagesArray.sort((a, b) => (a.timestamp > b.timestamp ? 1 : -1));
+      setMessages(messagesArray); // Populate chat UI
+    }
+
+    loadChat()
+
+  };
+
+  const handleNewChat = async () => {
+    
+    setMessages([]);
+    setChatVisible(true)
+    const newChat = await createNewChat(session.user.email)
+    setCurrentChat(newChat)
+    
+
+  }
+  
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.speechSynthesis) {
       setTtsSupported(false);
@@ -29,8 +86,15 @@ export default function Home() {
 
   useEffect(() => {
     if (status === "loading") return;
-    if (!session) router.push("/landing");
+    if (!session) {
+      router.push("/landing")
+    } else {
+      createUserIfNotExists(session.user.email) // history
+    };
+
   }, [session, status, router]);
+
+
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -87,13 +151,14 @@ export default function Home() {
     } else {
       updatedHistory = [...messages, { sender: "user", text: inputQuery }];
       setMessages(updatedHistory);
+      saveMessage(session.user.email, currentChat, "user", inputQuery) //history
     }
 
     setQuery("");
     setIsThinking(true);
 
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      const res = await fetch("http://localhost:5001/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -105,7 +170,6 @@ export default function Home() {
           })),
         }),
       });
-
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error || "Failed to fetch response.");
@@ -113,6 +177,7 @@ export default function Home() {
 
       const data = await res.json();
       setMessages((prev) => [...prev, { sender: "bot", text: data.response }]);
+      saveMessage(session.user.email, currentChat,"bot", data.response)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -177,6 +242,14 @@ export default function Home() {
         <div className="absolute top-4 right-6 flex items-center space-x-4">
           {session ? (
             <>
+              <FaHistory
+                onClick={() => toggleDashboard()}
+                className="w-7 h-7 hover:fill-purple-400"                
+              />    
+              <FaPenToSquare
+                onClick={() => handleNewChat()}
+                className="w-7 h-7 hover:fill-purple-400"                
+              />    
               <img
                 src={session.user.image}
                 alt="User Profile"
@@ -194,6 +267,18 @@ export default function Home() {
       </header>
 
       {/* Chat Area */}
+      {!chatVisible ? (
+        <div>
+          <div className="flex items-center justify-center">
+          <button
+            onClick={handleStartChat}
+            className="px-6 py-3 bg-purple-600 text-white text-lg font-bold rounded-lg shadow-lg transition duration-300 hover:bg-purple-700"
+          >
+            Start Chat
+          </button>
+        </div>
+        </div>
+      ) : (
       <div className="flex-1 overflow-y-auto p-6">
         <div className="max-w-3xl mx-auto space-y-4">
           {messages.map((msg, index) => (
@@ -287,45 +372,84 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* Input Area */}
-      <footer className="p-4">
-        <div className="max-w-3xl mx-auto flex items-center">
-        <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Ask me anything about Engineering..."
-        className="flex-1 px-4 py-2 bg-[#150050] text-white border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]
-          placeholder:text-transparent 
-          placeholder:bg-gradient-to-r 
-          placeholder:from-pink-400 
-          placeholder:via-purple-400 
-          placeholder:to-purple-500 
-          placeholder:bg-clip-text"
-      />
-          <button
-            onClick={() => handleQuery(query)}
-            className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
-          >
-            <FaArrowUp className="w-4 h-4" />
-          </button>
-        </div>
-        <p className="text-xs text-center mt-4 font-inter text-gray-500">
-          WE.AI can make mistakes. Check{" "}
-          <a href="https://eng.uwo.ca" className="underline">
-            eng.uwo.ca
-          </a>{" "}
-          to fact check.
-        </p>
-      </footer>
-
+      )}
+      {!chatVisible ? (
+        <div></div>
+      ) : 
+      (
+        <footer className="p-4">
+          <div className="max-w-3xl mx-auto flex items-center">
+          <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Ask me anything about Engineering..."
+          className="flex-1 px-4 py-2 bg-[#150050] text-white border border-[#3f0071] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3f0071] font-inter transition duration-300 shadow focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080]
+            placeholder:text-transparent 
+            placeholder:bg-gradient-to-r 
+            placeholder:from-pink-400 
+            placeholder:via-purple-400 
+            placeholder:to-purple-500 
+            placeholder:bg-clip-text"
+          />
+            <button
+              onClick={() => handleQuery(query)}
+              className="ml-4 px-4 py-3 bg-[#3f0071] text-white font-semibold rounded-full shadow-lg focus:shadow-[0_0_10px_#800080] hover:shadow-[0_0_10px_#800080] focus:outline-none focus:ring-2 focus:ring-purple-400 flex items-center justify-center transition duration-300"
+            >
+              <FaArrowUp className="w-4 h-4" />
+            </button>
+          </div>
+        
+          <p className="text-xs text-center mt-4 font-inter text-gray-500">
+            WE.AI can make mistakes. Check{" "}
+            <a href="https://eng.uwo.ca" className="underline">
+              eng.uwo.ca
+            </a>{" "}
+            to fact check.
+          </p>
+        </footer>
+      )}
+      
       {/* Error Message */}
       {error && (
         <div className="bg-red-100 text-red-800 p-2 text-center text-sm mt-2 rounded-lg">
           {error}
         </div>
       )}
+      {/* Side Dashboard */}
+      <div
+        className={`fixed top-0 right-0 h-full w-80 bg-gray-800 text-white transform transition-transform duration-300 overflow-y-scroll
+          ${showDashboard ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-xl font-bold">My Chats</h2>
+            <button
+              onClick={toggleDashboard}
+              className="px-3 py-1 bg-purple-600 text-white rounded-lg shadow transition duration-300 hover:bg-purple-700"
+            >
+              Close
+            </button>
+          </div>
+          <div className="space-y-2">
+                {chats.length === 0 ? (
+                    <p className="text-gray-400">No chats found</p>
+                ) : (
+                    chats.map((chat) => (
+                        <button
+                            key={chat.id}
+                            className="w-full text-left p-2 overflow-y-hidden bg-gray-800 rounded-lg hover:bg-gray-700"
+                            onClick={() => handleChatSelection(chat.id)}
+                        >
+                            {chat.title.slice(0,-40) || "Untitled Chat"}
+                            
+                        </button>
+                    ))
+                )}
+            </div>
+
+        </div>
+      </div>
     </div>
   );
 }
