@@ -17,18 +17,6 @@ import {
   updateChatTitle  // Add this
 } from "@/utils/historyHelper";
 
-// Add to existing firestore imports
-import { 
-  doc, 
-  collection, 
-  query, 
-  orderBy, 
-  where, 
-  limit, 
-  getDocs, 
-  deleteDoc 
-} from "firebase/firestore";
-
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [query, setQuery] = useState("");
@@ -272,42 +260,18 @@ export default function Home() {
 
   const handleRefresh = async (index) => {
     const promptToRefresh = messages[index].text;
-    
-    // Remove existing bot response if it exists
-    const updatedMessages = messages.slice(0, index + 1);
-    
-    // Update local state immediately
-    setMessages(updatedMessages);
-    
-    // Update Firestore
-    try {
-        // Get the chat document reference
-        const chatRef = doc(db, `users/${session.user.email}/chats/${currentChat}`);
-        const messagesRef = collection(chatRef, "messages");
-        
-        // Find and delete the existing bot response
-        const q = query(messagesRef, 
-            orderBy("timestamp"), 
-            where("sender", "==", "bot"), 
-            limit(1));
-            
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach(async (doc) => {
-            await deleteDoc(doc.ref);
-        });
-    } catch (error) {
-        console.error("Error deleting old response:", error);
-    }
-    
-    // Trigger new query
-    handleQuery(promptToRefresh, true, index, updatedMessages);
-};
+    handleQuery(promptToRefresh, true, index);
+  };
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
         {/* WE.AI Logo */}
         <div className="absolute top-4 left-6">
-            <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
+            <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 cursor-pointer hover:opacity-80 transition duration-300">
                 WE.AI: ALPHA
             </h1>
         </div>
@@ -315,7 +279,7 @@ export default function Home() {
         {/* Header */}
         <header className="text-grey text-center py-6 relative">
             <p className="text-4xl mt-10 font-bold font-inter text-white cursor-pointer relative transition duration-300">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 glow-hover-effect">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-purple-400 glow-hover-effect">
                     Your Western Engineering AI Assistant.
                 </span>
             </p>
