@@ -26,7 +26,7 @@ def load_config():
 def scrape_data(config):
     """Run the Scrapy spider using CrawlerProcess without requiring a Scrapy project."""
     raw_data_dir = config.get("output_folder", "./Data/raw")
-    logs_dir = config.get("log_folder", "./Results/logs")
+    logs_dir = config.get("log_folder", "./Data/logs")
     os.makedirs(raw_data_dir, exist_ok=True)
     os.makedirs(logs_dir, exist_ok=True)
 

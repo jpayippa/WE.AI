@@ -124,6 +124,16 @@ secret-config/
 scraper-results/
 Scrapping/Data/**/*.json
 Scrapping/Data/**/*.jsonl
+Scrapping/Data/**/*.csv
+Scrapping/Data/**/*.xls
+Scrapping/Data/**/*.xlsx
+Scrapping/Data/**/*.pdf
+Scrapping/Data/**/*.zip
+
 *.csv
 *.xls
 *.xlsx
+
+
+!Scrapping/configs/*.json
+!Scrapping/mistral-weai-finetuned/*.json
