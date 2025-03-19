@@ -12,6 +12,9 @@ export default function AboutUs() {
         <p className="mt-2 text-lg text-gray-300">
           Learn more about the team behind WE.AI
         </p>
+        <Link href="/landing" legacyBehavior>
+          <a className="text-purple-400 hover:text-purple-300 mt-4 inline-block">Back to Home</a>
+        </Link>
       </header>
 
       {/* Main Content */}
@@ -85,9 +88,6 @@ export default function AboutUs() {
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
         </p>
-        <Link href="/landing" legacyBehavior>
-          <a className="text-purple-400 hover:text-purple-300">Back to Home</a>
-        </Link>
       </footer>
     </div>
   );
