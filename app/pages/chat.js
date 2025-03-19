@@ -304,7 +304,7 @@ export default function Home() {
             Your Western Engineering AI Assistant.
           </span>
         </p>
-        <p className="text-xs mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
+        <p className="text-sm mt-2 font-bold font-inter text-white cursor-pointer hover:text-purple-400 transition duration-300">
           made by Western Software Engineering Students
         </p>
 
@@ -370,7 +370,7 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <button
               onClick={handleStartChat}
-              className="px-3 py-2 bg-[#3e00713a] text-md font-semibold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
+              className="mt-0.4 px-3 py-2 bg-[#3e00713a] text-md font-semibold rounded-lg shadow-[0_0_10px_#a855f7] hover:shadow-[0_0_40px_#a855f7] transition duration-300"
             >
               Start Chat
             </button>
