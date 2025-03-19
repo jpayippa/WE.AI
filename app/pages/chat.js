@@ -273,31 +273,26 @@ const handleQuery = async (
     setEditText(messages[index].text);
   };
 
-// Update saveEdit in chat.js
-const saveEdit = async () => {
-  const messageId = messages[editIndex].id;
-  const success = await updateMessage(session.user.email, currentChat, messageId, editText);
+  const saveEdit = async () => {
+    const updatedMessages = [
+      ...messages.slice(0, editIndex),
+      { ...messages[editIndex], text: editText },
+      ...messages.slice(editIndex + 1),
+    ];
+    const truncatedMessages = updatedMessages.slice(0, editIndex + 1);
+    
+    setMessages(truncatedMessages);
+    setEditIndex(null);
+    setEditText("");
+    
+    handleQuery(editText, true, editIndex, truncatedMessages);
+  };
 
-  if (success) {
-      const updatedMessages = [
-          ...messages.slice(0, editIndex),
-          { ...messages[editIndex], text: editText },
-          ...messages.slice(editIndex + 1),
-      ];
-      const truncatedMessages = updatedMessages.slice(0, editIndex + 1);
-
-      setMessages(truncatedMessages);
-      setEditIndex(null);
-      setEditText("");
-
-      handleQuery(editText, true, editIndex, truncatedMessages);
-  }
-};
   const cancelEdit = () => {
     setEditIndex(null);
     setEditText("");
   };
-
+  
   const handleRefresh = async (index) => {
     const promptToRefresh = messages[index].text;
     handleQuery(promptToRefresh, true, index);
