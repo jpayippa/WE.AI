@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
@@ -9,11 +9,9 @@ export default function AboutUs() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600">
           About Us
         </h1>
-        <p className="mt-2 text-lg text-gray-300">
-          Learn more about the team behind WE.AI
-        </p>
-        <Link href="/landing" legacyBehavior>
-          <a className="text-purple-400 hover:text-purple-300 mt-4 inline-block">Back to Home</a>
+        <p className="mt-2 text-lg text-gray-300">Learn more about the team behind WE.AI</p>
+        <Link href="/landing" className="text-purple-400 hover:text-purple-300 mt-4 inline-block">
+          Back to Home
         </Link>
       </header>
 
@@ -22,69 +20,35 @@ export default function AboutUs() {
         {/* Team Section */}
         <section className="max-w-4xl mx-auto mt-12">
           <h2 className="text-3xl font-bold text-center">Our Team</h2>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Team Member 1 */}
-            <div className="text-center">
-              <Image
-                src="/team-member-1.jpg"
-                alt="Joel Payippara Shibu"
-                width={150}
-                height={150}
-                className="rounded-full mx-auto"
-              />
-              <h3 className="mt-4 text-xl font-bold">Joel Payippara Shibu</h3>
-              <p className="text-gray-300">Lead Software Engineer</p>
-            </div>
-            {/* Team Member 2 */}
-            <div className="text-center">
-              <Image
-                src="/team-member-2.jpg"
-                alt="Hassan Amin"
-                width={150}
-                height={150}
-                className="rounded-full mx-auto"
-              />
-              <h3 className="mt-4 text-xl font-bold">Hassan Amin</h3>
-              <p className="text-gray-300">AI Specialist</p>
-            </div>
-            {/* Team Member 3 */}
-            <div className="text-center">
-              <Image
-                src="/team-member-3.jpg"
-                alt="Saif Ahmad"
-                width={150}
-                height={150}
-                className="rounded-full mx-auto"
-              />
-              <h3 className="mt-4 text-xl font-bold">Saif Ahmad</h3>
-              <p className="text-gray-300">Frontend Developer</p>
-            </div>
-            {/* Team Member 4 */}
-            <div className="text-center">
-              <Image
-                src="/team-member-4.jpg"
-                alt="Yoosuf Bakhtair"
-                width={150}
-                height={150}
-                className="rounded-full mx-auto"
-              />
-              <h3 className="mt-4 text-xl font-bold">Yoosuf Bakhtair</h3>
-              <p className="text-gray-300">Machine Learning Engineer</p>
-            </div>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { name: "Joel Payippara Shibu", role: "Lead Software Engineer", image: "/team-member-1.jpg" },
+              { name: "Hassan Amin", role: "AI Specialist", image: "/team-member-2.jpg" },
+              { name: "Saif Ahmad", role: "Frontend Developer", image: "/team-member-3.jpg" },
+              { name: "Yoosuf Bakhtair", role: "Machine Learning Engineer", image: "/team-member-4.jpg" }
+            ].map((member, index) => (
+              <div key={index} className="text-center">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={150}
+                  height={150}
+                  className="rounded-full mx-auto"
+                />
+                <h3 className="mt-4 text-xl font-bold">{member.name}</h3>
+                <p className="text-gray-300">{member.role}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Project Section */}
-        <section className="max-w-4xl mx-auto mt-12">
-          <h2 className="text-3xl font-bold text-center">Our Project</h2>
-          <p className="mt-4 text-lg text-gray-300 text-center">
-            WE.AI is an AI-powered assistant designed to help engineering students at Western University. Our goal is to streamline the learning experience by providing quick and accurate information related to engineering courses, projects, and university resources.
-          </p>
-          <p className="mt-4 text-lg text-gray-300 text-center">
-            We believe that by leveraging the power of AI, we can make learning more efficient and enjoyable. Our team has worked tirelessly to develop a tool that not only answers your questions but also learns from your interactions to provide more personalized assistance over time.
-          </p>
-          <p className="mt-4 text-lg text-gray-300 text-center">
-            Whether you need help with a complex engineering problem, want to explore new topics, or simply need quick access to course materials, WE.AI is here to support you every step of the way.
+        <section className="max-w-4xl mx-auto mt-12 text-center">
+          <h2 className="text-3xl font-bold">Our Project</h2>
+          <p className="mt-4 text-lg text-gray-300">
+            WE.AI is an AI-powered assistant designed to help engineering students at Western University. 
+            Our goal is to streamline the learning experience by providing quick and accurate information 
+            related to engineering courses, projects, and university resources.
           </p>
         </section>
       </main>
@@ -94,8 +58,8 @@ export default function AboutUs() {
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
         </p>
-        <Link href="/landing" legacyBehavior>
-          <a className="text-purple-400 hover:text-purple-300">Back to Home</a>
+        <Link href="/landing" className="text-purple-400 hover:text-purple-300">
+          Back to Home
         </Link>
       </footer>
     </div>
