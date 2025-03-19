@@ -19,42 +19,54 @@ export default function AboutUs() {
         {/* Team Section */}
         <section className="max-w-4xl mx-auto mt-12">
           <h2 className="text-3xl font-bold text-center">Our Team</h2>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Team Member 1 */}
             <div className="text-center">
               <Image
                 src="/team-member-1.jpg"
-                alt="Team Member 1"
+                alt="Joel Payippara Shibu"
                 width={150}
                 height={150}
                 className="rounded-full mx-auto"
               />
-              <h3 className="mt-4 text-xl font-bold">John Doe</h3>
-              <p className="text-gray-300">Software Engineer</p>
+              <h3 className="mt-4 text-xl font-bold">Joel Payippara Shibu</h3>
+              <p className="text-gray-300">Lead Software Engineer</p>
             </div>
             {/* Team Member 2 */}
             <div className="text-center">
               <Image
                 src="/team-member-2.jpg"
-                alt="Team Member 2"
+                alt="Hassan Amin"
                 width={150}
                 height={150}
                 className="rounded-full mx-auto"
               />
-              <h3 className="mt-4 text-xl font-bold">Jane Smith</h3>
+              <h3 className="mt-4 text-xl font-bold">Hassan Amin</h3>
               <p className="text-gray-300">AI Specialist</p>
             </div>
             {/* Team Member 3 */}
             <div className="text-center">
               <Image
                 src="/team-member-3.jpg"
-                alt="Team Member 3"
+                alt="Saif Ahmad"
                 width={150}
                 height={150}
                 className="rounded-full mx-auto"
               />
-              <h3 className="mt-4 text-xl font-bold">Alice Johnson</h3>
+              <h3 className="mt-4 text-xl font-bold">Saif Ahmad</h3>
               <p className="text-gray-300">Frontend Developer</p>
+            </div>
+            {/* Team Member 4 */}
+            <div className="text-center">
+              <Image
+                src="/team-member-4.jpg"
+                alt="Yoosuf Bakhtair"
+                width={150}
+                height={150}
+                className="rounded-full mx-auto"
+              />
+              <h3 className="mt-4 text-xl font-bold">Yoosuf Bakhtair</h3>
+              <p className="text-gray-300">Machine Learning Engineer</p>
             </div>
           </div>
         </section>
