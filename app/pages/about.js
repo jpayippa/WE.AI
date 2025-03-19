@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+ import Image from 'next/image';
  
  export default function AboutUs() {
    return (
@@ -73,10 +73,11 @@ import Image from 'next/image';
          <p>
            Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
          </p>
-         <Link href="/">
+       
+         <Link href="/landing" legacyBehavior>
            <a className="text-purple-400 hover:text-purple-300">Back to Home</a>
          </Link>
        </footer>
      </div>
    );
- }
+}
