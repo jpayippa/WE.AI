@@ -4,122 +4,112 @@ import logging
 from datetime import datetime
 import csv
 
-
-# Initialize logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-
-def load_cleaned_data(cleaned_data_folder):
-    """Load cleaned JSON files from the specified folder."""
-    logging.info("Loading cleaned data from folder: %s", cleaned_data_folder)
+def load_cleaned_data(folder):
     data = []
-    for filename in os.listdir(cleaned_data_folder):
-        filepath = os.path.join(cleaned_data_folder, filename)
-        if filename.endswith(".json"):
-            with open(filepath, "r", encoding="utf-8") as file:
+    for file in os.listdir(folder):
+        if file.endswith(".json"):
+            with open(os.path.join(folder, file), encoding="utf-8") as f:
                 try:
-                    content = json.load(file)
-                    if isinstance(content, list):
-                        data.extend(content)  # Flatten nested lists
-                    else:
-                        data.append(content)
+                    content = json.load(f)
+                    data.extend(content if isinstance(content, list) else [content])
                 except json.JSONDecodeError as e:
-                    logging.error(f"Error decoding JSON in file {filename}: {e}")
-    logging.info("Loaded %d cleaned files.", len(data))
+                    logging.error(f"Error loading {file}: {e}")
     return data
 
+def validate_item(item):
+    required_fields = [
+        "more_info_at", 
+        "scraped_at", 
+        "headings", 
+        "paragraphs", 
+        "links", 
+        "named_entities", 
+        "contact_info"
+    ]
+
+    for field in required_fields:
+        if field not in item:
+            return False, f"Missing required field: {field}"
+
+    if not item["more_info_at"].startswith("http"):
+        return False, "Invalid URL in more_info_at"
+
+    if not item["paragraphs"]:
+        return False, "No usable paragraphs found"
+
+    # Links should be a list of {"text": ..., "url": ...}
+    if not isinstance(item["links"], list) or not all("url" in link for link in item["links"]):
+        return False, "Invalid or missing link structure"
+
+    # Named entities should be a dict with lists
+    if not isinstance(item["named_entities"], dict) or not all(isinstance(v, list) for v in item["named_entities"].values()):
+        return False, "Invalid named_entities format"
+
+    # Contact info should have at least one useful piece of info
+    contact = item.get("contact_info", {})
+    if not (contact.get("phone") or contact.get("email") or contact.get("address")):
+        logging.warning(f"Item missing full contact info: {item['more_info_at']}")
+
+    return True, None
 
 
 def validate_data(data):
-    """Validate cleaned data for completeness and consistency."""
-    logging.info("Validating data...")
-    valid_data = []
-    invalid_data = []
-
+    valid, invalid = [], []
     for item in data:
-        # If item is a list, iterate through it
-        if isinstance(item, list):
-            for sub_item in item:
-                if isinstance(sub_item, dict) and sub_item.get("url") and sub_item.get("paragraphs"):
-                    valid_data.append(sub_item)
-                else:
-                    invalid_data.append(sub_item)
-        elif isinstance(item, dict):
-            # Check required fields
-            if item.get("url") and item.get("paragraphs"):
-                valid_data.append(item)
-            else:
-                invalid_data.append(item)
+        is_valid, reason = validate_item(item)
+        if is_valid:
+            valid.append(item)
         else:
-            invalid_data.append(item)
+            invalid.append({**item, "validation_reason": reason})
+    return valid, invalid
 
-    logging.info("Validation complete: %d valid items, %d invalid items.", len(valid_data), len(invalid_data))
-    return valid_data, invalid_data
+def save_data(data, folder, prefix):
+    os.makedirs(folder, exist_ok=True)
+    path = os.path.join(folder, f"{prefix}_data_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
 
+def save_csv(data, path):
+    if not data:
+        return  # No data to save
 
+    # Collect all possible keys across all items for CSV headers (some items might miss fields)
+    all_keys = set()
+    for item in data:
+        all_keys.update(item.keys())
 
-def save_valid_data(valid_data, output_folder):
-    """Save valid data into a specified folder."""
-    os.makedirs(output_folder, exist_ok=True)
-    output_file = os.path.join(output_folder, f"validated_data_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
-    with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(valid_data, file, indent=4)
-    logging.info("Valid data saved to %s", output_file)
-
-
-def save_invalid_data(invalid_data, output_folder):
-    """Save invalid data for debugging and review."""
-    os.makedirs(output_folder, exist_ok=True)
-    output_file = os.path.join(output_folder, f"invalid_data_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
-    with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(invalid_data, file, indent=4)
-    logging.info("Invalid data saved to %s", output_file)
-
-def save_data_as_jsonl(data, output_path):
-    """Save data in JSONL format."""
-    with open(output_path, 'w', encoding='utf-8') as f:
-        for record in data:
-            f.write(json.dumps(record) + '\n')
-    logging.info(f"Data exported to JSONL at: {output_path}")
-
-
-def save_data_as_csv(data, output_path):
-    """Save data in CSV format."""
-    with open(output_path, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=data[0].keys())
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=sorted(all_keys))
         writer.writeheader()
-        writer.writerows(data)
-    logging.info(f"Data exported to CSV at: {output_path}")
-
-
+        for item in data:
+            writer.writerow({key: item.get(key, "") for key in all_keys})
 
 def main():
-    """Main function to validate cleaned data."""
-    # Configurable paths
-    cleaned_data_folder = "./Data/cleaned"
-    validated_data_folder = "./Data/validated"
-    invalid_data_folder = "./Data/invalid"
+    folder = "./Data/cleaned"
+    valid_folder = "./Data/validated"
+    invalid_folder = "./Data/invalid"
 
-    # Load cleaned data
-    cleaned_data = load_cleaned_data(cleaned_data_folder)
+    data = load_cleaned_data(folder)
+    if not data:
+        logging.error("No data found in the cleaned folder.")
+        return
 
-    # Validate data
-    valid_data, invalid_data = validate_data(cleaned_data)
+    valid, invalid = validate_data(data)
 
-    # Save validated and invalid data
-    save_valid_data(valid_data, validated_data_folder)
-    save_invalid_data(invalid_data, invalid_data_folder)
+    save_data(valid, valid_folder, "validated")
+    save_data(invalid, invalid_folder, "invalid")
 
-    if valid_data:
-        # Export validated data to JSONL
-        save_data_as_jsonl(valid_data, os.path.join(validated_data_folder, 'validated_data.jsonl'))
+    if valid:
+        save_csv(valid, os.path.join(valid_folder, "validated_data.csv"))
 
-        # Export validated data to CSV
-        save_data_as_csv(valid_data, os.path.join(validated_data_folder, 'validated_data.csv'))
+    if invalid:
+        save_csv(invalid, os.path.join(invalid_folder, "invalid_data.csv"))
 
-
+    logging.info(f"Validation complete. Valid: {len(valid)}, Invalid: {len(invalid)}")
 
 if __name__ == "__main__":
-    logging.info("Starting data validation process...")
+    logging.info("Starting data validation...")
     main()
-    logging.info("Data validation process completed.")
+    logging.info("Data validation complete.")
