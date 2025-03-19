@@ -4,10 +4,30 @@ import Image from "next/image";
 export default function AboutUs() {
   // Team member details
   const teamMembers = [
-    { name: "Joel Payippara Shibu", role: "Lead Software Engineer", image: "/team/joel.jpg" },
-    { name: "Hassan Amin", role: "AI Specialist", image: "/team/hassan.jpg" },
-    { name: "Saif Ahmad", role: "Frontend Developer", image: "/team/saif.jpg" },
-    { name: "Yoosuf Bakhtair", role: "Machine Learning Engineer", image: "/team/yoosuf.jpg" }
+    {
+      name: "Joel Payippara Shibu",
+      role: "Lead Software Engineer",
+      image: "/team/joel.jpg",
+      description: "Joel is the lead software engineer responsible for the overall architecture and development of WE.AI. He ensures that the application is robust and scalable."
+    },
+    {
+      name: "Hassan Amin",
+      role: "AI Specialist",
+      image: "/team/hassan.jpg",
+      description: "Hassan is the AI specialist who developed the natural language processing models used in WE.AI. He focuses on improving the accuracy and efficiency of the AI responses."
+    },
+    {
+      name: "Saif Ahmad",
+      role: "Frontend Developer",
+      image: "/team/saif.jpg",
+      description: "Saif is the frontend developer who designed and implemented the user interface of WE.AI. He ensures that the application is user-friendly and visually appealing."
+    },
+    {
+      name: "Yoosuf Bakhtair",
+      role: "Machine Learning Engineer",
+      image: "/team/yoosuf.jpg",
+      description: "Yoosuf is the machine learning engineer who worked on integrating machine learning models into WE.AI. He focuses on enhancing the learning capabilities of the application."
+    }
   ];
 
   return (
@@ -41,6 +61,7 @@ export default function AboutUs() {
                 />
                 <h3 className="mt-4 text-xl font-bold">{member.name}</h3>
                 <p className="text-gray-300">{member.role}</p>
+                <p className="mt-2 text-gray-400">{member.description}</p>
               </div>
             ))}
           </div>
