@@ -47,12 +47,12 @@ export default function LandingPage() {
             >
               Login
             </button>
-            <Link 
+            {/* <Link 
               href="/signup" 
               className="px-4 py-2 bg-[#3e00713a] font-bold rounded-lg shadow-[0_0_5px_#a855f7] hover:shadow-[0_0_15px_#a855f7] transition duration-300"
             >
               Sign Up
-            </Link>
+            </Link> */}
           </>
         )}
       </div>
