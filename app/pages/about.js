@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function AboutUs() {
   // Team member details
   const teamMembers = [
-    { name: "Joel Payippara Shibu", role: "Lead Software Engineer", image: "/team/hassan.jpg" },
-    { name: "Hassan Amin", role: "AI Specialist", image: "/team/joel.jpg" },
+    { name: "Joel Payippara Shibu", role: "Lead Software Engineer", image: "/team/joel.jpg" },
+    { name: "Hassan Amin", role: "AI Specialist", image: "/team/hassan.jpg" },
     { name: "Saif Ahmad", role: "Frontend Developer", image: "/team/saif.jpg" },
     { name: "Yoosuf Bakhtair", role: "Machine Learning Engineer", image: "/team/yoosuf.jpg" }
   ];
@@ -46,18 +46,18 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* Project Section (Unchanged) */}
+        {/* Project Section */}
         <section className="max-w-4xl mx-auto mt-12">
           <h2 className="text-3xl font-bold text-center">Our Project</h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-gray-300 text-center">
             WE.AI is an AI-powered assistant designed to help engineering students at Western University. Our goal is to streamline the learning experience by providing quick and accurate information related to engineering courses, projects, and university resources.
           </p>
-          <p className="mt-4 text-lg text-gray-300">
-          We believe that by leveraging the power of AI, we can make learning more efficient and enjoyable. Our team has worked tirelessly to develop a tool that not only answers your questions but also learns from your interactions to provide more personalized assistance over time.
-            </p>
-          <p className="mt-4 text-lg text-gray-300">
-            We hope that you find WE.AI helpful and that it enhances your experience as an engineering student at Western University.   
-            </p>  
+          <p className="mt-4 text-lg text-gray-300 text-center">
+            We believe that by leveraging the power of AI, we can make learning more efficient and enjoyable. Our team has worked tirelessly to develop a tool that not only answers your questions but also learns from your interactions to provide more personalized assistance over time.
+          </p>
+          <p className="mt-4 text-lg text-gray-300 text-center">
+            We hope that you find WE.AI helpful and that it enhances your experience as an engineering student at Western University.
+          </p>
         </section>
       </main>
 
