@@ -25,12 +25,8 @@ import {
   getLatestChatId,
   getAllChatDocs,
   deleteChat,
-  updateChatTitle,
-  deleteMessages,
-  updateMessage // Add this
+  updateChatTitle, // Add this
 } from "@/utils/historyHelper";
-
-
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
@@ -206,36 +202,26 @@ export default function Home() {
     }
   };
 
- // Modify handleQuery in chat.js
-const handleQuery = async (
-  inputQuery = query,
-  isRefresh = false,
-  refreshIndex = -1,
-  customHistory = null
-) => {
-  if (!inputQuery.trim() || !token) return;
-  setError(null);
+  const handleQuery = async (
+    inputQuery = query,
+    isRefresh = false,
+    refreshIndex = -1,
+    customHistory = null
+  ) => {
+    if (!inputQuery.trim() || !token) return;
+    setError(null);
 
-  let updatedHistory;
-  if (isRefresh) {
+    let updatedHistory;
+    if (isRefresh) {
       updatedHistory = customHistory || messages.slice(0, refreshIndex + 1);
       if (!customHistory) {
-          // Delete subsequent messages from Firestore
-          const messagesToDelete = messages.slice(refreshIndex + 1);
-          if (messagesToDelete.length > 0) {
-              await deleteMessages(
-                  session.user.email,
-                  currentChat,
-                  messagesToDelete.map(msg => msg.id)
-              );
-          }
-          setMessages(updatedHistory);
+        setMessages(updatedHistory);
       }
-  } else {
+    } else {
       updatedHistory = [...messages, { sender: "user", text: inputQuery }];
       setMessages(updatedHistory);
-      saveMessage(session.user.email, currentChat, "user", inputQuery);
-  }
+      saveMessage(session.user.email, currentChat, "user", inputQuery); //history
+    }
 
     setQuery("");
     setIsThinking(true);
@@ -273,26 +259,20 @@ const handleQuery = async (
     setEditText(messages[index].text);
   };
 
-// Update saveEdit in chat.js
-const saveEdit = async () => {
-  const messageId = messages[editIndex].id;
-  const success = await updateMessage(session.user.email, currentChat, messageId, editText);
+  const saveEdit = async () => {
+    const updatedMessages = [
+      ...messages.slice(0, editIndex),
+      { ...messages[editIndex], text: editText },
+      ...messages.slice(editIndex + 1),
+    ];
+    const truncatedMessages = updatedMessages.slice(0, editIndex + 1);
 
-  if (success) {
-      const updatedMessages = [
-          ...messages.slice(0, editIndex),
-          { ...messages[editIndex], text: editText },
-          ...messages.slice(editIndex + 1),
-      ];
-      const truncatedMessages = updatedMessages.slice(0, editIndex + 1);
+    setMessages(truncatedMessages);
+    setEditIndex(null);
+    setEditText("");
 
-      setMessages(truncatedMessages);
-      setEditIndex(null);
-      setEditText("");
-
-      handleQuery(editText, true, editIndex, truncatedMessages);
-  }
-};
+    handleQuery(editText, true, editIndex, truncatedMessages);
+  };
 
   const cancelEdit = () => {
     setEditIndex(null);

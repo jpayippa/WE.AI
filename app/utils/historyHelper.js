@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs,getDoc,setDoc, doc, serverTimestamp, addDoc, query, orderBy, limit } from "firebase/firestore";
 import { deleteDoc } from "firebase/firestore"; // Add this import
-import { updateDoc, writeBatch } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,7 +15,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-export { db };  
 
 
 export async function deleteChat(userId, chatId) {
@@ -68,41 +67,6 @@ export async function saveMessage(userId, chatId, sender, content) {
     });
 
     //console.log("Message added to Firestore");
-}
-
-// Add to historyHelper.js
-export async function deleteMessages(userId, chatId, messageIds) {
-    if (!userId || !chatId || !messageIds?.length) return false;
-
-    try {
-        const batch = writeBatch(db);
-        messageIds.forEach(id => {
-            const messageRef = doc(db, `users/${userId}/chats/${chatId}/messages/${id}`);
-            batch.delete(messageRef);
-        });
-        await batch.commit();
-        return true;
-    } catch (error) {
-        console.error("❌ Error deleting messages:", error);
-        return false;
-    }
-}
-
-// Add to historyHelper.js
-export async function updateMessage(userId, chatId, messageId, newContent) {
-    if (!userId || !chatId || !messageId) return false;
-
-    try {
-        const messageRef = doc(db, `users/${userId}/chats/${chatId}/messages/${messageId}`);
-        await updateDoc(messageRef, {
-            content: newContent,
-            timestamp: serverTimestamp()
-        });
-        return true;
-    } catch (error) {
-        console.error("❌ Error updating message:", error);
-        return false;
-    }
 }
 
 export async function updateChatTitle(userId, chatId, newTitle) {
