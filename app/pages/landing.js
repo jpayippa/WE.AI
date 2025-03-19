@@ -1,17 +1,26 @@
 "use client";
 
+import { useState } from 'react';
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { FaUser, FaCogs } from 'react-icons/fa';
+import PrivacyPolicyModal from "../utils/privacyModal";
 
 export default function LandingPage() {
   const { data: session } = useSession();
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-bl from-[#000000] via-[#150050] to-[#3f0071] text-white">
+      {/* Privacy Policy Modal */}
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+      />
+
       {/* Logo on the top-left */}
       <div className="absolute top-4 left-6">
         <h1 className="text-2xl font-extrabold font-inter bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600 cursor-pointer hover:opacity-80 transition duration-300">
@@ -150,6 +159,13 @@ export default function LandingPage() {
       <footer className="mt-2 text-center text-gray-400 w-full p-4">
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
+          {" | "}
+          <span 
+            onClick={() => setIsPrivacyModalOpen(true)}
+            className="hover:text-purple-400 cursor-pointer transition-colors"
+          >
+            Privacy Policy
+          </span>
         </p>
       </footer>
     </div>
