@@ -24,9 +24,9 @@ export default function AboutUs() {
     },
     {
       name: "Yoosuf Bakhtair",
-      role: "Machine Learning Engineer",
+      role: "Full Stack Developer",
       image: "/team/yoosuf.jpg",
-      description: "Yoosuf is the machine learning engineer who worked on integrating machine learning models into WE.AI. He focuses on enhancing the learning capabilities of the application."
+      description: "Yoosuf is the full stack developer who worked on both the frontend and backend of WE.AI. He focuses on integrating various components to enhance the application's functionality."
     }
   ];
 
@@ -38,8 +38,10 @@ export default function AboutUs() {
           About Us
         </h1>
         <p className="mt-2 text-lg text-gray-300">Learn more about the team behind WE.AI</p>
-        <Link href="/landing" className="text-purple-400 hover:text-purple-300 mt-4 inline-block">
-          Back to Home
+        <Link href="/landing">
+          <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+            Back to Home
+          </button>
         </Link>
       </header>
 
@@ -87,8 +89,10 @@ export default function AboutUs() {
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
         </p>
-        <Link href="/landing" className="text-purple-400 hover:text-purple-300">
-          Back to Home
+        <Link href="/landing">
+          <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+            Back to Home
+          </button>
         </Link>
       </footer>
     </div>
