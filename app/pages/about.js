@@ -6,27 +6,27 @@ export default function AboutUs() {
   const teamMembers = [
     {
       name: "Joel Payippara Shibu",
-      role: "Lead Software Engineer",
+      role: "Software Engineer",
       image: "/team/joel.jpg",
-      description: "Joel is the lead software engineer responsible for the overall architecture and development of WE.AI. He ensures that the application is robust and scalable."
+      description: ""
     },
     {
       name: "Hassan Amin",
-      role: "AI Specialist",
+      role: "Software Engineer",
       image: "/team/hassan.jpg",
-      description: "Hassan is the AI specialist who developed the natural language processing models used in WE.AI. He focuses on improving the accuracy and efficiency of the AI responses."
+      description: ""
     },
     {
       name: "Saif Ahmad",
-      role: "Frontend Developer",
+      role: "Software Engineer",
       image: "/team/saif.jpg",
-      description: "Saif is the frontend developer who designed and implemented the user interface of WE.AI. He ensures that the application is user-friendly and visually appealing."
+      description: ""
     },
     {
       name: "Yoosuf Bakhtair",
-      role: "Full Stack Developer",
+      role: "Software Engineer",
       image: "/team/yoosuf.jpg",
-      description: "Yoosuf is the full stack developer who worked on both the frontend and backend of WE.AI. He focuses on integrating various components to enhance the application's functionality."
+      description: ""
     }
   ];
 
@@ -39,7 +39,7 @@ export default function AboutUs() {
         </h1>
         <p className="mt-2 text-lg text-gray-300">Learn more about the team behind WE.AI</p>
         <Link href="/landing">
-          <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+          <button className=" mt-4 px-4 py-2 bg-[#3e00713a] rounded-lg shadow-[0_0_5px_#a855f7] hover:shadow-[0_0_15px_#a855f7] transition duration-300">
             Back to Home
           </button>
         </Link>
@@ -89,11 +89,7 @@ export default function AboutUs() {
         <p>
           Built by Western Software Engineering Students | &copy; {new Date().getFullYear()} WE.AI
         </p>
-        <Link href="/landing">
-          <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
-            Back to Home
-          </button>
-        </Link>
+     
       </footer>
     </div>
   );
