@@ -26,7 +26,7 @@ export default function AboutUs() {
             {/* Team Member 1 */}
             <div className="text-center">
               <Image
-                src="/team-member-1.jpg"
+                src="/team/joel.jpg"
                 alt="Joel Payippara Shibu"
                 width={150}
                 height={150}
@@ -38,7 +38,7 @@ export default function AboutUs() {
             {/* Team Member 2 */}
             <div className="text-center">
               <Image
-                src="/team-member-2.jpg"
+                src="/team/hassan.jpg"
                 alt="Hassan Amin"
                 width={150}
                 height={150}
@@ -50,7 +50,7 @@ export default function AboutUs() {
             {/* Team Member 3 */}
             <div className="text-center">
               <Image
-                src="/team-member-3.jpg"
+                src="/team/saif.jpg"
                 alt="Saif Ahmad"
                 width={150}
                 height={150}
@@ -62,7 +62,7 @@ export default function AboutUs() {
             {/* Team Member 4 */}
             <div className="text-center">
               <Image
-                src="/team-member-4.jpg"
+                src="/team/yoosuf.jpg"
                 alt="Yoosuf Bakhtair"
                 width={150}
                 height={150}
