@@ -46,7 +46,7 @@ export default function AboutUs() {
         <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600">
           About Us
         </h1>
-        <p className="mt-2 text-lg text-gray-300">
+        <p className="mt-2 text-md text-gray-300">
           Learn more about the team behind WE.AI.
         </p>
         <Link href="/landing">
@@ -60,7 +60,10 @@ export default function AboutUs() {
       <main className="flex-1 px-6">
         {/* Team Section */}
         <section className="max-w-4xl mx-auto mt-12">
-          <h2 className="text-3xl font-bold text-center">Our Team</h2>
+          <h2 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600">
+            Our Team
+          </h2>
+
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center">
@@ -106,7 +109,9 @@ export default function AboutUs() {
 
         {/* Project Section */}
         <section className="max-w-4xl mx-auto mt-12">
-          <h2 className="text-3xl font-bold text-center">Our Project</h2>
+          <h2 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600">
+            Our Project
+          </h2>
           <p className="mt-4 text-lg text-gray-300 text-center">
             WE.AI is an AI-powered assistant designed to help engineering
             students at Western University. Our goal is to streamline the
