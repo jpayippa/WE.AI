@@ -57,7 +57,7 @@ export default function AboutUs() {
                 className="rounded-full mx-auto"
               />
               <h3 className="mt-4 text-xl font-bold">Saif Ahmad</h3>
-              <p className="text-gray-300">Frontend Developer</p>
+              <p className="text-gray-300">Full Stack Developer</p>
             </div>
             {/* Team Member 4 */}
             <div className="text-center">
@@ -77,13 +77,13 @@ export default function AboutUs() {
         {/* Project Section */}
         <section className="max-w-4xl mx-auto mt-12">
           <h2 className="text-3xl font-bold text-center">Our Project</h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-gray-300 text-center">
             WE.AI is an AI-powered assistant designed to help engineering students at Western University. Our goal is to streamline the learning experience by providing quick and accurate information related to engineering courses, projects, and university resources.
           </p>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-gray-300 text-center">
             We believe that by leveraging the power of AI, we can make learning more efficient and enjoyable. Our team has worked tirelessly to develop a tool that not only answers your questions but also learns from your interactions to provide more personalized assistance over time.
           </p>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-gray-300 text-center">
             Whether you need help with a complex engineering problem, want to explore new topics, or simply need quick access to course materials, WE.AI is here to support you every step of the way.
           </p>
         </section>
