@@ -1,0 +1,78 @@
+[CONTEXT: CONTACT_INFO]
+Q: Where is academic counseling? | Engineering advising location
+A: Undergraduate Services Office
+- Building: Spencer Engineering Building (SEB 2097)
+- Phone: 519-661-2130
+- Fax: 519-661-3757
+HOURS: Mon-Fri 9:30AM-4PM
+VIRTUAL_FORM: [LINK: Contact Form](https://eng.uwo.ca/contact)
+
+[CONTEXT: ADVISING_SERVICES]
+Q: What does academic advising include? | Support services
+A: Comprehensive assistance with:
+- Policy interpretation & regulations
+- Program changes/withdrawals
+- Special permissions:
+  • Course overloads
+  • Letters of permission
+  • Affiliate requests
+- Academic accommodations
+- Degree planning
+- Referrals to campus resources
+CONFIDENTIALITY: Strict privacy maintained
+
+[CONTEXT: ADVISOR_ASSIGNMENTS]
+Q: Who is my advisor? | Counselor assignments
+A: First Year:
+- A-Q: Karen Murray (kmurra3@uwo.ca)
+  • Thu appointments virtual only
+- R-Z: Alexandra Bannon (abannon4@uwo.ca)
+
+Upper Year:
+- Chemical/Software: Diana Ali (dali@uwo.ca)
+- Electrical/Mechatronics: Alexandra Bannon
+- Civil/Mechanical: Nicole Harding (nhardin2@uwo.ca)
+  • Mon appointments virtual
+
+Wellness Counselor:
+- Sara Hanna (sara.hanna@uwo.ca)
+  • Email to book
+
+[CONTEXT: APPOINTMENT_SYSTEM]
+Q: How to book appointments? | Scheduling process
+A: Required steps:
+1. Use BookedIN portal: [LINK: Booking System](https://bookedin.com/enguwo)
+2. Select preferred format (in-person/Zoom)
+3. 30-minute slots
+SECURITY NOTE: Avoid sharing sensitive info in comments
+
+[CONTEXT: DROP_IN_SCHEDULE]
+Q: When are drop-in hours? | Unscheduled advising
+A: 2024 Availability:
+September:
+- 3rd: 10AM-12PM & 1:30-3:30PM (Nicole)
+- 4th: 7-8PM (Karen)
+- 6th: 9:30-11:30AM (Karen)
+- 12th: 7-8PM (Alex)
+- 16th: 7-8PM (Nicole)
+- 24th: 5-6PM (Diana)
+
+October:
+- 1st: 7-8PM (Alex)
+- 9th: 7-8PM (Karen)
+- 17th: 7-8PM (Nicole)
+- 22nd: 5-6PM (Karen)
+- 28th: 7-8PM (Alex)
+
+November:
+- 4th: 7-8PM (Nicole)
+- 12th: 5-6PM (Diana)
+- 20th: 7-8PM (Diana)
+- 28th: 7-8PM (Alex)
+
+December:
+- 2nd: 9:30-11:30AM (Karen)
+- 4th: 7-8PM (Karen)
+- 10th: 5-6PM (Diana)
+- 16th: 7-8PM (Nicole)
+FORMATS: Mixed Zoom/in-person as noted

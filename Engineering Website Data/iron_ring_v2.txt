@@ -1,0 +1,54 @@
+[CONTEXT: CEREMONY_DETAILS]  
+Q: Iron Ring Ceremony 2025? | Key dates  
+A: Saturday, March 22, 2025 | Alumni Hall, Western University  
+ELIGIBILITY: Western Engineering students graduating in 2025 (applied Fall 2024)  
+Link: https://www.eng.uwo.ca/media/iron-ring/
+
+[CONTEXT: RING_PAYMENT_SIZING]  
+Q: Payment & sizing? | Deadlines  
+A:  
+▸ **Payment**: Via Estores by February 28, 2025  
+▸ **Sizing sessions**:  
+   • March 4: 3:00-5:00 PM (CMLP Atrium)  
+   • March 6: 12:00-2:00 PM (CMLP Atrium)  
+
+[CONTEXT: GUEST_RINGERS]  
+Q: Guest Ringers? | Requirements  
+A: Must:  
+▸ Be obligated ≥5 years  
+▸ Wear their Iron Ring  
+▸ Apply via form by March 7, 2025  
+NOTE: Camp 11 Wardens will ring candidates without a guest  
+
+[CONTEXT: MATURE_CANDIDATES]  
+Q: Mature candidates? | Eligibility criteria  
+A: Qualify via:  
+▸ CEAB-accredited Canadian engineering degree  
+▸ Full P.Eng license (Ontario)  
+▸ PEO-approved academic equivalency  
+DEADLINE: Apply by February 1, 2025  
+PROCESS: Submit proof to ironring@uwo.ca  
+PEO LINKS:  
+▸ https://www.peo.on.ca/contact  
+▸ https://www.peo.on.ca/apply/become-professional-engineer/application-requirements#academic  
+
+[CONTEXT: FAQ]  
+Q: EIT/PEO limited license holders? | Eligibility  
+A:  
+▸ EITs: Not eligible unless meeting Criteria 1/3  
+▸ Limited license holders: Ineligible  
+
+Q: Non-Ontario P.Eng? | Credential acceptance  
+A: Yes – provincial licensing bodies’ assessments accepted  
+
+Q: Replacing a lost ring? | Process  
+A: Cost: $35  
+WEBSITE: https://www.eng.uwo.ca/media/iron-ring/replace-your-ring.html  
+
+Q: Exchanging ring sizes? | Instructions  
+A: Mail original ring + self-addressed envelope to:  
+Camp 11 Iron Ring, Western Engineering  
+1151 Richmond St, London, ON N6A 5B9  
+
+[CONTEXT: CONTACT]  
+EMAIL: ironring@uwo.ca  

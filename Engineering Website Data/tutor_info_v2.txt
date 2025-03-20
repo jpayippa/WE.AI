@@ -1,0 +1,64 @@
+[CONTEXT: TUTORING_SCHEDULE]
+Q: When is Bus 1299 help available? | Business tutoring
+A: Sessions:
+- Tue: 6-9PM @ Weldon Library Community Room
+- Wed/Fri: 2:30-4:30PM @ WSSB 4139
+- Thu: 12:30-1:30PM @ WSSB 4139
+
+[CONTEXT: CHEM_TUTORING]
+Q: Chem 1302 support times? | Chemistry help
+A: Availability:
+- Mon/Wed/Fri: 12:30-4:30PM @ WSSB 4139
+- Tue/Thu: 
+  • Day: 12:30-4:30PM @ WSSB 4139
+  • Evening: 6-9PM @ Weldon Library
+
+[CONTEXT: ECE_SUPPORT]
+Q: ECE course tutoring? | Electrical engineering help
+A: ECE 2205/2231/2233/2236/2277:
+- Tue: 7-9PM @ Weldon Library
+- Fri: 2:30-4:30PM @ WSSB 4139
+Additional for ECE 2277:
+- Thu: 12:30-1:30PM @ WSSB 4139
+
+[CONTEXT: ENGDESIGN_TUTORING]
+Q: EngSci help sessions? | Engineering design support
+A: EngSci 1021/1022/1036:
+- Tue: 6-9PM @ Weldon Library
+- Wed/Fri: 2:30-4:30PM @ WSSB 4139
+- Thu: 
+  • Day: 12:30-2:30PM @ WSSB 4139
+  • Evening: 7-9PM @ Weldon Library
+
+[CONTEXT: MATH_TUTORING]
+Q: Calculus/linear algebra help? | NMM support
+A: NMM 1411/1412/1414:
+- Tue: 6-9PM @ Weldon Library
+- Wed/Fri: 2:30-4:30PM @ WSSB 4139
+- Thu: 12:30-2:30PM @ WSSB 4139
+
+NMM 2270/2276:
+- Thu: 12:30-1:30PM @ WSSB 4139
+- Fri: 3:30-4:30PM @ WSSB 4139
+
+[CONTEXT: SOFTWARE_TUTORING]
+Q: SE course assistance? | Software engineering help
+A: SE 2202/2203/2205/2250:
+- Thu: 12:30-1:30PM @ WSSB 4139
+- Fri: 3:30-4:30PM @ WSSB 4139
+
+[CONTEXT: PHYSICS_TUTORING]
+Q: Physics tutoring times? | 1401/1402 support
+A: Physics 1401/1402:
+- Tue: 6-9PM @ Weldon Library
+- Wed/Fri: 2:30-4:30PM @ WSSB 4139 
+- Thu:
+  • Day: 12:30-2:30PM @ WSSB 4139
+  • Evening: 7-9PM @ Weldon Library
+
+[CONTEXT: TUTORING_LOCATIONS]
+Q: Where are tutoring sessions held? | Study spaces
+A: Primary locations:
+- Weldon Library Community Room
+- Western Science SB (WSSB) 4139
+MAPS: [LINK: Campus Map](https://maps.uwo.ca)

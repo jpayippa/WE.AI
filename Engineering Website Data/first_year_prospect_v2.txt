@@ -1,0 +1,55 @@
+[CONTEXT: FIRST_YEAR]  
+Q: Western Engineering First Year? | Program overview  
+A: Key features:  
+▸ Design-based curriculum with hands-on projects  
+▸ Customizable academic paths (dual degrees, co-op)  
+▸ Access to clubs, design teams, and mentorship  
+▸ Engineering Resilience Program for wellness support  
+▸ Extended First Year option for flexible pacing  
+
+[CONTEXT: HS_REQUIREMENTS]  
+Q: High School prerequisites? | Ontario (OUAC 101)  
+A: Required 4U courses:  
+▸ English (ENG4U)  
+▸ Chemistry (SCH4U)  
+▸ Physics (SPH4U)  
+▸ Advanced Functions (MHF4U)  
+▸ Calculus and Vectors (MCV4U)  
+PLUS: 1 additional 4U/4M course  
+
+Q: Non-Ontario applicants? | OUAC 105 requirements  
+A: Visit Admissions Guide for details:  
+WEBSITE: https://www.eng.uwo.ca/undergraduate/future-students/admissions/index.html  
+
+[CONTEXT: CASPER]  
+Q: Casper Assessment? | Mandatory test  
+A: Requirements:  
+▸ 90-110 minute situational judgment test  
+▸ Register at takecasper.com (CSP-10203)  
+▸ Select "Canadian Undergraduate Engineering"  
+▸ Test results required for admission offers  
+DEADLINE: Complete 3+ days before preferred test date  
+WEBSITE: https://www.eng.uwo.ca/future-students/apply-now/Casper-Assessment.html  
+
+[CONTEXT: ADMISSIONS]  
+Q: Application process? | Key steps  
+A: Process overview:  
+1. Submit OUAC application (101 or 105)  
+2. Complete Casper assessment  
+3. Await offer (starting November)  
+4. Apply for scholarships (check website)  
+WEBSITE: https://welcome.uwo.ca/next-steps/apply/index.html
+[CONTEXT: SUPPORT]  
+Q: Academic flexibility? | Extended First Year  
+A: Option to reduce course load:  
+▸ Spread first-year courses over summer term  
+▸ Ideal for balancing academics and wellness  
+CONTACT: engadvising@uwo.ca for details  
+
+[CONTEXT: CAMPUS_LIFE]  
+Q: Beyond academics? | Student experience  
+A: Opportunities include:  
+▸ 25+ engineering clubs (e.g., Formula Racing, Rocketry)  
+▸ Co-op/internships starting in upper years  
+▸ Global exchange programs  
+▸ Leadership certificates  

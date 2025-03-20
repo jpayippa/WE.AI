@@ -1,0 +1,71 @@
+[CONTEXT: PROSPECTIVE_STUDENTS]  
+Q: Prospective student advising? | Pre-enrollment support  
+A: Contact via email or book an appointment:  
+EMAIL: futurewe@uwo.ca  
+
+[CONTEXT: FIRST_YEAR_ADVISORS]  
+Q: First-year advisors? | By last name  
+A:  
+▸ **Karen Murray** (A-Q):  
+  • EMAIL: kmurra3@uwo.ca  
+  • NOTE: Thursday appointments virtual only  
+
+▸ **Alexandra Bannon** (R-Z):  
+  • EMAIL: abannon4@uwo.ca  
+
+[CONTEXT: UPPER_YEAR_ADVISORS]  
+Q: Upper-year advisors? | By discipline  
+A:  
+▸ **Diana Ali**:  
+  • Chemical/Green Process/Integrated/Software Engineering  
+  • EMAIL: dali@uwo.ca  
+
+▸ **Alexandra Bannon**:  
+  • Electrical/Mechatronics Systems Engineering  
+  • EMAIL: abannon4@uwo.ca  
+
+▸ **Nicole Harding**:  
+  • Civil/Computer/Mechanical Engineering  
+  • EMAIL: nhardin2@uwo.ca  
+  • NOTE: Monday appointments virtual only  
+
+[CONTEXT: WELLNESS]  
+Q: Wellness counselling? | Mental health support  
+A: Contact Sara Hanna:  
+EMAIL: sara.hanna@uwo.ca  
+
+[CONTEXT: DROP_IN]  
+Q: Drop-in advising? | General inquiries  
+A: Upcoming sessions (2024):  
+▸ Jan 9: 1:00-3:30 PM (Nicole)  
+▸ Jan 10: 9:30-11:30 AM (Nicole)  
+▸ Jan 13: 9:30-11:30 AM (Nicole) + 9:00-11:30 AM & 2:00-3:00 PM (Karen)  
+▸ Feb 26: 7:00-8:00 PM (Alex)  
+▸ Mar 13: 5:00-6:00 PM (Diana)  
+▸ Mar 18: 7:00-8:00 PM (Karen)  
+▸ Mar 24: 7:00-8:00 PM (Alex)  
+▸ Mar 31: 7:00-8:00 PM (Nicole)  
+▸ Apr 10: 5:00-6:00 PM (Diana)  
+▸ Apr 15: 7:00-8:00 PM (Karen)  
+▸ Apr 21: 7:00-8:00 PM (Alex)  
+▸ Apr 28: 7:00-8:00 PM (Nicole)  
+
+[CONTEXT: URGENT_HELP]  
+Q: Urgent issues? | Crisis support  
+A: Immediate contacts:  
+▸ Campus Police: 519-661-3300  
+▸ London Police: 911  
+▸ UGS Office: 519-661-2130  
+
+[CONTEXT: ACCESSIBLE_ED]  
+Q: Accessible Education? | Accommodations  
+A: Drop-in support:  
+▸ Every Wednesday starting Sept 16, 2024  
+▸ SEB Room 2097, 10:00 AM - 2:00 PM  
+NOTE: No accommodation changes during drop-in hours  
+
+[CONTEXT: BOOKING_NOTES]  
+Q: Appointment booking? | Important reminders  
+A:  
+▸ Use BookedIN system (avoid sharing sensitive info)  
+▸ Alternative: Call 519-661-2130 or email advisors directly  

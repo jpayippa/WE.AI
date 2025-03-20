@@ -1,0 +1,98 @@
+[CONTEXT: STUDENT_CENTRAL]
+Q: What is the Student Centre? | Student Center functions | How to use student portal
+A: Central academic management platform providing:
+- Personal information updates (address/phone numbers)
+- Course registration/schedule management
+- Academic records (grades/transcripts)
+- Financial services (tuition/OSAP)
+- Graduation applications
+ACCESS: [LINK: Student Centre login](https://student.uwo.ca)
+HOURS: 24/7 online access
+LAST_UPDATED: 2024-08-15
+
+[CONTEXT: COURSE_REGISTRATION]
+Q: How are courses assigned? | First-year timetable | Automatic enrollment
+A: Mandatory structured enrollment:
+- Timetable released mid-August
+- Includes all required courses:
+  • ES 1021/1022 (Engineering Fundamentals)
+  • MATH 1411/1412 (Calculus)
+  • PHYS 1401/1402 (Physics)
+  • CHEM 1302 (Chemistry)
+NO_CHANGES: Without faculty approval
+TIMETABLE_VIEW: [LINK: Access timetable](https://timetable.uwo.ca)
+
+[CONTEXT: ACADEMIC_STANDING]
+Q: What average is needed? | Progression requirements | Failing grades policy
+A: Minimum requirements:
+- 60% Year Weighted Average (YWA)
+- Complete all core courses
+- Full course load (6.5 credits)
+CALCULATION: (Σ(grade × course weight)) ÷ total weights
+APPEALS: [LINK: Academic petition form](https://eng.uwo.ca/forms)
+
+[CONTEXT: FINANCIAL_AID]
+Q: Scholarship payments? | OSAP deferral | Tuition deadlines
+A: Financial administration:
+- Scholarships auto-applied to account
+- OSAP deferral requires application by June 30
+- Payment due dates:
+  • Fall: September 30
+  • Winter: January 31
+CONTACT: [LINK: Student Financial Services](https://finance.uwo.ca)
+
+[CONTEXT: EXAM_POLICIES]
+Q: Missed exam procedure? | Medical accommodation | Exam conflicts
+A: Required protocol:
+1. Immediate notification to engugrad@uwo.ca
+2. Submit documentation within 48hrs
+3. Faculty review (2-5 business days)
+VALID_REASONS: Medical, bereavement, religious
+FORM: [LINK: Academic consideration request](https://uwo.ca/forms)
+
+[CONTEXT: ACADEMIC_SUPPORT]
+Q: Tutoring options? | Office hours | Study resources
+A: Available support:
+- Department TA sessions (SEB 2101)
+- Peer-assisted study groups
+- Writing Centre workshops
+SCHEDULE: [LINK: Tutoring timetable](https://eng.uwo.ca/tutoring)
+HOURS: Mon-Fri 9AM-5PM
+
+[CONTEXT: COURSE_MODIFICATIONS]
+Q: Change timetable? | Drop courses | Add electives
+A: Strict first-year policy:
+- No self-initiated changes
+- Requires academic advisor approval
+- Deadlines:
+  • Add: 2024-09-16
+  • Drop: 2024-12-02
+FORM: [LINK: Course change request](https://eng.uwo.ca/forms)
+
+[CONTEXT: EXTENDED_PROGRAM]
+Q: EXFYP details? | Academic recovery | Summer courses
+A: Reduced load option for:
+- Students with 55-59% average
+- Postpone courses to summer term
+- Extended adjudication timeline
+COST_2025: $1,274.01/half-course
+APPLY_BY: 2025-01-23
+INFO: [LINK: EXFYP handbook](https://eng.uwo.ca/exfyp)
+
+[CONTEXT: PROGRAM_SELECTION]
+Q: Choose specialization? | Intent to Register | Second-year options
+A: Annual selection process:
+- Submit ITR March 1-31
+- Rank 16 engineering programs
+- Determines course access
+PROGRAMS: Chemical, Civil, Electrical, Mechanical, Software, Mechatronic
+PORTAL: [LINK: ITR submission](https://student.uwo.ca/itr)
+
+[CONTEXT: FACILITIES]
+Q: MakerLab access? | 3D printing | Engineering workshops
+A: Spencer Engineering Building resources:
+- Location: SEB 2105
+- Hours: Mon-Fri 9AM-5PM
+- Equipment: Stratasys F370, Formlabs Form 3
+TRAINING: [LINK: Safety certification](https://eng.uwo.ca/safety)
+BOOKING: [LINK: Equipment reservation](https://eng.uwo.ca/makerlab)

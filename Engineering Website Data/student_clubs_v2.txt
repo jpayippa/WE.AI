@@ -1,0 +1,64 @@
+[CONTEXT: STUDENT_CLUBS]  
+Q: Aero Design | SAE Competition Team  
+A: Designs heavy-lift aircraft and autonomous gliders for international competitions.  
+WEBSITE: www.westernaerodesign.com  
+
+Q: Baja SAE | Off-Road Vehicle Team  
+A: Builds and races Baja vehicles judged on design and endurance.  
+WEBSITE: westernbaja.ca  
+
+Q: Chemical Engineering Club | Chem/Biochem Resources  
+A: Hosts industry tours and socials for chemical engineering students.  
+WEBSITE: westernchemengclub.com  
+
+Q: CSME Western | Mechanical Engineering Community  
+A: Organizes academic panels, faculty mixers, and course help sessions.  
+WEBSITE: facebook.com/CSMEWestern  
+
+Q: Engineers Without Borders | Social Impact  
+A: Focuses on climate change, gender equity, and youth engagement initiatives.  
+WEBSITE: western.ewb.ca/en/  
+
+Q: IEEE | Electrical/Computer Engineering  
+A: Provides lab access and IEEE global membership benefits.  
+WEBSITE: site.ieee.org/sb-uwo/  
+
+Q: Integrated Engineering Club | Cross-Disciplinary Support  
+A: Supports Integrated Engineering students with academic resources.  
+WEBSITE: eng.uwo.ca/tc/undergraduate/integrated-engineering.html  
+
+Q: NAYGN | Nuclear Energy Advocacy  
+A: Connects students with nuclear industry professionals.  
+WEBSITE: naygn.org/  
+
+Q: SunStang | Solar Car Racing  
+A: Builds eco-friendly solar vehicles for global competitions.  
+WEBSITE: westernconnect.ca/sunstang  
+
+Q: Undergraduate Engineering Society | Student Advocacy  
+A: Represents engineering students and supports campus clubs/teams.  
+WEBSITE: western-ues.com  
+
+Q: WEBots | Robotics Development  
+A: Develops autonomous robots like Project TITAN.  
+WEBSITE: https://webots.org/  
+
+Q: WEMars | Mars Rover Competitions  
+A: Competes in Canadian International Rover Challenge.  
+WEBSITE: wemars.org/wemars/  
+
+Q: Western Engineering Biomedical Club (WEBMC) | Biomedical Networking  
+A: Collaborates with industry leaders for skill labs and events.  
+WEBSITE: webmc.ca/  
+
+Q: Western Engineering Toboggan Team (WETT) | Concrete Toboggan Racing  
+A: Designs steel-framed toboggans for national races.  
+WEBSITE: wetterisbetter.ca  
+
+Q: Western Engineering Rocketry Club | Spaceport America Cup  
+A: Builds supersonic rockets for international competitions.  
+WEBSITE: www.werocketry.com/  
+
+Q: Women in Engineering | Mentorship & Outreach  
+A: Supports female engineers through events and networking.  
+WEBSITE: womeninenguwo.ca  

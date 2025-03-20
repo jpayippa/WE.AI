@@ -1,0 +1,59 @@
+[CONTEXT: ITR_OVERVIEW]
+Q: What is Intent to Register? | Program declaration
+A: Mandatory annual process for:
+- Continuing Engineering students
+- Concurrent degree candidates
+- Program changers
+DEADLINE: April [YEAR] 2 @ 11:59PM
+PORTAL: [LINK: ITR Instructions](https://www.eng.uwo.ca/undergraduate/itr-instructions.html)
+
+[CONTEXT: FIRST_YEAR_ITR]
+Q: First-year ITR process? | New student declaration
+A: Requirements:
+1. Submit via Student Center Feb [YEAR] 26 - Apr [YEAR] 2
+2. Rank program preferences
+3. Verify course requirements
+RESOURCES: [LINK: Program Guides](https://www.eng.uwo.ca/itr-programs)
+
+[CONTEXT: UPPER_YEAR_ITR]
+Q: Upper-year ITR? | Continuing student process
+A: Two submission methods:
+1. Online via Student Center (self-service)
+2. Academic Advisor consultation required for:
+   - Concurrent degree changes
+   - Program transfers
+   - Special cases
+ADVISOR_PORTAL: [LINK: Book Appointments](https://eng.uwo.ca/advising)
+
+[CONTEXT: ITR_STEPS]
+Q: How to submit ITR? | Registration steps
+A: Online process:
+1. Review [Academic Calendar](https://westerncalendar.uwo.ca)
+2. Plan courses using [What to Take Next](https://eng.uwo.ca/nextcourses)
+3. Submit via Student Center by deadline
+ALTERNATE_METHOD: Contact advisor by Apr [YEAR] 2 @ 4PM
+
+[CONTEXT: SPECIAL_CASES]
+Q: Special ITR situations? | Non-standard processes
+A: Unique procedures for:
+- New concurrent degree students: Advisor consultation + faculty approval
+- Program changers: Department approval required
+- Ivey HBA1 students: No action needed
+- Engineering transfers: Email futurewe@uwo.ca
+CONCURRENT_CHANGES: [LINK: Dual Degree Policy](https://eng.uwo.ca/concurrent)
+
+[CONTEXT: KEY_DATES]
+Q: ITR timeline? | Annual deadlines
+A: Critical dates:
+- Submission opens: Feb [YEAR] 26
+- Final deadline: Apr [YEAR] 2 @ 11:59PM
+- Advisor cutoff: Apr [YEAR] 2 @ 4PM
+CALENDAR: [LINK: Academic Timeline](https://registrar.uwo.ca/dates)
+
+[CONTEXT: ITR_TROUBLESHOOTING]
+Q: ITR issues? | Problem resolution
+A: Solutions for:
+- System errors: Clear cache/use different browser
+- Missing programs: Contact department
+- Course conflicts: Submit [Conflict Form](https://eng.uwo.ca/conflicts)
+URGENT_HELP: engadvising@uwo.ca | 519-661-2130

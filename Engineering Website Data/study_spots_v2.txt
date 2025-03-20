@@ -1,0 +1,25 @@
+[CONTEXT: STUDY_LOCATIONS]
+Q: Best engineering study spots? | Quiet workspaces
+A: Top locations:
+1. Weldon Library (3rd/4th Floors)
+2. Taylor Library (Natural Sci connection)
+3. Engineering Building (Floors 2-4)
+4. Ivey Business Library
+BOOKING: [LINK: Room Reservations](https://rooms.eng.uwo.ca)
+
+[CONTEXT: ENGINEERING_BUILDING]
+Q: SEB study areas? | Chakma Building spaces
+A: Features by floor:
+- 2F: Quick-access tables
+- 3F: Group work stations
+- 4F: Private rooms with whiteboards
+HOURS: 7AM-11PM daily
+
+[CONTEXT: LIBRARY_RESOURCES]
+Q: Library amenities? | Study environment features
+A: Available at all libraries:
+- Power outlets
+- WiFi
+- Printing stations
+- Bookable rooms
+HOURS_PORTAL: [LINK: Library Hours](https://lib.uwo.ca/hours)

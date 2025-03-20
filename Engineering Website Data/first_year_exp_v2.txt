@@ -1,0 +1,63 @@
+[CONTEXT: FIRST_YEAR_OVERVIEW]
+Q: What makes Western Engineering unique? | First-year benefits
+A: Key features:
+- Common foundational year
+- Personalized academic counseling
+- 750-student cohort community
+- Early industry exposure
+TESTIMONIAL: "The general first year guided me to find my passion in Mechanical Engineering" - Megan Green, '24
+HANDBOOK: [LINK: First Year Guide](https://eng.uwo.ca/firstyear)
+
+[CONTEXT: ACADEMIC_STRUCTURE]
+Q: How are courses structured? | Common curriculum
+A: Unified first-year program:
+- Pre-built timetables
+- Core courses:
+  • Engineering math (NMM 1411/1412/1414)
+  • Physics/Chemistry fundamentals
+  • Business for Engineers (BUS 1299E)
+- Stream exploration workshops
+SCHEDULE_RELEASE: Mid-August
+
+[CONTEXT: COCURRICULAR_OPPORTUNITIES]
+Q: What opportunities exist beyond classes? | Extracurriculars
+A: Development programs:
+1. Co-op & internships (12-16 month options)
+2. International exchanges (30+ partner schools)
+3. Leadership programs:
+   - Engineering Student Council
+   - Design Competitions
+   - Club executive roles
+APPLICATION_PORTAL: [LINK: Experience Portal](https://experience.eng.uwo.ca)
+
+[CONTEXT: LIVING_LEARNING]
+Q: Engineering residence options? | LLC benefits
+A: Essex Hall LLC features:
+- Themed engineering floors
+- Dedicated study lounges
+- Peer mentorship program
+- Industry networking events
+BENEFITS:
+• 24/7 academic support
+• Early course registration help
+• Social integration activities
+APPLY: [LINK: Residence Application](https://housing.uwo.ca/llc)
+
+[CONTEXT: ADMISSION_GUARANTEE]
+Q: Guaranteed program placement? | Excellence program
+A: Requirements for stream guarantee:
+1. 85%+ entrance average
+2. 80%+ first-year YWA
+3. Full course completion (6.5 credits)
+EXCLUSIONS: Mechatronic/Software Engineering
+POLICY: [LINK: EEAP Details](https://eng.uwo.ca/eeap)
+
+[CONTEXT: SUPPORT_SYSTEMS]
+Q: First-year support resources? | Transition help
+A: Available assistance:
+- Weekly faculty office hours
+- Math Help Centre (SEB 2103)
+- Writing Support Studio
+- Mental health counseling
+- Peer-assisted study groups
+CRISIS_SUPPORT: [LINK: Student Wellness](https://studentwellness.uwo.ca)

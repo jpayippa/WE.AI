@@ -1,0 +1,177 @@
+[CONTEXT: SUMMER_COOP]  
+Q: Summer Co-op? | Overview & benefits  
+A: Key details:  
+▸ 4-month paid placement (May-August)  
+▸ Open after 1st year, repeatable each summer  
+▸ Develop skills, explore industries, earn salary  
+ELIGIBILITY:  
+▸ Full-time Engineering student  
+▸ 60%+ cumulative average  
+▸ No academic offenses  
+
+Q: Valid Summer Co-op? | Requirements  
+A: Must be:  
+▸ Paid (≥ minimum wage)  
+▸ 30+ hrs/week for 12+ weeks  
+▸ Engineering-focused role  
+▸ Supervised (non-family)  
+
+[CONTEXT: LONG_TERM_COOP]  
+Q: Long Term Co-op? | Extended experience  
+A: Key details:  
+▸ 8-16 month placements  
+▸ Start dates: May (12-16mo) or Sept (8-12mo)  
+▸ Advanced project involvement  
+ELIGIBILITY:  
+▸ 3rd+ year Engineering student  
+▸ 60%+ cumulative average  
+▸ Returns to full-time studies post-co-op  
+
+Q: Valid Long Term Co-op? | Requirements  
+A: Must be:  
+▸ Paid (≥ minimum wage)  
+▸ 30+ hrs/week for 8-16 months  
+▸ Engineering-focused role  
+▸ Supervised (non-family)  
+
+[CONTEXT: APPLICATION_PROCESS]  
+Q: How to apply? | Co-op enrollment  
+A: 2-step process for both programs:  
+1. Pay $125 fee via Engineering Ecommerce Site  
+2. Submit application on Western Connect  
+DEADLINE: Sept 30, 2024 recommended  
+
+[CONTEXT: COSTS]  
+Q: Program fees? | Financial requirements  
+A: For both co-op types:  
+▸ $125 annual application fee  
+▸ $550/term tuition (paid after securing placement  
+
+[CONTEXT: EMPLOYER_EXPECTATIONS]  
+Q: Employer requirements? | Professional conduct  
+A: All co-op students must demonstrate:  
+▸ Professionalism & punctuality  
+▸ Adaptability & teamwork  
+▸ Initiative & problem-solving  
+▸ Technical/industry-specific skills  
+
+[CONTEXT: IMPORTANT_NOTES]  
+Q: First-year applicants? | Evaluation timeline  
+A: Applications reviewed after mid-January (fall grades)  
+
+Q: International students? | Work permits  
+A: Requires co-op work permit (CWP)  
+CONTACT: wecareer@uwo.ca for guidance  
+
+Q: Application status? | Tracking & issues  
+A: Check via Western Connect INTERNSHIP/CO-OP tab  
+DECLINED? Contact Career Services  
+
+[CONTEXT: GENERAL_QUESTIONS]
+Q: Career Services location? | Office info  
+A: Spencer Engineering Building (SEB) Room 2092  
+HOURS: Mon-Fri 8:30am-4:30pm  
+CONTACT: 519-661-2111 x88359 | wecareer@uwo.ca  
+
+Q: Contact Career Services Officer? | Staff contact  
+A: Email wecareer@uwo.ca  
+GUIDE: https://eng.uwo.ca/careers/about.html  
+
+Q: Schedule appointment? | Booking help  
+A: Use online booking system  
+PORTAL: https://eng.uwo.ca/careers/appointments.html  
+(Go back)  
+
+[CONTEXT: INTERNATIONAL]  
+Q: International co-op eligibility? | CWP requirements  
+A: Requires valid Co-op Work Permit (CWP)  
+GUIDE: https://eng.uwo.ca/careers/international-cwp.html  
+
+Q: Co-op Work Permit application? | IRCC process  
+A: Apply through IRCC website  
+NOTE: Employer cannot start placement without CWP  
+
+Q: CWP delays? | Access issues  
+A: Contact immediately:  
+- Immigration authorities  
+- International student office  
+- Career Services wecareer@uwo.ca  
+(Go back)  
+
+[CONTEXT: COOP_FEES]  
+Q: Co-op costs? | Program fees  
+A: Annual requirements:  
+- $125 application fee  
+- $550/work term tuition  
+POLICY: Applies to self-found placements  
+
+Q: OSAP impact? | Loan considerations  
+A: Required steps:  
+1. Apply for CIFS status  
+2. Maintain co-op course enrollment  
+3. Contact Registrar for specifics  
+NOTE: 12-16 month placements require multiple CIFS applications  
+(Go back)  
+
+[CONTEXT: COOP_APPLICATION]  
+Q: Co-op benefits? | Program value  
+A: Key advantages:  
+▸ Paid Canadian work experience  
+▸ Industry networking  
+▸ Career skill development  
+▸ Potential job offers  
+
+Q: Eligibility requirements? | Academic standards  
+A: Minimum averages:  
+- Undergrad: 60% cumulative  
+- MEng: 75% cumulative  
+NOTE: No academic offenses permitted  
+(Go back)  
+
+[CONTEXT: POSITIONS]  
+Q: Securing placements? | Job search tips  
+A: Proactive strategies:  
+1. Apply early through Western Connect  
+2. Attend employer sessions  
+3. Use resume workshops  
+CALENDAR: https://westernconnect.ca/events  
+
+Q: International co-op logistics? | Visa requirements  
+A: Student responsibilities:  
+- Obtain work visas  
+- Complete Safety Abroad training  
+- Cover all associated costs  
+GUIDE: https://eng.uwo.ca/careers/safety-abroad.html  
+(Go back)  
+
+[CONTEXT: OFFERS]  
+Q: Accepting offers? | Commitment policies  
+A: Strict rules:  
+- No offer reneging permitted  
+- Penalties include:  
+  ▸ FAI grade (undergrad)  
+  ▸ Incomplete Milestone (grad)  
+  ▸ Full tuition payment  
+POLICY: https://eng.uwo.ca/careers/policies.html  
+(Go back)  
+
+[CONTEXT: ON_COOP]  
+Q: Course enrollment? | Academic restrictions  
+A: Program limits:  
+- MEng: No courses during co-op  
+- Undergrad: Max 0.5 credit  
+REQUEST: Email wecareer@uwo.ca for exceptions  
+
+Q: Site visits? | Employer check-ins  
+A: Automatic visits for:  
+- Long-term undergrad co-ops  
+- 8-month MEng placements  
+REQUEST: Email for special arrangements  
+
+Q: Housing/benefits? | Logistics support  
+A: Key info:  
+- Rec Center access available  
+- No bus pass eligibility  
+- Health plan varies by term  
+HOUSING: https://offcampus.uwo.ca  
+  

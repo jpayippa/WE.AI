@@ -1,0 +1,72 @@
+[CONTEXT: PREREQS]  
+Q: Ontario HS prerequisites? | OUAC 101 requirements  
+A: Required 4U courses:  
+▸ English (ENG4U)  
+▸ Chemistry (SCH4U)  
+▸ Physics (SPH4U)  
+▸ Advanced Functions (MHF4U)  
+▸ Calculus and Vectors (MCV4U)  
+PLUS: 1 additional 4U/4M course  
+
+Q: Other applicants? | OUAC 105 requirements  
+A: Detailed prerequisites for non-Ontario HS applicants:  
+WEBSITE: https://welcome.uwo.ca/next-steps/  
+
+[CONTEXT: ADMISSIONS]  
+Q: Supplementary assessments? | Casper test  
+A: Mandatory for all OUAC applicants. Register early.  
+WEBSITE: https://www.eng.uwo.ca/undergraduate/future-students/admissions/index.html  
+
+[CONTEXT: APPLICANT_TYPES]  
+Q: Applicant categories? | Admission pathways  
+A: Based on education level:  
+▸ Ontario HS  
+▸ AP/IB/CÉGEP  
+▸ U.S./International HS  
+▸ College/University transfers  
+▸ Mature/Senior applicants  
+GUIDE: https://welcome.uwo.ca/next-steps/  
+
+[CONTEXT: FINANCIAL_AID]  
+Q: Financial support? | Funding options  
+A: Available through:  
+▸ OSAP/government programs  
+▸ Admissions/In-Course Bursaries  
+▸ Work Study  
+NOTE: No explicit links provided for financial aid.  
+
+
+[CONTEXT: CASPER_REQUIREMENTS]  
+Q: Casper Assessment? | Mandatory test for applicants  
+A: Key details:  
+▸ 90-110 minute situational judgment test  
+▸ Required for 2024/25 OUAC applicants  
+▸ Register at takecasper.com (CSP-10203)  
+▸ Select "Canadian Undergraduate Engineering"  
+DEADLINE: Complete 3 days before preferred test date  
+WEBSITE: https://www.eng.uwo.ca/future-students/apply-now/Casper-Assessment.html  
+
+[CONTEXT: TEST_DATES]  
+Q: When to take Casper? | Timeline  
+A: Critical notes:  
+▸ Results take 3 weeks (offers begin in November)  
+▸ Only one attempt per admissions cycle  
+▸ No additional test dates beyond posted schedule  
+
+[CONTEXT: TECHNICAL_REQS]  
+Q: Casper tech requirements? | Setup guide  
+A: Required equipment:  
+▸ Desktop/laptop (Windows/macOS)  
+▸ Webcam + microphone  
+▸ High-speed internet (1.5Mbps download/2Mbps upload)  
+▸ Valid email matching application  
+
+[CONTEXT: ACCOMMODATIONS]  
+Q: Testing accommodations? | Support process  
+A: Submit Initial Request Form at least 4 weeks before test date:  
+
+
+[CONTEXT: ADDITIONAL_RESOURCES]  
+Q: Practice tests? | Preparation  
+A: Free practice test available via Acuity Insights account  
+NOTE: No third-party prep endorsed  

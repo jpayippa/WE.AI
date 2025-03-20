@@ -1,0 +1,29 @@
+[CONTEXT: COMBINED_DEGREES]  
+Q: Combined degree options? | Dual professional degrees  
+A: Partnerships with Western’s professional faculties:  
+▸ Ivey Business School (BESc + HBA):  
+  • Chemical, Civil, Electrical, Integrated, Mechanical, Mechatronics, Software Engineering  
+▸ Western Law (BESc + JD):  
+  • Chemical, Civil, Electrical, Integrated, Mechanical, Mechatronics, Software Engineering  
+▸ Biomedical Engineering (BESc + BESc):  
+  • Chemical, Electrical, Mechanical, Mechatronic Systems Engineering  
+▸ AISE (BESc + BESc):  
+  • Chemical, Civil, Electrical, Mechanical, Mechatronics Engineering  
+NOTE: Separate application process – consult Academic Advisor.  
+WEBSITE: https://www.eng.uwo.ca/undergraduate/combined-and-concurrent/index.html  
+
+[CONTEXT: CONCURRENT_DEGREES]  
+Q: Concurrent degree options? | Secondary majors  
+A: Popular combinations:  
+▸ Applied Mathematics  
+▸ Biology  
+▸ Computer Science  
+▸ Economics  
+▸ Ecosystem Health  
+▸ Environmental Science  
+▸ Materials Science  
+▸ Medical Biophysics  
+▸ Physics  
+▸ Psychology  
+CUSTOM: Design unique programs with Academic Advisor approval  
+WEBSITE: https://www.eng.uwo.ca/undergraduate/combined-and-concurrent/index.html  

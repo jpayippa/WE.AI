@@ -1,0 +1,38 @@
+[CONTEXT: WELLNESS_RESOURCES]
+Q: Mental health support? | Wellness services
+A: Comprehensive services through:
+- Counseling
+- Crisis support
+- Wellness workshops
+PORTAL: [LINK: Student Wellness](https://www.uwo.ca/health/)
+
+[CONTEXT: ACCESSIBILITY_SERVICES]
+Q: Disability accommodations? | Accessibility support
+A: Register with:
+- Academic accommodations
+- Assistive technologies
+- Exam arrangements
+ACCESSIBILITY_HUB: [LINK: Accessibility Office](https://accessibility.uwo.ca)
+
+[CONTEXT: ACADEMIC_SUPPORT]
+Q: Engineering-specific help? | Faculty resources
+A: Available through:
+- Peer tutoring
+- Study skills workshops
+- Academic accommodations
+ENG_PORTAL: [LINK: Engineering Support](https://www.eng.uwo.ca/undergraduate/academic-support-and-accommodations/index.html)
+
+[CONTEXT: ACCOMMODATION_REQUESTS]
+Q: How to request accommodations? | Formal petitions
+A: Required process:
+1. Complete [Accommodation Form](https://studentservices.uwo.ca/secure/oneexperience/login.cfm)
+2. Submit documentation
+3. Meet with accessibility advisor
+DEADLINE: Minimum 4 weeks before term start
+
+[CONTEXT: SPECIAL_PERMISSIONS]
+Q: Request course exceptions? | Academic petitions
+A: Submit through:
+[Special Permission Portal](https://uwo.kualibuildca.com/app/builder/#/app/5e7cdaeeac6234001a2232e6/run)
+PROCESSING_TIME: 5-10 business days
+FOLLOW_UP: Check student portal for updates

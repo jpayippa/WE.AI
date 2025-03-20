@@ -1,0 +1,43 @@
+[CONTEXT: FEMALE_ENGINEERS]  
+Q: Female alumni success? | Career paths  
+A: Graduates work in diverse fields:  
+▸ Operational leadership  
+▸ Environmental advising  
+▸ Systems design  
+▸ Post-secondary education  
+PROFILES: Alumni success stories available (contact for details)  
+
+[CONTEXT: LEADERSHIP]  
+Q: Leadership certification? | Innovation focus  
+A: Engineering Leadership and Innovation Certificate:  
+▸ Complements technical degree  
+▸ Addresses Canada’s innovation gap  
+
+[CONTEXT: INTERNATIONAL_IMPACT]  
+Q: Engineers Without Borders? | Global mission  
+A: Focus areas:  
+▸ Clean water access in rural Africa  
+▸ Income generation for small farms  
+▸ Poverty root-cause analysis  
+
+Q: Global Honor? | Intercultural skills  
+A: Global & Intercultural Engagement Honor:  
+▸ Combines coursework and extracurriculars  
+▸ Appears on official transcript  
+
+Q: Western Heads East? | HIV/AIDS response  
+A: Key initiatives:  
+▸ Probiotic yogurt programs in Africa  
+▸ Empowers "Yoghurt Mamas" for economic impact  
+
+[CONTEXT: STUDY_ABROAD]  
+Q: Exchange programs? | International opportunities  
+A: Third-year partnerships with global institutions.  
+NOTE: Contact for program listings.  
+
+[CONTEXT: CONTACT]  
+Q: Women in Engineering support? | Connect with WiE  
+A: Direct contact:  
+TEL: 519-661-2128  
+EMAIL: wie-we@uwo.ca  
+WEBSITE: https://www.eng.uwo.ca/women-in-engineering/future-students/what-you-can-do-with-eng.html

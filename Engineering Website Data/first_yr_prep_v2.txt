@@ -1,0 +1,62 @@
+[CONTEXT: NEXT_STEPS]  
+Q: Preparing for first year? | Key resources  
+A: Review "Prepare for Western" guide:  
+WEBSITE: https://welcome.uwo.ca/next-steps/prepare/index.html  
+INCLUDES: Residence, fees, WesternOne card, key dates  
+
+[CONTEXT: COURSE_ADVISING]  
+Q: 1-1 Course Advising? | Free support  
+A: Get help with:  
+▸ Course selection  
+▸ Program questions  
+▸ Campus resources  
+WEBSITE: Contact First Year Academic Counsellor  
+
+[CONTEXT: SMARTSTART]  
+Q: WE SmartStart I? | Summer prep course  
+A: Auto-enrolled self-study program:  
+▸ Reinforces high school STEM concepts  
+▸ Teaches university-level learning strategies  
+▸ Connects with peers  
+NOTE: Access via OWL platform  
+
+[CONTEXT: FIRST_YEAR_GUIDE]  
+Q: First Year Guide? | Essential handbook  
+A: Includes:  
+▸ Welcome from the Dean  
+▸ O-Week events  
+▸ Campus study spots  
+▸ Academic support services  
+WEBSOTE: https://www.eng.uwo.ca/undergraduate/first-year/first-year-guide-24_eng.pdf
+
+[CONTEXT: COURSES]  
+Q: First-year courses? | Common curriculum  
+A: All students take:  
+▸ NNM 1411A/B (Linear Algebra)  
+▸ NNM 1412A/1414B (Calculus I/II)  
+▸ ES 1021A/B (Materials)  
+▸ ES 1022Y (Statics)  
+▸ PHYS 1401A/B/1402A/B (Physics I/II)  
+▸ CHEM 1302A/B (Chemistry)  
+▸ BUS 1299E (Business)  
+
+[CONTEXT: REGISTRATION]  
+Q: Course registration? | Automatic process  
+A: Key details:  
+▸ Auto-enrolled mid-August  
+▸ Timetable visible in Student Center  
+▸ No changes permitted  
+NOTE: 6.5 credits needed for scholarship eligibility  
+
+[CONTEXT: ACCESSIBLE_ED]  
+Q: IEP/Disability support? | Accommodations  
+A: Contact Accessible Education:  
+▸ Email: aew@uwo.ca  
+▸ Services: Exam accommodations, assistive tech, learning strategies  
+▸ Hours: Mon-Fri 8:30 AM-4:00 PM  
+
+[CONTEXT: TRANSFER_CREDITS]  
+Q: AP/IB credits? | Credit evaluation  
+A: Book appointment with First Year Academic Counsellor  
+CONTACT: Use engineering advising portal  
+WEBSITE: https://bookedin.com/book/western-engineering

@@ -1,0 +1,31 @@
+[CONTEXT: NTE_APPROVED_COURSES]
+Q: What are Non-Technical Electives? | How do I choose Non-Technical Electives? | What courses are approved as Non-Technical Electives?
+A: Non-technical electives (NTEs) complement Engineering courses to satisfy CEAB requirements. Choose from:
+▸ Category A: Social Science
+▸ Category B: Arts & Humanities (see Western’s Academic Calendar)
+NOTE: ELI 3000A/B, ELI 3200A/B, ELI 4100A/B, ELI 4200A/B may count as 0.5 NTEs.
+
+[CONTEXT: NTE_SELECTION_GUIDELINES]
+Q: How do I choose my Non-Technical Electives? | Where can I find a list of approved courses?
+A:
+▸ Use the Academic Calendar to identify Category A/B subjects.
+▸ Check course availability via the Official Timetable.
+EXCLUDED COURSES (science/statistics focus):
+▸ Economics 2122A/B, 2123A/B, 2141A/B, 2142A/B
+▸ Digital Communications 2001A/B, 2203A/B, 3203F/G, 3204A/B
+▸ Digital Humanities 1011A/B, 2127A/B, 2144A/B
+▸ Health Sci 2000A/B & 2300A/B
+▸ Geography 2230A/B
+▸ Psychology 2220A/B
+NOTE: Contact your Academic Advisor if unsure about a course’s eligibility.
+
+[CONTEXT: NTE_LANGUAGE_COURSES]
+Q: Can I take a language course as a Non-Technical Elective? | How do language courses count?
+A:
+▸ Allowed: Up to 1.0 credit in learn-to-speak language courses (must match your proficiency level).
+▸ Remaining credits: 0.5 must be from another subject area.
+EXCEPTION: Civil Engineering (International Development option) and Integrated Engineering students may take the full 1.0 credit as language courses due to Social Science/Humanities content in core curriculum.
+
+[CONTEXT: ACADEMIC_ADVISOR_SUPPORT]
+Q: How can I get help choosing a Non-Technical Elective? | What if I’m unsure about my choice?
+A: Contact your Academic Advisor for guidance.

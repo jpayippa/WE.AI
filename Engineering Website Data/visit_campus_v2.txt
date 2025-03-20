@@ -1,0 +1,23 @@
+[CONTEXT: TOUR_BOOKING]  
+Q: Campus tours? | Visit options  
+A: Book in-person or explore virtually:  
+▸ In-person: https://studentservices.uwo.ca/secure/liaison/CT_web/index.cfm  
+▸ Virtual: https://virtualtour.uwo.ca/uwo/home/featured-tours/#virtual  
+NOTE: Select academic interests for tailored tours.  
+
+[CONTEXT: TOUR_DETAILS]  
+Q: What’s included? | Tour highlights  
+A: 2h15m guided experience covering:  
+▸ Campus Life: UCC, Rec Centre, libraries  
+▸ Faculty Buildings: 2 discipline-specific locations  
+▸ Residence: Living/study spaces  
+
+[CONTEXT: TRANSPORTATION]  
+Q: Getting to campus? | Directions & parking  
+A: Address: 1151 Richmond St, London, ON N6A 3K7  
+Options:  
+▸ Car: Free tour parking (details in confirmation email)  
+▸ Train: Via Rail to London Station + bus/taxi  
+▸ Bus: 9 LTC routes ($3.50 exact fare)  
+▸ Bike/Walk: Thames Valley Parkway access  
+GUIDE: https://welcome.uwo.ca/what-is-western-like/location/visit.html  

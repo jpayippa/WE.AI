@@ -1,0 +1,88 @@
+[CONTEXT: CONTACT]  
+Q: Residence contact? | Housing inquiries  
+A: Housing & Ancillary Services contact information:  
+WEBSITE: https://residence.uwo.ca/contact_us  
+PORTAL: https://myhousing.uwo.ca/portal/B898D8E9/1/1/Home-Home?UrlToken=0528ED40  
+
+[CONTEXT: ELIGIBILITY]  
+Q: Am I eligible for Residence? | First-year criteria  
+A: Must be:  
+▸ Single student without dependents  
+▸ Full-time at Western’s main campus  
+EXCLUSION: Huron/King’s affiliates  
+
+Q: Upper-year housing? | Post-first year options  
+A: Apply via myHousing Portal for:  
+▸ Alumni House/London Hall (single rooms)  
+▸ University apartments  
+FAMILIES: Contact Platt’s Lane Estates  
+
+[CONTEXT: FEES_REFUNDS]  
+Q: How to pay fees? | Payment process  
+A: Pay via Student Center Statement of Account:  
+GUIDE: https://registrar.uwo.ca  
+
+Q: Tax receipts? | CRA compliance  
+A: No residence-specific receipts. Ontario students:  
+▸ Claim $25 via Form ON-BEN  
+WEBSITE: https://www.ontario.ca/taxcredits  
+
+Q: Withdraw from residence? | Process steps  
+A: Requirements:  
+1. Submit withdrawal via myHousing Portal  
+2. Complete check-out at Residence desk  
+3. Assume financial responsibility until replacement  
+
+[CONTEXT: MEAL_PLANS]  
+Q: Meal plan components? | Dining options  
+A: Includes:  
+▸ Non-refundable overhead fee  
+▸ Residence Dollars (tax-exempt)  
+▸ Flex Dollars (on/off-campus)  
+
+Q: Meal plan refunds? | Balance transfers  
+A: Options:  
+▸ Rollover to Campus Meal Plan  
+▸ Credit to Student Account (>$50 balance, $40 fee)  
+PORTAL: Process via myHousing Portal  
+
+[CONTEXT: BUILDING_ASSIGNMENTS]  
+Q: Room assignment process? | Placement rules  
+A: Computer-randomized system:  
+▸ Considers Residence Placement Questionnaire  
+▸ Scholarship recipients get priority  
+
+Q: Single rooms? | Accommodation options  
+A: Available in:  
+▸ All suite-style residences  
+▸ Limited traditional/hybrid rooms  
+REQUEST: Submit via myHousing Portal  
+
+[CONTEXT: ROOMMATE]  
+Q: Mixed-gender housing? | Opt-in process  
+A: Key policies:  
+▸ Matched by lifestyle preferences  
+▸ Washroom arrangements vary by building  
+▸ Romantic partners strongly discouraged  
+CONTACT: housing@uwo.ca for requests  
+
+[CONTEXT: LIVING]  
+Q: Safety rules? | Residence policies  
+A: Includes:  
+▸ 24/7 locked buildings with card access  
+▸ Front desk staff always available  
+
+Q: Laundry facilities? | On-site services  
+A: Card-activated machines in all buildings:  
+▸ $50 laundry credit included  
+▸ Reload via posted instructions  
+
+Q: Maintenance requests? | Repair process  
+A: Submit via Residence front desk.  
+NOTE: Staff may enter rooms for urgent repairs  
+
+[CONTEXT: RESOURCES]  
+Q: Campus support? | Key contacts  
+A: Equity Services: equity@uwo.ca  
+Residence Counselling: needtotalk@uwo.ca  
+Peer Support: UCC Room 256  

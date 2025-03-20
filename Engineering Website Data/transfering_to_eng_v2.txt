@@ -1,0 +1,33 @@
+[CONTEXT: CURRENT_WESTERN_TRANSFER]  
+Q: Transferring internally? | Current Western students  
+A: Process:  
+▸ Book appointment during ITR (Feb-Mar 2024)  
+▸ Deadline: March 31, 2024  
+▸ No OUAC application required  
+REQUIRED COURSES:  
+▸ ES 1050, ES 1021A/B, ES 1022Y, ES 1036A/B  
+▸ BUS 1299E, NNM 1411A/B, NNM 1412A, NNM 1414B  
+▸ CHEM 1302A/B, PHYS 1401A/B, PHYS 1402A/B  
+
+Q: Transfer credits? | Eligible courses  
+A: Key equivalencies (minimum grades apply):  
+▸ Calculus 1000A/B → NNM 1412A/B (70%)  
+▸ Physics 1201A/B → PHYS 1401A/B (60%)  
+▸ BUS 1220E → BUS 1299E (*requires Economics unit)  
+NOTE: Non-technical electives must be from Arts/Humanities/Social Science  
+
+[CONTEXT: EXTERNAL_TRANSFER]  
+Q: External applicants? | OUAC process  
+A: Requirements:  
+▸ Apply via OUAC with full education history  
+▸ Submit official transcripts  
+▸ Transfer credits evaluated post-admission  
+CONTACT: futurewe@uwo.ca  
+
+[CONTEXT: SCHOLARSHIPS]  
+Q: Transfer scholarships? | Automatic awards  
+A: Details:  
+▸ 10 Admission Scholarships awarded annually  
+▸ Based on final admission average (no application)  
+▸ For upper-year transfers to main campus  
+

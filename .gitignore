@@ -133,7 +133,7 @@ Scrapping/Data/**/*.zip
 *.csv
 *.xls
 *.xlsx
-*.txt
+
 
 
 !Scrapping/configs/*.json

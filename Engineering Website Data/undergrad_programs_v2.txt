@@ -1,0 +1,103 @@
+[CONTEXT: ENGINEERING_PROGRAMS]
+Q: What programs does Western Engineering offer? | List of engineering degrees
+A: Available programs:
+- Artificial Intelligence Systems Engineering (AISE)
+- Chemical Engineering
+- Civil Engineering
+- Electrical Engineering
+- Integrated Engineering
+- Mechanical Engineering
+- Mechatronic Systems Engineering
+- Software Engineering
+- Biomedical Engineering
+PROGRAM_EXPLORER: [LINK: Full Program List](https://engineering.uwo.ca/programs)
+
+[CONTEXT: AISE_PROGRAM]
+Q: What is AISE? | Artificial Intelligence Systems Engineering details
+A: 5-year concurrent degree (launched 2022)
+- Focus areas:
+  • Deep learning & ethical AI implementation
+  • Cross-disciplinary applications:
+    - Chemical: Smart manufacturing systems
+    - Civil: Smart city infrastructure
+    - Electrical: IoT & power grid optimization
+    - Mechanical: Intelligent production systems
+MIN_AVERAGE: 75% YWA
+COURSES: All first-year curriculum requirements
+HANDBOOK: [LINK: AISE Program Guide](https://eng.uwo.ca/aise)
+
+[CONTEXT: CHEMICAL_ENGINEERING]
+Q: Chemical Engineering options? | Biochemical/Environmental streams
+A: Third-year specializations:
+1. General Chemical Engineering
+2. Biochemical & Environmental Engineering
+KEY_FEATURES:
+- Pollution prevention focus
+- Renewable energy integration
+- Dual degrees available (Business/Law)
+MIN_AVERAGE: 60% YWA
+PRIORITY_COURSES: NMM 1411/1412/1414, CHEM 1302, ES 1050
+DETAILS: [LINK: Chemical Engineering](https://eng.uwo.ca/chemical)
+
+[CONTEXT: CIVIL_ENGINEERING]
+Q: Civil Engineering specializations? | Structural/Environmental paths
+A: Third-year options:
+- Structural Engineering
+- Environmental Engineering
+- International Development (+Engineering)
+HIGHLIGHTS:
+- Summer community development projects
+- Sustainable infrastructure focus
+- Global fieldwork opportunities
+MIN_AVERAGE: 60% YWA
+CORE_COURSES: NMM 1411/1412/1414, PHYS 1401, ES 1021/1022
+
+[CONTEXT: ELECTRICAL_ENGINEERING]
+Q: Electrical Engineering focus areas? | Power systems/communications
+A: Fourth-year electives:
+- Energy & power systems
+- Information communications
+- Biomedical systems
+- Control automation
+CAREER_PATHS: Smart grid tech, medical devices, telecom
+MIN_AVERAGE: 60% YWA
+KEY_COURSES: PHYS 1402, ES 1036, NMM 1411/1412/1414
+
+[CONTEXT: MECHATRONICS_ENGINEERING]
+Q: Mechatronics requirements? | Robotics/AI integration
+A: Combines disciplines:
+- Mechanical systems
+- Electronics engineering
+- AI/software development
+CAPSTONE_PROJECTS: Autonomous vehicles, smart manufacturing
+MIN_AVERAGE: 70% YWA
+REQUIRED_COURSES: PHYS 1401/1402, ES 1022/1036/1050
+WEBSITE: [LINK: Mechatronics Info](https://eng.uwo.ca/mechatronics)
+
+[CONTEXT: SOFTWARE_ENGINEERING]
+Q: Software Eng requirements? | Programming focus
+A: Key features:
+- Strong coding fundamentals
+- Systems design
+- Dual degrees with Ivey HBA/Law
+MIN_AVERAGE: 60% YWA (70% for ES 1036)
+CORE_COURSES: NMM 1411/1412/1414, PHYS 1402
+
+[CONTEXT: BIOMEDICAL_ENGINEERING]
+Q: Biomedical Engineering path? | Medical systems focus
+A: Specialization options:
+- Medical device design
+- Biomedical signal processing
+- Healthcare systems integration
+MIN_AVERAGE: 70% YWA
+REQUIREMENTS: Complete all first-year courses
+DEPT_SITE: [LINK: Biomedical Engineering](https://eng.uwo.ca/biomedical)
+
+[CONTEXT: ADMISSION_REQUIREMENTS]
+Q: Program entry averages? | First-year cutoffs
+A: Minimum YWA thresholds:
+- AISE: 75%
+- Mechatronics/Biomedical: 70%
+- All others: 60%
+COURSE_PRIORITY: First-year core curriculum
+POLICY: [LINK: Academic Calendar](https://academiccalendar.uwo.ca)

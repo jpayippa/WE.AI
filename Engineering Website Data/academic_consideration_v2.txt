@@ -1,0 +1,59 @@
+[CONTEXT: GENERAL_INFO]  
+Q: Academic Consideration? | Absence policies  
+A: Covers missed coursework due to extenuating circumstances.  
+WEBSITE: https://www.eng.uwo.ca/undergraduate/academic-consideration-for-absences.html  
+
+[CONTEXT: ILLNESS_MEDICAL]  
+Q: Medical absences? | Documentation required  
+A: Submit via Student Absence Form with:  
+▸ Student Medical Certificate (doctor-completed)  
+▸ Duration/severity/impact details  
+DEADLINE: Within 48 hours of missed component  
+NOTE: Extended absences (>2 weeks) may require course reduction  
+
+[CONTEXT: COMPASSIONATE]  
+Q: Compassionate absences? | Valid reasons  
+A: Includes bereavement, weddings, family illness.  
+Required docs:  
+▸ Death certificate (bereavement)  
+▸ Wedding invitation (relationship proof)  
+▸ Medical certificate (family illness)  
+WARNING: Do not commit to events without prior approval  
+
+[CONTEXT: FINAL_EXAMS]  
+Q: Missed final exam? | Special exam process  
+A: Steps:  
+1. Submit Student Absence Form (select "Final Exam")  
+2. Upload supporting documentation  
+3. Engineering exams rescheduled by UG office  
+NOTE: Invalid reasons include travel plans/misread schedules  
+
+[CONTEXT: EXAM_CONFLICTS]  
+Q: Exam conflicts? | Resolution steps  
+A: For conflicts/multiple exams:  
+▸ Submit Student Absence Form  
+▸ Registrar handles December/April exam rescheduling  
+▸ Midterm 3-in-23h conflicts require course outline proof  
+
+[CONTEXT: RELIGIOUS]  
+Q: Religious holidays? | Accommodations  
+A: Submit Student Absence Form ≥2 weeks in advance.  
+NOTE: Rarely requires religious leader verification  
+
+[CONTEXT: VARSITY]  
+Q: Varsity commitments? | Approval process  
+A: Required steps:  
+1. Submit Student Absence Form  
+2. Attach Intercollegiate Athletics Verification Form  
+DEADLINE: ≥1 week before event  
+
+[CONTEXT: ACCESSIBLE_ED]  
+Q: Disability accommodations? | Process  
+A: Contact Accessible Education first.  
+NOTE: Use Registrar’s Accommodation Form for missed exams  
+
+[CONTEXT: CLUBS_TEAMS]  
+Q: Club/team absences? | Documentation  
+A: Submit Student Absence Form with:  
+▸ Event confirmation (dates/times/location)  
+▸ Advance notice required  

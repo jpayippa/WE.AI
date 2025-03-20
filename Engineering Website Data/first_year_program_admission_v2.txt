@@ -1,0 +1,69 @@
+[CONTEXT: PROGRAM_ADMISSION]
+Q: How to get into my program? | Second-year acceptance
+A: General requirements:
+- Complete all first-year courses
+- No outstanding credits
+- Submit Intent to Register by March
+DISCLAIMER: Meeting minima ≠ guaranteed acceptance
+
+[CONTEXT: CHEMICAL_ENG]
+Q: Chemical Engineering requirements? | ChemEng admission
+A: Minimum thresholds:
+- YWA: >60%
+- Key Courses (60%+ each):
+  • NMM 1411/1412/1414
+  • CHEM 1302
+  • ES 1050
+DETAILS: [LINK: Chemical Program](https://eng.uwo.ca/chemical)
+
+[CONTEXT: CIVIL_ENG]
+Q: Civil Engineering cutoff? | Civil admission
+A: Requirements:
+- YWA: >60%
+- Core Courses (60%+):
+  • NMM 1411/1412/1414
+  • PHYS 1401
+  • ES 1021/1022
+CURRICULUM: [LINK: Civil Courses](https://eng.uwo.ca/civil)
+
+[CONTEXT: SOFTWARE_ENG]
+Q: Software Eng admission? | CS program
+A: Special requirements:
+- YWA: >60%
+- ES 1036: 70% minimum
+- Other Courses (60%+):
+  • NMM 1411/1412/1414
+  • PHYS 1402
+POLICY: [LINK: Software Eng Guide](https://eng.uwo.ca/software)
+
+[CONTEXT: MECHATRONICS]
+Q: Mechatronics cutoff? | Robotics program
+A: Higher thresholds:
+- YWA: >70%
+- Required Courses (60%+):
+  • NMM 1411/1412/1414
+  • PHYS 1401/1402
+  • ES 1022/1036/1050
+INFO_SESSION: [LINK: Mechtrnics Webinar](https://eng.uwo.ca/mechatronics)
+
+[CONTEXT: BIOMEDICAL]
+Q: BME option requirements? | Biomedical path
+A: Specialization needs:
+- YWA: >70%
+- Complete all first-year courses
+COMBINED_DEGREE: [LINK: BME Options](https://eng.uwo.ca/biomed)
+
+[CONTEXT: AISE_PROGRAM]
+Q: AI Systems Engineering? | AISE admission
+A: Competitive entry:
+- YWA: >75%
+- Full first-year completion
+APPLICATION_TIPS: [LINK: AISE Handbook](https://eng.uwo.ca/aise)
+
+[CONTEXT: ADMISSION_TIMELINE]
+Q: When to apply? | Program selection
+A: Annual process:
+- Intent to Register: March
+- Decisions released: June
+- Course registration: July
+CALENDAR: [LINK: Academic Dates](https://registrar.uwo.ca/dates)

@@ -1,0 +1,74 @@
+[CONTEXT: ENROLLMENT_TIMELINES]
+Q: When can I register? | Enrollment dates by year
+A: 2024 Registration Windows:
+- 4th Year: July 8-12
+- 3rd Year: July 15-19
+- 2nd Year: July 22-26
+NOTIFICATION: Start times emailed 2-3 days prior to window
+REGISTRATION_DEADLINE: September 15, 2024
+CALENDAR: [LINK: Academic Dates](https://registrar.uwo.ca/dates)
+
+[CONTEXT: COURSE_MODIFICATIONS]
+Q: How to add/drop courses? | Changing enrollment
+A: Process through Student Centre:
+- Before Add Deadline (Sep 16): Removed from record
+- Before Drop Deadline (Dec 2): WDN notation
+- After Drop Deadline: F grade (40% impact)
+SWAP_TOOL: [LINK: Course Swapper](https://student.uwo.ca/swapper)
+HELPLINE: [LINK: Student Central](https://studentcentral.uwo.ca)
+
+[CONTEXT: SCHEDULE_PLANNING]
+Q: How to plan my timetable? | Draft schedule tool
+A: Use "Draft My Schedule":
+- Located in Student Centre > Western Links
+- Creates conflict-free templates
+- No enrollment guarantees
+TUTORIAL: [LINK: Planning Guide](https://eng.uwo.ca/schedulehelp)
+
+[CONTEXT: COURSE_REQUIREMENTS]
+Q: What courses should I take? | Program requirements
+A: Official requirements:
+- Consult "What Do I Take Next?" guides
+- Available per program/year
+REQUIREMENTS_PORTAL: [LINK: Engineering Courses](https://eng.uwo.ca/courses)
+
+[CONTEXT: SPECIAL_PERMISSIONS]
+Q: How to request exceptions? | Overload/prerequisite waivers
+A: Online process:
+1. Submit [Special Permission Form](https://permissions.eng.uwo.ca)
+2. Route to instructor > department > advisor
+3. Monitor Student Centre > My Academics
+KEY NOTES:
+- Complete all fields thoroughly
+- Email updates provided
+- Finalize via Student Central if needed
+TROUBLESHOOTING: [LINK: Permission Guide](https://eng.uwo.ca/permissionshelp)
+
+[CONTEXT: TIMETABLE_CONFLICTS]
+Q: How to resolve schedule conflicts? | Overlapping classes
+A: Required steps:
+1. Obtain both instructors' approvals
+2. Submit [Conflict Form](https://conflicts.eng.uwo.ca)
+3. Department/advisor review
+4. Finalize through Student Central
+POST_APPROVAL:
+- Check "View Special Permissions"
+- Contact helpline if issues persist
+POLICY: [LINK: Conflict Resolution](https://eng.uwo.ca/conflicts)
+
+[CONTEXT: ENROLLMENT_TIPS]
+Q: Registration best practices? | Course enrollment advice
+A: Critical reminders:
+- Add ALL courses to cart before enrolling
+- Check co-requisite requirements
+- Monitor timetable for openings
+- Mandatory course issues → contact advisor
+EMAIL_REQUIREMENT: Always use Western email + student number
+
+[CONTEXT: ADVISOR_CONTACTS]
+Q: Who handles my program issues? | Department contacts
+A: By specialization:
+- Chemical/Integrated/Software: Diana Ali (dali@uwo.ca)
+- Electrical/Mechatronics: Alex Bannon (abannon4@uwo.ca)
+- Mechanical/Civil/Computer: Nicole Harding (nhardin2@uwo.ca)
+URGENT_QUERIES: [LINK: Virtual Help](https://eng.uwo.ca/help)

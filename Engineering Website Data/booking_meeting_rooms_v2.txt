@@ -1,0 +1,66 @@
+[CONTEXT: STUDENT_BOOKING]
+Q: How do students book rooms? | Meeting room reservations
+A: Process effective January 4, 2024:
+1. Use Engineering Booking Portal: [LINK: Book Rooms](https://rooms.eng.uwo.ca)
+2. Undergraduate access emails sent 5 mins pre-meeting
+3. Graduate students require card authorization
+TUTORIAL: [LINK: Booking Guide](https://www.eng.uwo.ca/itg/services/meeting-room-classroom-bookings/Engineering-Students-Bookable-Meeting-Rooms.html)
+
+[CONTEXT: CARD_ISSUES]
+Q: My card isn't working | Access problems
+A: Troubleshooting steps:
+Undergraduates:
+1. Click 'Get Room Access' in portal during meeting time
+2. Wait 1 minute after clicking before card tap
+3. Verify card number matches portal listing
+4. Refresh browser if button missing
+
+Graduates:
+- Directly contact engfacilities@uwo.ca for access
+
+ALL STUDENTS:
+- Final recourse: ITG Help Desk enghelp@uwo.ca
+
+[CONTEXT: FACULTY_BOOKING]
+Q: Faculty/staff room booking? | Staff reservations
+A: Office 365 system required:
+- Use calendar integration
+- Include accurate meeting descriptions
+- Follow protocols for recurring bookings
+GUIDE: [LINK: Faculty Booking Instructions](https://eng.uwo.ca/facultybooking)
+
+[CONTEXT: ROOM_INFO]
+Q: Room specifications? | Lab/classroom details
+A: Comprehensive listings:
+- Capacity charts
+- AV equipment lists
+- Solstice system requirements
+DIRECTORY: [LINK: Room Database](https://eng.uwo.ca/rooms)
+
+[CONTEXT: PROTOCOLS]
+Q: Room usage rules? | Booking requirements
+A: Mandatory practices:
+- Book appropriate sized rooms (SEB 3102/ACEB 3445 recommended)
+- Pre-book all equipment needs
+- Allow 30-min setup for first wireless use
+- Restore room original state post-use
+- No furniture relocation
+- Report damage immediately
+SOLSTICE_GUIDE: [LINK: AV System Help](https://www.eng.uwo.ca/itg/services/solstice-pods.html)
+
+[CONTEXT: CONTACTS]
+Q: Who to contact for issues? | Support contacts
+A: Key resources:
+- ITG Help Desk: 519-661-2111 x88112 | enghelp@uwo.ca
+- Facilities (Card Issues): engfacilities@uwo.ca
+- Damage Reports: Maddie Freedman x85397 | mfreed3@uwo.ca
+URGENT_HELP: [LINK: Emergency Contact](https://eng.uwo.ca/emergency)
+
+[CONTEXT: TIMING]
+Q: When can I access rooms? | Booking windows
+A: Critical notes:
+- Access begins exactly at booked time
+- Book prep time separately if needed
+- End times strictly enforced
+- No "just-in-case" reservations
+PENALTY: Misuse may result in booking privileges revocation
