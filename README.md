@@ -1,8 +1,10 @@
 # WE.AI – Western Engineering AI Assistant
 
-[![Capstone Presentation – WE.AI](https://img.youtube.com/vi/qVxx_RitFgc/0.jpg)](https://youtu.be/qVxx_RitFgc)
 
 WE.AI is a custom AI assistant built for Western Engineering students, faculty, and visitors. It is designed to deliver precise and context-aware answers about university policies, academic resources, and campus services using domain-specific data.
+
+[![Capstone Presentation – WE.AI](https://img.youtube.com/vi/qVxx_RitFgc/0.jpg)](https://youtu.be/qVxx_RitFgc)
+
 
 ## 🚀 Current Status
 
