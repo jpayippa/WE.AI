@@ -10,10 +10,13 @@ const PORT = process.env.PORT || 5001;
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json());
 
+
+// Google Cloud Dialogflow API configuration
 const projectId = "we-ai-442218";
 const location = "us-central1";
 const agentId = "6e63cb11-8f42-4c9a-9f2c-fe3e0b41ccdd";
 
+// Google Cloud authentication
 const auth = new GoogleAuth({
   scopes: ["https://www.googleapis.com/auth/cloud-platform"],
 });
